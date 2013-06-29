@@ -1,0 +1,38 @@
+*** rpi-boot-master/fb.c	2013-06-26 15:45:15.000000000 +0200
+--- workspace/emmc/fb.c	2013-06-26 16:00:08.466184259 +0200
+***************
+*** 25,32 ****
+  #include "mbox.h"
+  #include "fb.h"
+  
+! #define WIDTH		640
+! #define HEIGHT		480
+  #define BYTES_PER_PIXEL	2
+  #define BPP		(BYTES_PER_PIXEL << 3)
+  #define S_PITCH		(WIDTH * BYTES_PER_PIXEL)	// The pitch of the backbuffer
+--- 25,32 ----
+  #include "mbox.h"
+  #include "fb.h"
+  
+! #define WIDTH		480
+! #define HEIGHT		234
+  #define BYTES_PER_PIXEL	2
+  #define BPP		(BYTES_PER_PIXEL << 3)
+  #define S_PITCH		(WIDTH * BYTES_PER_PIXEL)	// The pitch of the backbuffer
+***************
+*** 97,103 ****
+  	phys_h = mailbuffer[6];
+  
+  	/* Request 640x480 if not otherwise specified */
+! 	if((phys_w == 0) && (phys_h == 0))
+  	{
+  		phys_w = WIDTH;
+  		phys_h = HEIGHT;
+--- 97,103 ----
+  	phys_h = mailbuffer[6];
+  
+  	/* Request 640x480 if not otherwise specified */
+! 	//if((phys_w == 0) && (phys_h == 0))
+  	{
+  		phys_w = WIDTH;
+  		phys_h = HEIGHT;
