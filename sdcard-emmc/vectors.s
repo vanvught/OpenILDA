@@ -31,17 +31,17 @@ _start:
     ldr pc, irq_handler
     ldr pc, fiq_handler
 
-reset_handler:     	.word reset
-undefined_handler: 	.word hang
-swi_handler:      		.word hang
+reset_handler:			.word reset
+undefined_handler:		.word hang
+swi_handler:			.word hang
 prefetch_handler:		.word hang
 data_handler:			.word hang
-unused_handler:		.word hang
+unused_handler:			.word hang
 irq_handler:			.word irq
 fiq_handler:			.word fiq
 
 reset:
-	@ Copy vectors (including fiq handler) to 0x0000
+    @ Copy vectors (including fiq handler) to 0x0000
     ldr   r1, =_start
     mov   r2, #0x0000
     ldr   r3, =reset_handler
@@ -70,7 +70,7 @@ reset:
     mov r0,#0x40000000
     fmxr fpexc,r0
 
-	@ clear bss section
+    @ clear bss section
     mov   r0, #0
     ldr   r1, =__bss_start
     ldr   r2, =__bss_end
@@ -79,16 +79,17 @@ reset:
     blo   2b
 
     bl notmain
-@ Do not move this function
-FUNC hang
-	b hang
+3:  b 3b
 
 irq:
-	b c_irq_handler			@ void __attribute__((interrupt("IRQ"))) c_irq_handler(void)
+    b c_irq_handler			@ void __attribute__((interrupt("IRQ"))) c_irq_handler(void)
 
 fiq:
-	b c_fiq_handler			@ void __attribute__((interrupt("FIQ"))) c_fiq_handler(void)
-@	b asm_fiq_handler
+    b c_fiq_handler			@ void __attribute__((interrupt("FIQ"))) c_fiq_handler(void)
+@   b asm_fiq_handler
+
+FUNC hang
+    b hang
 
 FUNC __enable_irq
     mrs r0, cpsr
@@ -97,9 +98,9 @@ FUNC __enable_irq
     bx lr
 
 FUNC __disable_irq
-	mrs r1, CPSR
-	orr r1, r1, #I_BIT
-	msr cpsr_c, r1
+    mrs r1, CPSR
+    orr r1, r1, #I_BIT
+    msr cpsr_c, r1
     bx lr
 
 FUNC __enable_fiq
@@ -115,7 +116,7 @@ FUNC __disable_fiq
     bx lr
 
 FUNC memory_barrier
-	mov r0, #0
+    mov r0, #0
     mcr p15, #0, r0, c7, c10, #5
     bx lr
 
@@ -124,10 +125,10 @@ FUNC uwait
 	mov r5,r0
 	ldr r4,=0x20003000
 	ldrd r2,r3,[r4,#4]
-3:
+4:
 		ldrd r0,r1,[r4,#4]
 		sub r1,r0,r2
 		cmp r1,r5
-		bls 3b
+		bls 4b
 	pop {r4, r5, pc}
 
