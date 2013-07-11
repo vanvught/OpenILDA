@@ -6,16 +6,16 @@
 .endm
 
 @ Standard definitions of Mode bits and Interrupt (I & F) flags in PSRs
- .set  MODE_USR, 0x10				@ User Mode
- .set  MODE_FIQ, 0x11				@ FIQ Mode
- .set  MODE_IRQ, 0x12				@ IRQ Mode
- .set  MODE_SVC, 0x13				@ Supervisor Mode
- .set  MODE_ABT, 0x17				@ Abort Mode
- .set  MODE_UND, 0x1B				@ Undefined Mode
- .set  MODE_SYS, 0x1F				@ System Mode
+.set  MODE_USR, 0x10				@ User Mode
+.set  MODE_FIQ, 0x11				@ FIQ Mode
+.set  MODE_IRQ, 0x12				@ IRQ Mode
+.set  MODE_SVC, 0x13				@ Supervisor Mode
+.set  MODE_ABT, 0x17				@ Abort Mode
+.set  MODE_UND, 0x1B				@ Undefined Mode
+.set  MODE_SYS, 0x1F				@ System Mode
 
- .set  I_BIT, 0x80					@ when I bit is set, IRQ is disabled
- .set  F_BIT, 0x40					@ when F bit is set, FIQ is disabled
+.set  I_BIT, 0x80					@ when I bit is set, IRQ is disabled
+.set  F_BIT, 0x40					@ when F bit is set, FIQ is disabled
 
 .section .init
 .code 32
@@ -32,11 +32,11 @@ _start:
     ldr pc, fiq_handler
 
 reset_handler:			.word reset
-undefined_handler:		.word hang
+undefined_handler:	.word hang
 swi_handler:			.word hang
 prefetch_handler:		.word hang
 data_handler:			.word hang
-unused_handler:			.word hang
+unused_handler:		.word hang
 irq_handler:			.word irq
 fiq_handler:			.word fiq
 
@@ -52,15 +52,15 @@ reset:
 
     msr CPSR_c,#MODE_IRQ|I_BIT|F_BIT 	@ IRQ Mode
     ldr r0, =__irq_stack_top
-    mov sp,r0;
+    mov sp, r0
 
     msr  CPSR_c,#MODE_FIQ|I_BIT|F_BIT	@ FIQ Mode
     ldr r0, =__fiq_stack_top
-    mov sp,r0;
+    mov sp, r0
 
     msr CPSR_c,#MODE_SVC|I_BIT|F_BIT	@ Supervisor Mode
     ldr r0, =__svc_stack_top
-    mov sp,r0;
+    mov sp, r0
 
     @ enable fpu
     mrc p15, 0, r0, c1, c0, 2
@@ -79,14 +79,16 @@ reset:
     blo   2b
 
     bl notmain
-3:  b 3b
+halt:
+	wfe
+	b halt
 
 irq:
     b c_irq_handler			@ void __attribute__((interrupt("IRQ"))) c_irq_handler(void)
 
 fiq:
-    b c_fiq_handler			@ void __attribute__((interrupt("FIQ"))) c_fiq_handler(void)
-@   b asm_fiq_handler
+@    b c_fiq_handler			@ void __attribute__((interrupt("FIQ"))) c_fiq_handler(void)
+   b asm_fiq_handler
 
 FUNC hang
     b hang
@@ -124,11 +126,9 @@ FUNC uwait
 	push {r4, r5, lr}
 	mov r5,r0
 	ldr r4,=0x20003000
-	ldrd r2,r3,[r4,#4]
-4:
-		ldrd r0,r1,[r4,#4]
-		sub r1,r0,r2
-		cmp r1,r5
-		bls 4b
-	pop {r4, r5, pc}
-
+    ldrd r2,r3,[r4,#4]
+4:  ldrd r0,r1,[r4,#4]
+    sub r1,r0,r2
+    cmp r1,r5
+    bls 4b
+    pop {r4, r5, pc}
