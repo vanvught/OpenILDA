@@ -223,15 +223,7 @@ void bcm2835_st_delay(uint64_t offset_micros, uint64_t micros);
 extern void bcm2835_uart_begin(void);
 extern void inline bcm2835_uart_send(uint32_t);
 
-//extern void inline bcm2835_spi_mcp4922_a(uint16_t data);
-//extern void inline bcm2835_spi_mcp4922_b(uint16_t data);
-//
-//extern void inline bcm2835_spi_mcp4902_1a(uint16_t data);
-//extern void inline bcm2835_spi_mcp4902_1b(uint16_t data);
-//
-//extern void inline bcm2835_spi_mcp4902_2a(uint16_t data);
-//extern void inline bcm2835_spi_mcp4902_2b(uint16_t data);
-
+extern void bcm2835_spi_write(uint16_t data);
 extern void dac_write_all(uint16_t x, uint16_t y, uint8_t intensity, uint8_t red, uint8_t green, uint8_t blue);
 
 // TODO
