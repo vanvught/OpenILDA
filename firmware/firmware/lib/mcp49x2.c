@@ -1,8 +1,6 @@
 #include <bcm2835.h>
 #include <spi_dac.h>
 
-extern void spi_select_mcp4922(void);
-
 void inline bcm2835_spi_mcp4922_a(uint16_t data) {
 	spi_select_mcp4922();
 	bcm2835_spi_write(data  | 0x3000 | (0<<15));

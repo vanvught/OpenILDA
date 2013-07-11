@@ -81,7 +81,7 @@ void bcm2835_spi_end(void)
     bcm2835_gpio_fsel(RPI_GPIO_P1_23, BCM2835_GPIO_FSEL_INPT); // CLK
 }
 
-void bcm2835_spi_setBitOrder(uint8_t order)
+void inline bcm2835_spi_setBitOrder(uint8_t order)
 {
     // BCM2835_SPI_BIT_ORDER_MSBFIRST is the only one supported by SPI0
 }
