@@ -26,6 +26,9 @@
 #define MCP7941X_RTCC_TCR_MONTH					0x05
 #define MCP7941X_RTCC_TCR_YEAR					0x06
 
+#define MCP7941X_RTCC_BIT_ST					0x80
+#define MCP7941X_RTCC_BIT_VBATEN				0x08
+
 struct rtc_time {
 	int tm_sec; /* Seconds.	[0-60] (1 leap second) */
 	int tm_min; /* Minutes.	[0-59] */
@@ -42,5 +45,6 @@ extern int mcp7941x_start (char);
 extern void mcp7941x_end (void);
 
 extern void mcp7941x_get_date_time(struct rtc_time *tm);
+extern void mcp7941x_set_date_time(struct rtc_time *tm);
 
 #endif /* MCP7941X_H_ */
