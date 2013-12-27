@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
 		exit(EXIT_FAILURE);
 	}
 
-	// Get current time from Linux
+	// Get current localtime from Linux
 	ltime = time(NULL);
 	tm_linux = localtime(&ltime);
 

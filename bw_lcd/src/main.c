@@ -8,7 +8,7 @@
 int main(int argc, char **argv) {
 
 	printf("lcd_start\n");
-	if (lcd_start(0) != BW_LCD_OK) {
+	if (lcd_start(0x00) != BW_LCD_OK) {
 		printf("Cannot start LCD\n");
 		exit(EXIT_FAILURE);
 	}

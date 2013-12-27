@@ -87,8 +87,7 @@ irq:
     b c_irq_handler			@ void __attribute__((interrupt("IRQ"))) c_irq_handler(void)
 
 fiq:
-@    b c_fiq_handler			@ void __attribute__((interrupt("FIQ"))) c_fiq_handler(void)
-   b asm_fiq_handler
+   b c_fiq_handler			@ void __attribute__((interrupt("FIQ"))) c_fiq_handler(void)
 
 FUNC hang
     b hang
