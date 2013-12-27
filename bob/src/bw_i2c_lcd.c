@@ -1,5 +1,12 @@
 #include <bcm2835.h>
+#include <bw.h>
 #include <bw_lcd.h>
+
+#ifndef BARE_METAL
+static void uwait(int us) { bcm2835_delayMicroseconds(us); }
+#else
+extern void uwait(int);
+#endif
 
 extern int printf(const char *format, ...);
 
@@ -84,6 +91,7 @@ void bw_i2c_lcd_text_line_4(char *text, uint8_t length) {
 void bw_i2c_lcd_cls(void) {
 	static char cmd[] = { BW_PORT_WRITE_CLEAR_SCREEN, ' ' };
 	lcd_i2c_setup();
+	uwait(BW_LCD_I2C_BYTE_WAIT_US);
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
 }
 
@@ -104,15 +112,16 @@ void bw_i2c_lcd_set_backlight(uint8_t value) {
 void bw_i2c_lcd_reinit(void) {
 	static char cmd[] = { BW_PORT_WRITE_REINIT_LCD, ' ' };
 	lcd_i2c_setup();
+	uwait(BW_LCD_I2C_BYTE_WAIT_US);
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
+	uwait(500000);
 }
 
 void bw_i2c_lcd_read_id(void) {
 	static char cmd[] = { BW_PORT_READ_ID_STRING };
-	char buf[BW_LCD_ID_STRING_LENGTH + 1];
+	char buf[BW_LCD_ID_STRING_LENGTH];
 	lcd_i2c_setup();
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
 	bcm2835_i2c_read(buf, BW_LCD_ID_STRING_LENGTH);
-	buf[BW_LCD_ID_STRING_LENGTH] = '\0';
 	printf("[%s]\r\n", buf);
 }

@@ -1,4 +1,5 @@
 #include <bcm2835.h>
+#include <bw.h>
 #include <bw_lcd.h>
 
 extern int printf(const char *format, ...);
