@@ -256,6 +256,7 @@ uint8_t bcm2835_i2c_write(const char * buf, uint32_t len)
 
 	// Received a NACK
 	if (BCM2835_BSC1 ->S & BCM2835_BSC_S_ERR) {
+		BCM2835_BSC1 ->S = BCM2835_BSC_S_ERR;
 		reason = BCM2835_I2C_REASON_ERROR_NACK;
 	}
 
@@ -310,6 +311,7 @@ uint8_t bcm2835_i2c_read(char* buf, uint32_t len)
 
 	// Received a NACK
 	if (BCM2835_BSC1 ->S & BCM2835_BSC_S_ERR) {
+		BCM2835_BSC1 ->S = BCM2835_BSC_S_ERR;
 		reason = BCM2835_I2C_REASON_ERROR_NACK;
 	}
 
