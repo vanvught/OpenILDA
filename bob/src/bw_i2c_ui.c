@@ -37,36 +37,6 @@ void bw_i2c_ui_end(void) {
 	bcm2835_close();
 }
 
-char bw_i2c_ui_read_button(char button) {
-	if ((button < BW_UI_BUTTON1) | (button > BW_UI_BUTTON6))
-		return 0;
-
-	static char cmd[2];
-	char buf[1];
-
-	cmd[0] = BW_PORT_READ_BUTTON_1 + button;
-	cmd[1] = 0xFF;
-
-	ui_i2c_setup();
-	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
-	uwait(BW_UI_I2C_BYTE_WAIT_US);
-	bcm2835_i2c_read(buf, sizeof(buf) / sizeof(char));
-
-	return (buf[0]);
-}
-
-char bw_i2c_ui_read_button_last(void) {
-	static char cmd[] = {BW_PORT_READ_BUTTON_SINCE_LAST, 0xFF};
-	char buf[1];
-
-	ui_i2c_setup();
-	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
-	uwait(BW_UI_I2C_BYTE_WAIT_US);
-	bcm2835_i2c_read(buf, sizeof(buf) / sizeof(char));
-
-	return (buf[0]);
-}
-
 void bw_i2c_ui_set_cursor(uint8_t line, uint8_t pos) {
 	static char cmd[] = { BW_PORT_WRITE_MOVE_CURSOR, 0x00 };
 	if (line > BW_UI_MAX_LINES)
@@ -80,7 +50,7 @@ void bw_i2c_ui_set_cursor(uint8_t line, uint8_t pos) {
 
 }
 
-void bw_i2c_ui_text(char *text, uint8_t length) {
+void bw_i2c_ui_text(const char *text, uint8_t length) {
 	char data[BW_UI_MAX_CHARACTERS + 1] = { BW_PORT_WRITE_DISPLAY_DATA };
 	if (length > BW_UI_MAX_CHARACTERS)
 		length = BW_UI_MAX_CHARACTERS;
@@ -92,28 +62,30 @@ void bw_i2c_ui_text(char *text, uint8_t length) {
 	bcm2835_i2c_write(data, length + 1);
 }
 
-void bw_i2c_ui_text_line_1(char *text, uint8_t length) {
+void bw_i2c_ui_text_line_1(const char *text, uint8_t length) {
 	static char cmd[] = { BW_PORT_WRITE_MOVE_CURSOR, 0b0000000 };
 	ui_i2c_setup();
+	uwait(BW_UI_I2C_BYTE_WAIT_US);
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
 	bw_i2c_ui_text(text, length);
 }
 
-void bw_i2c_ui_text_line_2(char *text, uint8_t length) {
+void bw_i2c_ui_text_line_2(const char *text, uint8_t length) {
 	static char cmd[] = { BW_PORT_WRITE_MOVE_CURSOR, 0b0100000 };
 	ui_i2c_setup();
+	uwait(BW_UI_I2C_BYTE_WAIT_US);
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
 	bw_i2c_ui_text(text, length);
 }
 
-void bw_i2c_ui_text_line_3(char *text, uint8_t length) {
+void bw_i2c_ui_text_line_3(const char *text, uint8_t length) {
 	static char cmd[] = { BW_PORT_WRITE_MOVE_CURSOR, 0b1000000 };
 	ui_i2c_setup();
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
 	bw_i2c_ui_text(text, length);
 }
 
-void bw_i2c_ui_text_line_4(char *text, uint8_t length) {
+void bw_i2c_ui_text_line_4(const char *text, uint8_t length) {
 	static char cmd[] = { BW_PORT_WRITE_MOVE_CURSOR, 0b1100000 };
 	ui_i2c_setup();
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
@@ -143,6 +115,32 @@ void bw_i2c_ui_set_backlight(uint8_t value) {
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
 }
 
+void bw_i2c_ui_set_backlight_temp(uint8_t value) {
+	static char cmd[] = { BW_PORT_WRITE_SET_BACKLIGHT_TEMP, 0x00 };
+	cmd[1] = value;
+	ui_i2c_setup();
+	uwait(BW_UI_I2C_BYTE_WAIT_US);
+	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
+}
+
+void bw_i2c_ui_get_backlight(uint8_t *value) {
+	static char cmd[] = { BW_PORT_READ_CURRENT_BACKLIGHT };
+	ui_i2c_setup();
+	uwait(BW_UI_I2C_BYTE_WAIT_US);
+	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
+	uwait(BW_UI_I2C_BYTE_WAIT_US);
+	bcm2835_i2c_read((char *)value, 1);
+}
+
+void bw_i2c_ui_get_contrast(uint8_t *value) {
+	static char cmd[] = { BW_PORT_READ_CURRENT_CONTRAST };
+	ui_i2c_setup();
+	uwait(BW_UI_I2C_BYTE_WAIT_US);
+	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
+	uwait(BW_UI_I2C_BYTE_WAIT_US);
+	bcm2835_i2c_read((char *)value, 1);
+}
+
 void bw_i2c_ui_reinit(void) {
 	static char cmd[] = { BW_PORT_WRITE_REINIT_LCD, ' ' };
 	ui_i2c_setup();
@@ -159,4 +157,36 @@ void bw_i2c_ui_read_id(void) {
 	uwait(BW_UI_I2C_BYTE_WAIT_US);
 	bcm2835_i2c_read(buf, BW_UI_ID_STRING_LENGTH);
 	printf("[%s]\r\n", buf);
+}
+
+// UI specific
+
+char bw_i2c_ui_read_button(char button) {
+	if ((button < BW_UI_BUTTON1) | (button > BW_UI_BUTTON6))
+		return 0;
+
+	static char cmd[2];
+	char buf[1];
+
+	cmd[0] = BW_PORT_READ_BUTTON_1 + button;
+	cmd[1] = 0xFF;
+
+	ui_i2c_setup();
+	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
+	uwait(BW_UI_I2C_BYTE_WAIT_US);
+	bcm2835_i2c_read(buf, sizeof(buf) / sizeof(char));
+
+	return (buf[0]);
+}
+
+char bw_i2c_ui_read_button_last(void) {
+	static char cmd[] = {BW_PORT_READ_BUTTON_SINCE_LAST, 0xFF};
+	char buf[1];
+
+	ui_i2c_setup();
+	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
+	uwait(BW_UI_I2C_BYTE_WAIT_US);
+	bcm2835_i2c_read(buf, sizeof(buf) / sizeof(char));
+
+	return (buf[0]);
 }

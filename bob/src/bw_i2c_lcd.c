@@ -49,7 +49,7 @@ void bw_i2c_lcd_set_cursor(uint8_t line, uint8_t pos) {
 
 }
 
-void bw_i2c_lcd_text(char *text, uint8_t length) {
+void bw_i2c_lcd_text(const  char *text, uint8_t length) {
 	char data[BW_LCD_MAX_CHARACTERS + 1] = { BW_PORT_WRITE_DISPLAY_DATA };
 	if (length > BW_LCD_MAX_CHARACTERS)
 		length = BW_LCD_MAX_CHARACTERS;
@@ -60,28 +60,28 @@ void bw_i2c_lcd_text(char *text, uint8_t length) {
 	bcm2835_i2c_write(data, length + 1);
 }
 
-void bw_i2c_lcd_text_line_1(char *text, uint8_t length) {
+void bw_i2c_lcd_text_line_1(const char *text, uint8_t length) {
 	static char cmd[] = { BW_PORT_WRITE_MOVE_CURSOR, 0b0000000 };
 	lcd_i2c_setup();
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
 	bw_i2c_lcd_text(text, length);
 }
 
-void bw_i2c_lcd_text_line_2(char *text, uint8_t length) {
+void bw_i2c_lcd_text_line_2(const char *text, uint8_t length) {
 	static char cmd[] = { BW_PORT_WRITE_MOVE_CURSOR, 0b0100000 };
 	lcd_i2c_setup();
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
 	bw_i2c_lcd_text(text, length);
 }
 
-void bw_i2c_lcd_text_line_3(char *text, uint8_t length) {
+void bw_i2c_lcd_text_line_3(const char *text, uint8_t length) {
 	static char cmd[] = { BW_PORT_WRITE_MOVE_CURSOR, 0b1000000 };
 	lcd_i2c_setup();
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
 	bw_i2c_lcd_text(text, length);
 }
 
-void bw_i2c_lcd_text_line_4(char *text, uint8_t length) {
+void bw_i2c_lcd_text_line_4(const char *text, uint8_t length) {
 	static char cmd[] = { BW_PORT_WRITE_MOVE_CURSOR, 0b1100000 };
 	lcd_i2c_setup();
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
@@ -107,6 +107,27 @@ void bw_i2c_lcd_set_backlight(uint8_t value) {
 	cmd[1] = value;
 	lcd_i2c_setup();
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
+}
+
+void bw_i2c_lcd_set_backlight_temp(uint8_t value) {
+	static char cmd[] = { BW_PORT_WRITE_SET_BACKLIGHT_TEMP, 0x00 };
+	cmd[1] = value;
+	lcd_i2c_setup();
+	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
+}
+
+void bw_i2c_lcd_get_backlight(uint8_t *value) {
+	static char cmd[] = { BW_PORT_READ_CURRENT_BACKLIGHT };
+	lcd_i2c_setup();
+	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
+	bcm2835_i2c_read((char *)value, 1);
+}
+
+void bw_i2c_lcd_get_contrast(uint8_t *value) {
+	static char cmd[] = { BW_PORT_READ_CURRENT_CONTRAST };
+	lcd_i2c_setup();
+	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
+	bcm2835_i2c_read((char *)value, 1);
 }
 
 void bw_i2c_lcd_reinit(void) {
