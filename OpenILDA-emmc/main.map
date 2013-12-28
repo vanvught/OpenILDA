@@ -1,0 +1,1835 @@
+Archive member included because of file (symbol)
+
+../emmc/Release/libemmc.a(diskio.o)
+                              ff.o (disk_initialize)
+../emmc/Release/libemmc.a(block_cache.o)
+                              ../emmc/Release/libemmc.a(diskio.o) (cache_read)
+../emmc/Release/libemmc.a(emmc.o)
+                              ../emmc/Release/libemmc.a(diskio.o) (sd_card_init)
+../emmc/Release/libemmc.a(mbox.o)
+                              ../emmc/Release/libemmc.a(emmc.o) (mbox_read)
+../emmc/Release/libemmc.a(qmemcpy.o)
+                              ../emmc/Release/libemmc.a(block_cache.o) (qmemcpy)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+                              correction-osc.o (abs)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+                              syscalls.o (__errno)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+                              panic.o (exit)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o) (_global_impure_ptr)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+                              pbuf-stub.o (malloc)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o) (_malloc_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+                              autoplay.o (memchr)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+                              ild-player.o (memcmp)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+                              osc.o (memcpy)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+                              autoplay.o (memmove)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+                              fatfs.o (memset)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o) (__malloc_lock)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+                              ../emmc/Release/libemmc.a(emmc.o) (printf)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+                              panic.o (puts)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o) (_sbrk_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+                              ilda-osc.o (strcasecmp)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+                              ../emmc/Release/libemmc.a(block_cache.o) (strcat)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+                              osc.o (strcmp)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+                              osc.o (strcpy)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+                              osc.o (strlen)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+                              osc.o (strnlen)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+                              autoplay.o (strsep)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o) (__strtok_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o) (_vfprintf_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o) (__swsetup_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o) (__call_exitprocs)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o) (__ctype_ptr__)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o) (_dtoa_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o) (_fflush_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o) (__sinit)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o) (_free_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o) (__sfvwrite_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o) (_fwalk)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o) (_localeconv_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o) (__smakebuf_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o) (_Balloc)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o) (_realloc_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o) (errno)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o) (__fpclassifyd)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o) (__sread)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o) (__sprint_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o) (_write_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o) (_calloc_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o) (_close_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o) (fclose)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o) (_fputwc_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o) (_fstat_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o) (_isatty_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o) (_lseek_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o) (_read_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o) (__swbuf_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o) (_wcrtomb_r)
+/opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+                              /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o) (__wctomb)
+/opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+                              ff.o (__aeabi_uidiv)
+/opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
+                              ild-player.o (__aeabi_idiv)
+/opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+                              /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+
+Allocating common symbols
+Common symbol       size              file
+
+dac_current_pps     0x4               dac.o
+fplay_error_detail  0x4               ild-player.o
+playback_source_flags
+                    0x4               playback_.o
+ilda_current_fps    0x4               ild-player.o
+le_state            0x1               lightengine.o
+events_last         0x4               main.o
+errno               0x4               /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+settings            0x30              main.o
+fs                  0x234             fatfs.o
+dac_control         0xa8              dac.o
+rxhead              0x4               bcm2835_irq.o
+osc_last_source     0x4               osc.o
+ipaddr              0x4               udp-stub.o
+rxihead             0x4               bcm2835_irq.o
+osc_last_port       0x2               osc.o
+transform_matrix    0x20              transform.o
+le_flags            0x2               lightengine.o
+playback_src        0x1               playback_.o
+ipcb                0x4               udp-stub.o
+dac_cycle_count     0x4               dac.o
+osc_pcb             0x20              osc.o
+rxitail             0x4               bcm2835_irq.o
+rxtail              0x4               bcm2835_irq.o
+clock               0x8               main.o
+ticks_per_point     0x4               dac.o
+aux_buffers         0xff00            bcm2835_irq.o
+iport               0x2               udp-stub.o
+
+Discarded input sections
+
+ .ARM.attributes
+                0x00000000       0x1f vectors.o
+ .comment       0x00000000       0x12 main.o
+ .ARM.attributes
+                0x00000000       0x40 main.o
+ .comment       0x00000000       0x12 syscalls.o
+ .ARM.attributes
+                0x00000000       0x40 syscalls.o
+ .comment       0x00000000       0x12 bcm2835.o
+ .ARM.attributes
+                0x00000000       0x40 bcm2835.o
+ .ARM.attributes
+                0x00000000       0x2a bcm2835_asm.o
+ .comment       0x00000000       0x12 mcp49x2.o
+ .ARM.attributes
+                0x00000000       0x40 mcp49x2.o
+ .ARM.attributes
+                0x00000000       0x2a mcp49x2_asm.o
+ .comment       0x00000000       0x12 ff.o
+ .ARM.attributes
+                0x00000000       0x40 ff.o
+ .comment       0x00000000       0x12 ccsbcs.o
+ .ARM.attributes
+                0x00000000       0x40 ccsbcs.o
+ .comment       0x00000000       0x12 vsnprintf.o
+ .ARM.attributes
+                0x00000000       0x40 vsnprintf.o
+ .comment       0x00000000       0x12 ild-player.o
+ .ARM.attributes
+                0x00000000       0x40 ild-player.o
+ .comment       0x00000000       0x12 playback.o
+ .ARM.attributes
+                0x00000000       0x40 playback.o
+ .comment       0x00000000       0x12 autoplay.o
+ .ARM.attributes
+                0x00000000       0x40 autoplay.o
+ .comment       0x00000000       0x12 fatfs.o
+ .ARM.attributes
+                0x00000000       0x40 fatfs.o
+ .comment       0x00000000       0x12 panic.o
+ .ARM.attributes
+                0x00000000       0x40 panic.o
+ .comment       0x00000000       0x12 playback_.o
+ .ARM.attributes
+                0x00000000       0x40 playback_.o
+ .comment       0x00000000       0x12 dac.o
+ .ARM.attributes
+                0x00000000       0x40 dac.o
+ .comment       0x00000000       0x12 transform.o
+ .ARM.attributes
+                0x00000000       0x40 transform.o
+ .comment       0x00000000       0x12 hardware.o
+ .ARM.attributes
+                0x00000000       0x40 hardware.o
+ .comment       0x00000000       0x12 serial.o
+ .ARM.attributes
+                0x00000000       0x40 serial.o
+ .comment       0x00000000       0x12 bcm2835_irq.o
+ .ARM.attributes
+                0x00000000       0x40 bcm2835_irq.o
+ .comment       0x00000000       0x12 lightengine.o
+ .ARM.attributes
+                0x00000000       0x40 lightengine.o
+ .comment       0x00000000       0x12 fixpoint.o
+ .ARM.attributes
+                0x00000000       0x40 fixpoint.o
+ .comment       0x00000000       0x12 osc.o
+ .ARM.attributes
+                0x00000000       0x40 osc.o
+ .comment       0x00000000       0x12 network-stub.o
+ .ARM.attributes
+                0x00000000       0x40 network-stub.o
+ .comment       0x00000000       0x12 pbuf-stub.o
+ .ARM.attributes
+                0x00000000       0x40 pbuf-stub.o
+ .comment       0x00000000       0x12 udp-stub.o
+ .ARM.attributes
+                0x00000000       0x40 udp-stub.o
+ .comment       0x00000000       0x12 ilda-osc.o
+ .ARM.attributes
+                0x00000000       0x40 ilda-osc.o
+ .comment       0x00000000       0x12 correction-osc.o
+ .ARM.attributes
+                0x00000000       0x40 correction-osc.o
+ .comment       0x00000000       0x12 ip_addr.o
+ .ARM.attributes
+                0x00000000       0x40 ip_addr.o
+ .ARM.attributes
+                0x00000000       0x28 fiq_handler.o
+ .comment       0x00000000       0x12 ../emmc/Release/libemmc.a(diskio.o)
+ .ARM.attributes
+                0x00000000       0x3e ../emmc/Release/libemmc.a(diskio.o)
+ .comment       0x00000000       0x12 ../emmc/Release/libemmc.a(block_cache.o)
+ .ARM.attributes
+                0x00000000       0x3e ../emmc/Release/libemmc.a(block_cache.o)
+ .comment       0x00000000       0x12 ../emmc/Release/libemmc.a(emmc.o)
+ .ARM.attributes
+                0x00000000       0x3e ../emmc/Release/libemmc.a(emmc.o)
+ .comment       0x00000000       0x12 ../emmc/Release/libemmc.a(mbox.o)
+ .ARM.attributes
+                0x00000000       0x3e ../emmc/Release/libemmc.a(mbox.o)
+ .ARM.attributes
+                0x00000000       0x28 ../emmc/Release/libemmc.a(qmemcpy.o)
+ .debug_info    0x00000000       0xa1 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .debug_abbrev  0x00000000       0x53 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .debug_loc     0x00000000       0x21 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .debug_line    0x00000000       0x91 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .debug_str     0x00000000      0x100 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .debug_frame   0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .debug_info    0x00000000      0x95e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+ .debug_abbrev  0x00000000      0x171 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+ .debug_line    0x00000000       0xfa /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+ .debug_str     0x00000000      0x4c3 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+ .debug_frame   0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+ .debug_info    0x00000000      0x9c0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .debug_abbrev  0x00000000      0x1c8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .debug_loc     0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .debug_line    0x00000000      0x145 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .debug_str     0x00000000      0x4e4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .debug_frame   0x00000000       0x28 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .debug_info    0x00000000      0x965 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+ .debug_abbrev  0x00000000      0x162 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+ .debug_aranges
+                0x00000000       0x18 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+ .debug_line    0x00000000       0xdf /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+ .debug_str     0x00000000      0x4db /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+ .debug_info    0x00000000      0x9f6 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .debug_abbrev  0x00000000      0x1dc /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .debug_loc     0x00000000       0x58 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .debug_line    0x00000000      0x135 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .debug_str     0x00000000      0x4ef /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .debug_frame   0x00000000       0x30 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .debug_info    0x00000000      0xe85 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+ .debug_abbrev  0x00000000      0x284 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+ .debug_loc     0x00000000      0xc9f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+ .debug_ranges  0x00000000       0x50 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+ .debug_line    0x00000000      0x315 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+ .debug_str     0x00000000      0x6ea /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+ .debug_frame   0x00000000       0x38 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+ .debug_info    0x00000000      0x12e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+ .debug_abbrev  0x00000000       0xba /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+ .debug_loc     0x00000000      0x188 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+ .debug_line    0x00000000      0x138 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+ .debug_str     0x00000000      0x13d /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+ .debug_info    0x00000000      0x118 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .debug_abbrev  0x00000000       0x7f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .debug_loc     0x00000000      0x19f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .debug_line    0x00000000      0x10f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .debug_str     0x00000000      0x111 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .debug_frame   0x00000000       0x28 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .debug_info    0x00000000      0x136 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+ .debug_abbrev  0x00000000       0xab /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+ .debug_loc     0x00000000      0x231 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+ .debug_line    0x00000000      0x166 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+ .debug_str     0x00000000      0x14a /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+ .debug_info    0x00000000      0x136 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .debug_abbrev  0x00000000       0xab /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .debug_loc     0x00000000      0x2a4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .debug_line    0x00000000      0x168 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .debug_str     0x00000000      0x144 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .debug_info    0x00000000      0x11c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .debug_abbrev  0x00000000       0x9f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .debug_loc     0x00000000      0x1d9 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .debug_line    0x00000000      0x148 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .debug_str     0x00000000      0x125 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .debug_frame   0x00000000       0x28 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .debug_info    0x00000000      0x989 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+ .debug_abbrev  0x00000000      0x17c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+ .debug_line    0x00000000       0xf1 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+ .debug_str     0x00000000      0x4e4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+ .debug_frame   0x00000000       0x30 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+ .debug_info    0x00000000      0xa8c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .debug_abbrev  0x00000000      0x209 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .debug_loc     0x00000000       0xa4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .debug_line    0x00000000      0x14f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .debug_str     0x00000000      0x504 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .debug_frame   0x00000000       0x58 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .debug_info    0x00000000      0xae4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+ .debug_abbrev  0x00000000      0x208 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+ .debug_loc     0x00000000       0xb3 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+ .debug_line    0x00000000      0x16f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+ .debug_str     0x00000000      0x523 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+ .debug_frame   0x00000000       0x3c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+ .debug_info    0x00000000      0x9d0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .debug_abbrev  0x00000000      0x1df /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .debug_loc     0x00000000       0x5f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .debug_line    0x00000000      0x13c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .debug_str     0x00000000      0x4d2 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .debug_info    0x00000000      0x159 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .debug_abbrev  0x00000000       0xbc /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .debug_loc     0x00000000      0x12b /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .debug_ranges  0x00000000       0x30 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .debug_line    0x00000000       0xb0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .debug_str     0x00000000      0x12a /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .debug_frame   0x00000000       0x28 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .debug_info    0x00000000      0x114 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .debug_abbrev  0x00000000       0xb1 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .debug_loc     0x00000000       0xb1 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .debug_ranges  0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .debug_line    0x00000000       0xdb /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .debug_str     0x00000000      0x11c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .debug_info    0x00000000       0xf0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .debug_abbrev  0x00000000       0x8c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .debug_loc     0x00000000       0x42 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .debug_line    0x00000000       0xa8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .debug_str     0x00000000      0x128 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .debug_frame   0x00000000       0x30 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .debug_info    0x00000000       0xc1 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+ .debug_abbrev  0x00000000       0x72 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+ .debug_loc     0x00000000       0x21 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+ .debug_line    0x00000000       0x9c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+ .debug_str     0x00000000      0x117 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+ .debug_frame   0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+ .debug_info    0x00000000       0xb9 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .debug_abbrev  0x00000000       0x70 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .debug_loc     0x00000000       0x21 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .debug_line    0x00000000       0xe0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .debug_str     0x00000000      0x11e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .debug_frame   0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .debug_info    0x00000000       0xd6 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+ .debug_abbrev  0x00000000       0x7f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+ .debug_loc     0x00000000       0xe9 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+ .debug_line    0x00000000       0xef /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+ .debug_str     0x00000000      0x119 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+ .debug_frame   0x00000000       0x28 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+ .debug_info    0x00000000      0x10e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+ .debug_abbrev  0x00000000       0x99 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+ .debug_loc     0x00000000       0x4d /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+ .debug_line    0x00000000       0x97 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+ .debug_str     0x00000000      0x126 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+ .debug_frame   0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+ .debug_info    0x00000000      0x18e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+ .debug_abbrev  0x00000000       0xef /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+ .debug_loc     0x00000000      0x17b /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+ .debug_line    0x00000000       0xc8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+ .debug_str     0x00000000      0x143 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+ .debug_frame   0x00000000       0x3c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+ .debug_info    0x00000000     0x1a06 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .debug_abbrev  0x00000000      0x3b9 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .debug_loc     0x00000000     0x230e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .debug_ranges  0x00000000      0x180 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .debug_line    0x00000000      0x9b4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .debug_str     0x00000000      0x893 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .debug_frame   0x00000000       0x5c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .debug_info    0x00000000      0xa01 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .debug_abbrev  0x00000000      0x1d5 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .debug_loc     0x00000000       0x72 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .debug_line    0x00000000      0x19c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .debug_str     0x00000000      0x4ea /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .debug_info    0x00000000      0xa27 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .debug_abbrev  0x00000000      0x1f2 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .debug_loc     0x00000000      0x1ab /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .debug_ranges  0x00000000       0x38 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .debug_line    0x00000000      0x18c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .debug_str     0x00000000      0x4fa /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00000000       0x38 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .debug_info    0x00000000       0x71 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+ .debug_abbrev  0x00000000       0x4e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+ .debug_aranges
+                0x00000000       0x18 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+ .debug_line    0x00000000       0x56 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+ .debug_str     0x00000000       0x93 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+ .debug_info    0x00000000     0x1437 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .debug_abbrev  0x00000000      0x2af /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .debug_loc     0x00000000     0x210d /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .debug_line    0x00000000      0x714 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .debug_str     0x00000000      0x62d /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .debug_frame   0x00000000       0x68 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .debug_info    0x00000000      0xb80 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .debug_abbrev  0x00000000      0x280 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .debug_loc     0x00000000      0x2cc /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .debug_ranges  0x00000000       0x18 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .debug_line    0x00000000      0x207 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .debug_str     0x00000000      0x525 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .debug_frame   0x00000000       0x5c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .debug_info    0x00000000      0xdbe /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .debug_abbrev  0x00000000      0x308 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .debug_loc     0x00000000      0x2bd /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .debug_line    0x00000000      0x1f8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .debug_str     0x00000000      0x5d4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .debug_frame   0x00000000      0x11c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .debug_info    0x00000000      0xd0d /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .debug_abbrev  0x00000000      0x26c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .debug_loc     0x00000000      0x43d /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .debug_line    0x00000000      0x20a /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .debug_str     0x00000000      0x634 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .debug_frame   0x00000000       0x50 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .debug_info    0x00000000      0xd6c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .debug_abbrev  0x00000000      0x242 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .debug_loc     0x00000000      0x5cd /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .debug_ranges  0x00000000       0x18 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .debug_line    0x00000000      0x267 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .debug_str     0x00000000      0x56d /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .debug_frame   0x00000000       0x38 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .debug_info    0x00000000      0xa77 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .debug_abbrev  0x00000000      0x1b3 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .debug_loc     0x00000000      0x223 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .debug_line    0x00000000      0x187 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .debug_str     0x00000000      0x4e0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .debug_frame   0x00000000       0x54 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .debug_info    0x00000000      0xd0f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .debug_abbrev  0x00000000      0x2a1 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .debug_loc     0x00000000       0xf9 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .debug_line    0x00000000      0x16b /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .debug_str     0x00000000      0x738 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .debug_frame   0x00000000       0x98 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+ .debug_info    0x00000000      0xbf0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .debug_abbrev  0x00000000      0x1e8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .debug_loc     0x00000000      0x139 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .debug_line    0x00000000      0x1ba /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .debug_str     0x00000000      0x5e4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .debug_frame   0x00000000       0x30 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .debug_info    0x00000000     0x1775 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .debug_abbrev  0x00000000      0x35c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .debug_loc     0x00000000     0x21bd /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .debug_ranges  0x00000000       0x38 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .debug_line    0x00000000      0x5b0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .debug_str     0x00000000      0x5e7 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .debug_frame   0x00000000      0x21c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .debug_info    0x00000000      0xdb5 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .debug_abbrev  0x00000000      0x24d /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .debug_loc     0x00000000      0xd58 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .debug_ranges  0x00000000       0x98 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .debug_line    0x00000000      0x25b /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .debug_str     0x00000000      0x5bc /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .debug_frame   0x00000000       0x38 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .debug_info    0x00000000      0xb2b /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .debug_abbrev  0x00000000      0x263 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .debug_loc     0x00000000      0x185 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .debug_line    0x00000000      0x170 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .debug_str     0x00000000      0x508 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .debug_frame   0x00000000       0x68 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .debug_info    0x00000000      0x14f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .debug_abbrev  0x00000000       0xc8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .debug_loc     0x00000000       0x26 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .debug_line    0x00000000       0xfe /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .debug_str     0x00000000      0x163 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .debug_frame   0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .debug_info    0x00000000      0xc7b /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .debug_abbrev  0x00000000      0x244 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .debug_loc     0x00000000      0x297 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .debug_line    0x00000000      0x165 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .debug_str     0x00000000      0x535 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .debug_frame   0x00000000       0x80 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .debug_info    0x00000000     0x12b7 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .debug_abbrev  0x00000000      0x3a8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .debug_loc     0x00000000     0x1413 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .debug_ranges  0x00000000       0xb0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .debug_line    0x00000000      0x65e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .debug_str     0x00000000      0x685 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .debug_frame   0x00000000       0x7c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .debug_info    0x00000000      0xa03 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .debug_abbrev  0x00000000      0x1d6 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .debug_loc     0x00000000       0xc2 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .debug_line    0x00000000      0x13d /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .debug_str     0x00000000      0x4cf /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .debug_info    0x00000000      0xac2 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .debug_abbrev  0x00000000      0x1f5 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .debug_loc     0x00000000      0x22a /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .debug_ranges  0x00000000       0x30 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .debug_line    0x00000000      0x11e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .debug_str     0x00000000      0x514 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .debug_frame   0x00000000       0x28 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .debug_info    0x00000000      0x9ba /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .debug_abbrev  0x00000000      0x1d1 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .debug_loc     0x00000000       0x5f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .debug_line    0x00000000      0x13d /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .debug_str     0x00000000      0x4bf /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .debug_info    0x00000000      0xab0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .debug_abbrev  0x00000000      0x24e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .debug_loc     0x00000000       0xdd /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .debug_line    0x00000000      0x18a /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .debug_str     0x00000000      0x517 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .debug_frame   0x00000000       0x3c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .debug_info    0x00000000      0xb79 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .debug_abbrev  0x00000000      0x283 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .debug_loc     0x00000000      0x173 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .debug_ranges  0x00000000       0x30 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .debug_line    0x00000000      0x18a /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .debug_str     0x00000000      0x525 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .debug_frame   0x00000000       0x50 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .debug_info    0x00000000      0xb65 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .debug_abbrev  0x00000000      0x1e0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .debug_loc     0x00000000       0x8b /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .debug_line    0x00000000      0x152 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .debug_str     0x00000000      0x5b9 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .debug_info    0x00000000      0x9ba /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .debug_abbrev  0x00000000      0x1d1 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .debug_loc     0x00000000       0x5f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .debug_line    0x00000000      0x13e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .debug_str     0x00000000      0x4c9 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .debug_info    0x00000000      0x9f1 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .debug_abbrev  0x00000000      0x1e0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .debug_loc     0x00000000       0xc2 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .debug_line    0x00000000      0x13d /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .debug_str     0x00000000      0x4d4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .debug_info    0x00000000      0x9fc /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .debug_abbrev  0x00000000      0x1d1 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .debug_loc     0x00000000       0xc2 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .debug_line    0x00000000      0x13c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .debug_str     0x00000000      0x4cd /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .debug_frame   0x00000000       0x2c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .debug_info    0x00000000      0xa9b /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .debug_abbrev  0x00000000      0x21a /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .debug_loc     0x00000000      0x153 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .debug_line    0x00000000      0x190 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .debug_str     0x00000000      0x4ef /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .debug_frame   0x00000000       0x3c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .debug_info    0x00000000      0xb49 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .debug_abbrev  0x00000000      0x1f5 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .debug_loc     0x00000000      0x23c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .debug_line    0x00000000      0x165 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .debug_str     0x00000000      0x50c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .debug_frame   0x00000000       0x58 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .debug_info    0x00000000      0xa92 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+ .debug_abbrev  0x00000000      0x210 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+ .debug_loc     0x00000000      0x10a /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+ .debug_line    0x00000000      0x155 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+ .debug_str     0x00000000      0x51b /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+ .comment       0x00000000       0x12 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+ .ARM.attributes
+                0x00000000       0x3e /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00000000       0x44 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+ .debug_frame   0x00000000       0x20 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x00000000       0x28 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .debug_line    0x00000000       0x84 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .debug_info    0x00000000       0x8b /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .debug_abbrev  0x00000000       0x14 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .debug_frame   0x00000000       0x20 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
+ .ARM.attributes
+                0x00000000       0x28 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
+ .debug_line    0x00000000       0x90 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
+ .debug_info    0x00000000       0x8b /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
+ .debug_abbrev  0x00000000       0x14 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
+ .ARM.attributes
+                0x00000000       0x28 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .debug_line    0x00000000       0x61 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .debug_info    0x00000000       0x8b /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .debug_abbrev  0x00000000       0x14 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ .debug_aranges
+                0x00000000       0x20 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ram              0x00008000         0x07ff8000
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD vectors.o
+LOAD main.o
+LOAD syscalls.o
+LOAD bcm2835.o
+LOAD bcm2835_asm.o
+LOAD mcp49x2.o
+LOAD mcp49x2_asm.o
+LOAD ff.o
+LOAD ccsbcs.o
+LOAD vsnprintf.o
+LOAD ild-player.o
+LOAD playback.o
+LOAD autoplay.o
+LOAD fatfs.o
+LOAD panic.o
+LOAD playback_.o
+LOAD dac.o
+LOAD transform.o
+LOAD hardware.o
+LOAD serial.o
+LOAD bcm2835_irq.o
+LOAD lightengine.o
+LOAD fixpoint.o
+LOAD osc.o
+LOAD network-stub.o
+LOAD pbuf-stub.o
+LOAD udp-stub.o
+LOAD ilda-osc.o
+LOAD correction-osc.o
+LOAD ip_addr.o
+LOAD fiq_handler.o
+                0x00008000                __ram_start = ORIGIN (ram)
+                0x07ff8000                __ram_size = 0x7ff8000
+                0x08000000                __ram_end = (__ram_start + __ram_size)
+                0x00000400                __und_stack_size = 0x400
+                0x00000400                __abt_stack_size = 0x400
+                0x00000400                __fiq_stack_size = 0x400
+                0x00000400                __irq_stack_size = 0x400
+                0x00000400                __svc_stack_size = 0x400
+                0x00000400                __sys_stack_size = 0x400
+
+.init           0x00008000       0xe0
+                0x00008000                . = ALIGN (0x4)
+ *(.init)
+ .init          0x00008000       0xe0 vectors.o
+                0x00008000                _start
+
+.text           0x000080e0    0x181a8
+                0x000080e0                . = ALIGN (0x4)
+ *(.text*)
+ .text          0x000080e0       0x78 vectors.o
+                0x000080e0                hang
+                0x000080e4                __enable_irq
+                0x000080f4                __disable_irq
+                0x00008104                __enable_fiq
+                0x00008114                __disable_fiq
+                0x00008124                memory_barrier
+                0x00008130                uwait
+ .text          0x00008158      0x148 main.o
+                0x00008158                check_periodic_timers
+                0x000081a8                notmain
+ .text.unlikely
+                0x000082a0       0xac main.o
+ .text          0x0000834c      0x17c syscalls.o
+                0x0000834c                initialise_monitor_handles
+                0x00008350                _read
+                0x00008358                _lseek
+                0x00008360                _write
+                0x000083b4                _open
+                0x000083c4                _close
+                0x000083cc                _exit
+                0x000083d0                _kill
+                0x000083d8                _getpid
+                0x000083e0                _sbrk
+                0x0000841c                _fstat
+                0x00008424                _stat
+                0x0000842c                _link
+                0x00008434                _unlink
+                0x0000843c                _raise
+                0x00008440                _gettimeofday
+                0x00008468                _times
+                0x00008488                _isatty
+                0x00008490                _system
+                0x000084b0                _rename
+ .text          0x000084c8      0x730 bcm2835.o
+                0x000084c8                bcm2835_init
+                0x000084d0                bcm2835_close
+                0x000084d8                bcm2835_gpio_set
+                0x000084f0                bcm2835_gpio_clr
+                0x00008508                bcm2835_gpio_write
+                0x00008528                bcm2835_gpio_lev
+                0x00008548                bcm2835_delayMicroseconds
+                0x00008568                bcm2835_gpio_pud
+                0x00008578                bcm2835_gpio_pudclk
+                0x00008594                bcm2835_gpio_set_pud
+                0x000085e4                bcm2835_spi_begin
+                0x00008640                bcm2835_spi_end
+                0x00008684                bcm2835_spi_setBitOrder
+                0x00008688                bcm2835_spi_setClockDivider
+                0x00008698                bcm2835_spi_setDataMode
+                0x000086bc                bcm2835_spi_chipSelect
+                0x000086dc                bcm2835_spi_setChipSelectPolarity
+                0x0000870c                bcm2835_spi_transfernb
+                0x0000879c                bcm2835_spi_transfern
+                0x00008820                bcm2835_spi_writenb
+                0x0000888c                bcm2835_i2c_begin
+                0x000088ac                bcm2835_i2c_end
+                0x000088cc                bcm2835_i2c_setSlaveAddress
+                0x000088dc                bcm2835_i2c_setClockDivider
+                0x000088ec                bcm2835_i2c_write
+                0x000089f8                bcm2835_i2c_read
+                0x00008b08                bcm2835_uart_begin
+                0x00008bd8                bcm2835_uart_send
+ .text          0x00008bf8       0xd8 bcm2835_asm.o
+                0x00008bf8                bcm2835_gpio_fsel
+                0x00008c3c                bcm2835_st_read
+                0x00008c48                bcm2835_st_delay
+                0x00008c6c                bcm2835_spi_write
+ .text          0x00008cd0      0x134 mcp49x2.o
+                0x00008cd0                bcm2835_spi_mcp4922_a
+                0x00008ce8                bcm2835_spi_mcp4922_b
+                0x00008d00                bcm2835_spi_mcp4902_1a
+                0x00008d20                bcm2835_spi_mcp4902_1b
+                0x00008d44                bcm2835_spi_mcp4902_2a
+                0x00008d64                bcm2835_spi_mcp4902_2b
+                0x00008d88                dac_write_all
+ .text          0x00008e04       0x4c mcp49x2_asm.o
+                0x00008e04                spi_select_mcp4922
+                0x00008e1c                spi_select_mcp4902_1
+                0x00008e34                spi_select_mcp4902_2
+ .text          0x00008e50     0x5ce4 ff.o
+                0x0000c664                clust2sect
+                0x0000c688                get_fat
+                0x0000c6a8                put_fat
+                0x0000c6c8                gen_numname
+                0x0000c804                f_mount
+                0x0000c840                f_open
+                0x0000cadc                f_read
+                0x0000cf40                f_write
+                0x0000d514                f_sync
+                0x0000d6e8                f_close
+                0x0000d700                f_lseek
+                0x0000d9a0                f_opendir
+                0x0000da84                f_readdir
+                0x0000db50                f_stat
+                0x0000dbd0                f_getfree
+                0x0000de2c                f_truncate
+                0x0000e060                f_unlink
+                0x0000e25c                f_mkdir
+                0x0000e770                f_chmod
+                0x0000e810                f_utime
+                0x0000e8bc                f_rename
+ .text          0x0000eb34       0xb8 ccsbcs.o
+                0x0000eb34                ff_convert
+                0x0000eba0                ff_wtoupper
+ .text          0x0000ebec      0x818 vsnprintf.o
+                0x0000ebec                vsnprintf
+                0x0000f2fc                snprintf
+                0x0000f32c                sprintf
+                0x0000f360                atoi
+ .text          0x0000f404     0x1328 ild-player.o
+                0x0000f450                ilda_reset_file
+                0x0000f488                ilda_set_fps_limit
+                0x0000f4c0                fplay_open
+                0x0000f530                fplay_read_header
+                0x0000fb78                ilda_do_read_points
+                0x000106e0                ilda_read_points
+ .text          0x0001072c      0x10c playback.o
+ .text          0x00010838      0x518 autoplay.o
+                0x00010a44                autoplay_init
+                0x00010a9c                autoplay_poll
+ .text          0x00010d50      0x1c0 fatfs.o
+                0x00010d50                sd_init
+ .text          0x00010f10       0x58 panic.o
+                0x00010f10                panic
+ .text          0x00010f68       0x6c playback_.o
+                0x00010f68                playback_set_src
+ *fill*         0x00010fd4        0x4 00
+ .text          0x00010fd8     0x19f0 dac.o
+                0x00010fd8                fiq_init
+                0x00011010                dac_set_rate
+                0x000110d4                dac_start
+                0x000111d0                dac_rate_queue
+                0x00011268                dac_request
+                0x000112b8                dac_request_addr
+                0x000112d8                dac_advance
+                0x00011320                delay_line_get_delay
+                0x00011384                delay_line_set_delay
+                0x000122f8                color_corr_get_offset
+                0x00012320                color_corr_get_gain
+                0x00012348                color_corr_set_offset
+                0x0001236c                color_corr_set_gain
+                0x00012390                dac_prepare
+                0x000123f4                dac_stop
+                0x00012488                dac_pop_rate_change
+                0x00012578                dac_handle_abstract
+                0x00012630                dac_get_state
+                0x00012640                dac_fullness
+                0x0001265c                shutter_set
+                0x000126cc                impl_dac_pack_point
+                0x00012754                impl_translate
+                0x000127b4                dac_get_count
+                0x000127c4                dac_stop_underflow
+                0x000127cc                print_dac_cycle_count
+                0x00012818                c_fiq_handler
+                0x00012980                foo
+                0x00012998                foo_b
+                0x000129a8                foo_r
+                0x000129b8                foo_g
+ .text.unlikely
+                0x000129c8       0x88 dac.o
+                0x000129d8                dac_init
+ .text          0x00012a50      0x138 transform.o
+                0x00012a50                init_transform
+                0x00012ab0                update_transform
+ .text          0x00012b88      0x138 hardware.o
+                0x00012b88                hw_dac_init
+                0x00012bfc                hw_dac_zero_all_channels
+                0x00012c2c                led_set_frontled
+                0x00012c38                led_set_backled
+                0x00012c3c                led_init
+                0x00012c48                wdog_stop
+                0x00012c60                watchdog_init
+                0x00012c90                watchdog_feed
+ .text          0x00012cc0      0x19c serial.o
+                0x00012cc0                serial_init
+                0x00012cc4                serial_send
+                0x00012cec                outputf
+                0x00012da4                debugf
+                0x00012e18                hexdump
+ .text          0x00012e5c       0xd0 bcm2835_irq.o
+                0x00012e80                c_irq_handler
+ .text          0x00012f2c       0x8c lightengine.o
+                0x00012f2c                le_get_state
+                0x00012f3c                le_get_flags
+                0x00012f4c                le_estop
+                0x00012f90                le_estop_clear
+ .text          0x00012fb8      0x198 fixpoint.o
+                0x00012fb8                fix_sine
+                0x00012ff0                strtofixed
+ .text          0x00013150     0x1004 osc.o
+                0x00013150                handle_acc_FPV_param
+                0x00013154                handle_fader_FPV_param
+                0x00013160                osc_init
+                0x000132dc                FPA_param
+                0x00013314                osc_parse_packet
+                0x00013894                osc_recv_FPV_udp_recv
+                0x000138cc                osc_try_handler
+                0x00013cd8                osc_send_int
+                0x00013db4                osc_send_int2
+                0x00013e9c                osc_send_fixed2
+                0x00013fac                osc_send_string
+                0x000140d8                osc_parameter_matches
+ .text          0x00014154       0xd8 network-stub.o
+ .text          0x0001422c       0x64 pbuf-stub.o
+                0x0001422c                pbuf_alloc
+                0x00014270                pbuf_free
+ .text          0x00014290       0x84 udp-stub.o
+                0x00014290                udp_new
+                0x0001429c                udp_bind
+                0x000142c8                udp_recv
+                0x000142d4                udp_sendto
+ .text          0x00014314      0x4a0 ilda-osc.o
+                0x0001462c                ilda_play_FPV_param
+ .text          0x000147b4      0x7d8 correction-osc.o
+ .text          0x00014f8c       0x78 ip_addr.o
+                0x00014f8c                ip_addr_isbroadcast
+ .text          0x00015004      0x370 fiq_handler.o
+                0x00015004                asm_fiq_handler
+ .text          0x00015374      0x198 ../emmc/Release/libemmc.a(diskio.o)
+                0x00015374                sd_aligned_malloc
+                0x000153a4                sd_aligned_free
+                0x000153ac                disk_initialize
+                0x00015438                disk_read
+                0x000154a4                disk_write
+                0x000154e0                disk_status
+                0x000154f8                disk_ioctl
+                0x00015500                get_fattime
+ .text          0x0001550c      0x2bc ../emmc/Release/libemmc.a(block_cache.o)
+                0x0001550c                cache_write
+                0x000155c8                cache_read
+                0x0001565c                cache_init
+ .text          0x000157c8     0x1cac ../emmc/Release/libemmc.a(emmc.o)
+                0x00016050                sd_card_init
+                0x000173c8                sd_write
+                0x00017420                sd_read
+ .text          0x00017474       0x58 ../emmc/Release/libemmc.a(mbox.o)
+                0x00017474                mbox_read
+                0x000174a0                mbox_write
+ .text          0x000174cc       0x34 ../emmc/Release/libemmc.a(qmemcpy.o)
+                0x000174cc                qmemcpy
+                0x000174e4                quick_memcpy
+ .text          0x00017500        0xc /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+                0x00017500                abs
+ .text          0x0001750c       0x10 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+                0x0001750c                __errno
+ .text          0x0001751c       0x34 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+                0x0001751c                exit
+ .text          0x00017550        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+ .text          0x00017550       0x28 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+                0x00017550                malloc
+                0x00017564                free
+ .text          0x00017578      0x710 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+                0x00017578                _malloc_r
+ .text          0x00017c88      0x11c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+                0x00017c88                memchr
+ .text          0x00017da4       0xb4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+                0x00017da4                memcmp
+ .text          0x00017e58       0xf4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+                0x00017e58                memcpy
+ .text          0x00017f4c      0x134 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+                0x00017f4c                memmove
+ .text          0x00018080       0xf8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+                0x00018080                memset
+ .text          0x00018178        0x8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+                0x00018178                __malloc_lock
+                0x0001817c                __malloc_unlock
+ .text          0x00018180       0x74 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+                0x00018180                _printf_r
+                0x000181b4                printf
+ .text          0x000181f4       0xbc /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+                0x000181f4                _puts_r
+                0x0001829c                puts
+ .text          0x000182b0       0x38 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+                0x000182b0                _sbrk_r
+ .text          0x000182e8       0x64 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+                0x000182e8                strcasecmp
+ .text          0x0001834c       0x9c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+                0x0001834c                strcat
+ .text          0x000183e8      0x230 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+                0x000183e8                strcmp
+ .text          0x00018618       0xf0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+                0x00018618                strcpy
+ .text          0x00018708       0x5c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+                0x00018708                strlen
+ .text          0x00018764       0x64 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+                0x00018764                strnlen
+ .text          0x000187c8       0x10 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+                0x000187c8                strsep
+ .text          0x000187d8       0xb8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+                0x000187d8                __strtok_r
+                0x00018888                strtok_r
+ .text          0x00018890     0x1f44 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+                0x00018890                _vfprintf_r
+                0x0001a7a8                vfprintf
+ .text          0x0001a7d4      0x17c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+                0x0001a7d4                __swsetup_r
+ .text          0x0001a950      0x164 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+                0x0001a950                __call_exitprocs
+ .text          0x0001aab4        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+ *fill*         0x0001aab4        0x4 00
+ .text          0x0001aab8     0x14d8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+                0x0001ac80                _dtoa_r
+ .text          0x0001bf90      0x2cc /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+                0x0001bf90                __sflush_r
+                0x0001c1dc                _fflush_r
+                0x0001c22c                fflush
+ .text          0x0001c25c      0x284 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+                0x0001c26c                _cleanup_r
+                0x0001c2f0                __sfmoreglue
+                0x0001c330                _cleanup
+                0x0001c340                __sinit
+                0x0001c3b0                __sfp
+                0x0001c4a0                __sfp_lock_acquire
+                0x0001c4a4                __sfp_lock_release
+                0x0001c4a8                __sinit_lock_acquire
+                0x0001c4ac                __sinit_lock_release
+                0x0001c4b0                __fp_lock_all
+                0x0001c4c8                __fp_unlock_all
+ .text          0x0001c4e0      0x360 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+                0x0001c4e0                _malloc_trim_r
+                0x0001c5d8                _free_r
+ .text          0x0001c840      0x4c8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+                0x0001c840                __sfvwrite_r
+ .text          0x0001cd08      0x108 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+                0x0001cd08                _fwalk
+                0x0001cd88                _fwalk_reent
+ .text          0x0001ce10       0xcc /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+                0x0001ce10                _setlocale_r
+                0x0001ce78                __locale_charset
+                0x0001ce84                __locale_mb_cur_max
+                0x0001ce94                __locale_msgcharset
+                0x0001cea0                __locale_cjk_lang
+                0x0001cea8                _localeconv_r
+                0x0001ceb4                setlocale
+                0x0001ced0                localeconv
+ .text          0x0001cedc      0x170 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+                0x0001cedc                __smakebuf_r
+ *fill*         0x0001d04c        0x4 00
+ .text          0x0001d050      0xcb0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+                0x0001d050                _Balloc
+                0x0001d0d8                _Bfree
+                0x0001d0f4                __multadd
+                0x0001d1c4                __s2b
+                0x0001d2b0                __hi0bits
+                0x0001d300                __lo0bits
+                0x0001d398                __i2b
+                0x0001d3b8                __multiply
+                0x0001d584                __pow5mult
+                0x0001d674                __lshift
+                0x0001d774                __mcmp
+                0x0001d7d8                __mdiff
+                0x0001d910                __ulp
+                0x0001d984                __b2d
+                0x0001da4c                __d2b
+                0x0001db4c                __ratio
+                0x0001dbbc                _mprec_log10
+                0x0001dc04                __copybits
+                0x0001dc78                __any_on
+ .text          0x0001dd00      0x578 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+                0x0001dd00                _realloc_r
+ .text          0x0001e278      0x190 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+                0x0001e278                cleanup_glue
+                0x0001e2a4                _reclaim_reent
+                0x0001e39c                _wrapup_reent
+ .text          0x0001e408       0x70 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+                0x0001e408                __fpclassifyd
+ .text          0x0001e478       0xc8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+                0x0001e478                __sread
+                0x0001e4a8                __seofread
+                0x0001e4b0                __swrite
+                0x0001e50c                __sseek
+                0x0001e538                __sclose
+ .text          0x0001e540     0x118c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+                0x0001e540                __sprint_r
+                0x0001e5f0                _vfiprintf_r
+                0x0001f6a0                vfiprintf
+ .text          0x0001f6cc       0x40 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+                0x0001f6cc                _write_r
+ .text          0x0001f70c       0x94 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+                0x0001f70c                _calloc_r
+ .text          0x0001f7a0       0x38 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+                0x0001f7a0                _close_r
+ .text          0x0001f7d8      0x108 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+                0x0001f7d8                _fclose_r
+                0x0001f8cc                fclose
+ .text          0x0001f8e0      0x194 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+                0x0001f8e0                _fputwc_r
+                0x0001fa30                fputwc
+ .text          0x0001fa74       0x3c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+                0x0001fa74                _fstat_r
+ .text          0x0001fab0       0x38 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+                0x0001fab0                _isatty_r
+ .text          0x0001fae8       0x40 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+                0x0001fae8                _lseek_r
+ .text          0x0001fb28       0x40 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+                0x0001fb28                _read_r
+ .text          0x0001fb68      0x140 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+                0x0001fb68                __swbuf_r
+                0x0001fc8c                __swbuf
+ .text          0x0001fca8      0x11c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+                0x0001fca8                _wcrtomb_r
+                0x0001fd2c                wcrtomb
+ .text          0x0001fdc4       0x74 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+                0x0001fdc4                __ascii_wctomb
+                0x0001fdf0                _wctomb_r
+ .text          0x0001fe38      0x20c /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+                0x0001fe38                __udivsi3
+                0x0001fe38                __aeabi_uidiv
+                0x00020024                __aeabi_uidivmod
+ .text          0x00020044      0x240 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
+                0x00020044                __aeabi_idiv
+                0x00020044                __divsi3
+                0x00020264                __aeabi_idivmod
+ .text          0x00020284        0x4 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+                0x00020284                __aeabi_ldiv0
+                0x00020284                __aeabi_idiv0
+
+.glue_7         0x00020288        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x00020288        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x00020288        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x00020288        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x00020288        0x0
+ .iplt          0x00000000        0x0 vectors.o
+
+.rodata         0x00020288     0x1ddc
+                0x00020288                . = ALIGN (0x4)
+ *(.rodata)
+ .rodata        0x00020288       0x10 main.o
+                0x00020288                events
+ .rodata        0x00020298       0x80 ff.o
+ .rodata        0x00020318      0x4c0 ccsbcs.o
+ .rodata        0x000207d8       0x14 vsnprintf.o
+ .rodata        0x000207ec       0xc8 ild-player.o
+ .rodata        0x000208b4       0x14 serial.o
+ .rodata        0x000208c8      0x204 fixpoint.o
+ .rodata        0x00020acc       0x28 osc.o
+                0x00020acc                param_count_required
+ .rodata        0x00020af4       0x10 correction-osc.o
+ .rodata        0x00020b04        0x8 ip_addr.o
+                0x00020b04                ip_addr_broadcast
+                0x00020b08                ip_addr_any
+ .rodata        0x00020b0c      0x118 ../emmc/Release/libemmc.a(emmc.o)
+ .rodata        0x00020c24        0x4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+                0x00020c24                _global_impure_ptr
+ .rodata        0x00020c28       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .rodata        0x00020c48      0x104 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+                0x00020c48                _ctype_
+ *fill*         0x00020d4c        0x4 00
+ .rodata        0x00020d50      0x128 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+                0x00020d60                __mprec_tens
+                0x00020e28                __mprec_tinytens
+                0x00020e50                __mprec_bigtens
+ .rodata        0x00020e78       0x20 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ *(.rodata.*)
+ .rodata.str1.4
+                0x00020e98       0x88 main.o
+ .rodata.str1.4
+                0x00020f20       0x13 ff.o
+                                 0x14 (size before relaxing)
+ *fill*         0x00020f33        0x1 00
+ .rodata.str1.4
+                0x00020f34      0x1fb ild-player.o
+                                0x1fc (size before relaxing)
+ *fill*         0x0002112f        0x1 00
+ .rodata.str1.4
+                0x00021130       0x18 playback.o
+                                 0x20 (size before relaxing)
+ .rodata.str1.4
+                0x00021148      0x12e autoplay.o
+                                0x130 (size before relaxing)
+ *fill*         0x00021276        0x2 00
+ .rodata.str1.4
+                0x00021278       0x9c fatfs.o
+                                 0xa0 (size before relaxing)
+ .rodata.str1.4
+                0x00021314      0x141 dac.o
+                                0x144 (size before relaxing)
+ *fill*         0x00021455        0x3 00
+ .rodata.str1.4
+                0x00021458        0xf transform.o
+                                 0x10 (size before relaxing)
+ *fill*         0x00021467        0x1 00
+ .rodata.str1.4
+                0x00021468        0x9 bcm2835_irq.o
+                                  0xc (size before relaxing)
+ *fill*         0x00021471        0x3 00
+ .rodata.str1.4
+                0x00021474       0x13 lightengine.o
+                                 0x14 (size before relaxing)
+ *fill*         0x00021487        0x1 00
+ .rodata.str1.4
+                0x00021488       0x8a osc.o
+                                 0x90 (size before relaxing)
+ *fill*         0x00021512        0x2 00
+ .rodata.str1.4
+                0x00021514        0x9 network-stub.o
+                                  0xc (size before relaxing)
+ *fill*         0x0002151d        0x3 00
+ .rodata.str1.4
+                0x00021520      0x1c6 ilda-osc.o
+                                0x1cc (size before relaxing)
+ *fill*         0x000216e6        0x2 00
+ .rodata.str1.4
+                0x000216e8      0x11a correction-osc.o
+                                0x11c (size before relaxing)
+ *fill*         0x00021802        0x2 00
+ .rodata.str1.4
+                0x00021804      0x801 ../emmc/Release/libemmc.a(emmc.o)
+                                0x804 (size before relaxing)
+ *fill*         0x00022005        0x3 00
+ .rodata.str1.4
+                0x00022008        0x2 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+                                  0x4 (size before relaxing)
+ .rodata.str1.4
+                0x00000000        0x2 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+                                  0x4 (size before relaxing)
+ *fill*         0x0002200a        0x2 00
+ .rodata.str1.4
+                0x0002200c       0x3f /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+                                 0x44 (size before relaxing)
+ *fill*         0x0002204b        0x1 00
+ .rodata.str1.4
+                0x0002204c       0x10 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+                                 0x14 (size before relaxing)
+ .rodata.str1.4
+                0x0002205c        0x8 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+                                 0x14 (size before relaxing)
+ .rodata.str1.4
+                0x00000000       0x30 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ *(.rodata.str1.4)
+ *(.shstrtab)
+ *(.strtab)
+                0x00022064                __data_start = .
+
+.rel.dyn        0x00022064        0x0
+ .rel.iplt      0x00000000        0x0 vectors.o
+
+.data           0x00022068     0x831c
+                0x00022068                . = ALIGN (0x4)
+ *(SORT(.table*))
+ .table.hardware
+                0x00022068        0x0 main.o
+                0x00022068                hardware_table
+ .table.hardware.1.dac_init
+                0x00022068        0x8 dac.o
+                0x00022068                dac_init_ptr
+ .table.hardware.1.init_transform
+                0x00022070        0x8 transform.o
+                0x00022070                init_transform_ptr
+ .table.hardware.1.irq_init
+                0x00022078        0x8 bcm2835_irq.o
+                0x00022078                irq_init_ptr
+ .table.hardware.1.sd_init
+                0x00022080        0x8 fatfs.o
+                0x00022080                sd_init_ptr
+ .table.hardware.END
+                0x00022088        0x0 main.o
+                0x00022088                hardware_table_end
+ .table.param_handler
+                0x00022088        0x0 osc.o
+                0x00022088                param_handler_table
+ .table.param_handler.1
+                0x00022088       0x30 osc.o
+                0x00022088                default_handlers
+ .table.param_handler.1
+                0x000220b8      0x198 ilda-osc.o
+                0x000220b8                ilda_osc_handlers
+ .table.param_handler.1
+                0x00022250      0x1e0 correction-osc.o
+                0x00022250                correction_param_updaters
+ .table.param_handler.END
+                0x00022430        0x0 osc.o
+                0x00022430                param_handler_table_end
+ .table.poll    0x00022430        0x0 main.o
+                0x00022430                poll_table
+ .table.poll.1.autoplay_poll
+                0x00022430        0x8 autoplay.o
+                0x00022430                autoplay_poll_ptr
+ .table.poll.1.aux_poll
+                0x00022438        0x8 network-stub.o
+                0x00022438                aux_poll_ptr
+ .table.poll.1.ilda_osc_poll
+                0x00022440        0x8 ilda-osc.o
+                0x00022440                ilda_osc_poll_ptr
+ .table.poll.1.playback_refill
+                0x00022448        0x8 playback.o
+                0x00022448                playback_refill_ptr
+ .table.poll.END
+                0x00022450        0x0 main.o
+                0x00022450                poll_table_end
+ .table.protocol
+                0x00022450        0x0 main.o
+                0x00022450                protocol_table
+ .table.protocol.1.autoplay_init
+                0x00022450        0x8 autoplay.o
+                0x00022450                autoplay_init_ptr
+ .table.protocol.1.osc_init
+                0x00022458        0x8 osc.o
+                0x00022458                osc_init_ptr
+ .table.protocol.END
+                0x00022460        0x0 main.o
+                0x00022460                protocol_table_end
+ *(.ahb_sram_0)
+ .ahb_sram_0    0x00022460      0x640 ild-player.o
+                0x00022460                fplay_small_frame_buffer
+ .ahb_sram_0    0x00022aa0     0x7000 dac.o
+                0x00022aa0                dac_buffer
+ *(.data)
+ .data          0x00029aa0        0x0 vectors.o
+ .data          0x00029aa0        0x0 main.o
+ .data          0x00029aa0        0x0 syscalls.o
+ .data          0x00029aa0        0x0 bcm2835.o
+ .data          0x00029aa0        0x0 bcm2835_asm.o
+ .data          0x00029aa0        0x0 mcp49x2.o
+ .data          0x00029aa0        0x0 mcp49x2_asm.o
+ .data          0x00029aa0        0x0 ff.o
+ .data          0x00029aa0        0x0 ccsbcs.o
+ .data          0x00029aa0        0x0 vsnprintf.o
+ .data          0x00029aa0        0x0 ild-player.o
+ .data          0x00029aa0        0x0 playback.o
+ .data          0x00029aa0        0x0 autoplay.o
+ .data          0x00029aa0        0x0 fatfs.o
+ .data          0x00029aa0        0x0 panic.o
+ .data          0x00029aa0        0x0 playback_.o
+ .data          0x00029aa0        0x0 dac.o
+ .data          0x00029aa0        0x0 transform.o
+ .data          0x00029aa0        0x0 hardware.o
+ .data          0x00029aa0        0x0 serial.o
+ .data          0x00029aa0        0x0 bcm2835_irq.o
+ .data          0x00029aa0        0x0 lightengine.o
+ .data          0x00029aa0        0x0 fixpoint.o
+ .data          0x00029aa0        0x0 osc.o
+ .data          0x00029aa0        0x0 network-stub.o
+ .data          0x00029aa0        0x0 pbuf-stub.o
+ .data          0x00029aa0        0x0 udp-stub.o
+ .data          0x00029aa0        0x0 ilda-osc.o
+ .data          0x00029aa0        0x0 correction-osc.o
+ .data          0x00029aa0        0x0 ip_addr.o
+ .data          0x00029aa0        0x0 fiq_handler.o
+ .data          0x00029aa0        0x1 ../emmc/Release/libemmc.a(diskio.o)
+                0x00029aa0                Stat
+ *fill*         0x00029aa1        0x3 00
+ .data          0x00029aa4        0xc ../emmc/Release/libemmc.a(block_cache.o)
+ .data          0x00029ab0       0x10 ../emmc/Release/libemmc.a(emmc.o)
+ .data          0x00029ac0        0x0 ../emmc/Release/libemmc.a(mbox.o)
+ .data          0x00029ac0        0x0 ../emmc/Release/libemmc.a(qmemcpy.o)
+ .data          0x00029ac0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .data          0x00029ac0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+ .data          0x00029ac0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .data          0x00029ac0      0x430 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+                0x00029ac0                _impure_ptr
+ .data          0x00029ef0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .data          0x00029ef0      0x410 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+                0x00029ef0                __malloc_av_
+                0x0002a2f8                __malloc_sbrk_base
+                0x0002a2fc                __malloc_trim_threshold
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .data          0x0002a300        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .data          0x0002a300        0x4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+                0x0002a300                __ctype_ptr__
+ .data          0x0002a304        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .data          0x0002a304        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .data          0x0002a304        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .data          0x0002a304        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .data          0x0002a304        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .data          0x0002a304        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .data          0x0002a304       0x7c /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+                0x0002a324                __mb_cur_max
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .data          0x0002a380        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .data          0x0002a380        0x4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+                0x0002a380                __wctomb
+ .data          0x0002a384        0x0 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .data          0x0002a384        0x0 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
+ .data          0x0002a384        0x0 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+                0x0002a384                __data_end = .
+                0x0002a384                __bss_start = .
+
+.igot.plt       0x0002a384        0x0
+ .igot.plt      0x00000000        0x0 vectors.o
+
+.bss            0x0002a384    0x107c8
+                0x0002a384                . = ALIGN (0x4)
+ *(.bss*)
+ .bss           0x0002a384        0x0 vectors.o
+ .bss           0x0002a384        0x0 main.o
+ .bss           0x0002a384        0x4 syscalls.o
+                0x0002a384                heap_end
+ .bss           0x0002a388        0x0 bcm2835.o
+ .bss           0x0002a388        0x0 bcm2835_asm.o
+ .bss           0x0002a388        0x0 mcp49x2.o
+ .bss           0x0002a388        0x0 mcp49x2_asm.o
+ .bss           0x0002a388       0x8c ff.o
+ .bss           0x0002a414        0x0 ccsbcs.o
+ .bss           0x0002a414        0x0 vsnprintf.o
+ .bss           0x0002a414       0x54 ild-player.o
+ .bss           0x0002a468        0x0 playback.o
+ .bss           0x0002a468       0xa8 autoplay.o
+ .bss           0x0002a510        0x0 fatfs.o
+ .bss           0x0002a510        0x0 panic.o
+ .bss           0x0002a510        0x0 playback_.o
+ .bss           0x0002a510      0x330 dac.o
+                0x0002a510                dac_flags
+                0x0002a83c                count_prev
+ .bss           0x0002a840        0x0 transform.o
+ .bss           0x0002a840        0x0 hardware.o
+ .bss           0x0002a840        0x0 serial.o
+ .bss           0x0002a840        0x0 bcm2835_irq.o
+ .bss           0x0002a840        0x0 lightengine.o
+ .bss           0x0002a840        0x0 fixpoint.o
+ .bss           0x0002a840        0x0 osc.o
+ .bss           0x0002a840        0x0 network-stub.o
+ .bss           0x0002a840        0x0 pbuf-stub.o
+ .bss           0x0002a840        0x0 udp-stub.o
+ .bss           0x0002a840        0x4 ilda-osc.o
+ .bss           0x0002a844       0x10 correction-osc.o
+ .bss           0x0002a854        0x0 ip_addr.o
+ .bss           0x0002a854        0x0 fiq_handler.o
+ .bss           0x0002a854        0x8 ../emmc/Release/libemmc.a(diskio.o)
+ .bss           0x0002a85c        0x4 ../emmc/Release/libemmc.a(block_cache.o)
+ .bss           0x0002a860        0xc ../emmc/Release/libemmc.a(emmc.o)
+ .bss           0x0002a86c        0x0 ../emmc/Release/libemmc.a(mbox.o)
+ .bss           0x0002a86c        0x0 ../emmc/Release/libemmc.a(qmemcpy.o)
+ .bss           0x0002a86c        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-abs.o)
+ .bss           0x0002a86c        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-errno.o)
+ .bss           0x0002a86c        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-exit.o)
+ .bss           0x0002a86c        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-impure.o)
+ .bss           0x0002a86c        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-malloc.o)
+ .bss           0x0002a86c       0x34 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mallocr.o)
+                0x0002a86c                __malloc_top_pad
+                0x0002a870                __malloc_current_mallinfo
+                0x0002a898                __malloc_max_sbrked_mem
+                0x0002a89c                __malloc_max_total_mem
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memchr-stub.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcmp.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memcpy-stub.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memmove.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-memset.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mlock.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-printf.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-puts.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-sbrkr.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcasecmp.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcat.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcmp.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strcpy.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strlen.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strnlen.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strsep.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-strtok_r.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfprintf.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wsetup.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-__call_atexit.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-ctype_.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-dtoa.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fflush.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-findfp.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-freer.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fvwrite.o)
+ .bss           0x0002a8a0        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fwalk.o)
+ .bss           0x0002a8a0        0xc /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-locale.o)
+                0x0002a8a0                _PathLocale
+                0x0002a8a4                __mlocale_changed
+                0x0002a8a8                __nlocale_changed
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-makebuf.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-mprec.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reallocr.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-s_fpclassify.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-stdio.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-vfiprintf.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-writer.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-callocr.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-closer.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fclose.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fputwc.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-fstatr.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-isattyr.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-lseekr.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-readr.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wbuf.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wcrtomb.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-wctomb_r.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_udivsi3.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_divsi3.o)
+ .bss           0x0002a8ac        0x0 /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a(_dvmd_tls.o)
+ COMMON         0x0002a8ac       0x3c main.o
+                0x0002a8ac                events_last
+                0x0002a8b0                settings
+                0x0002a8e0                clock
+ COMMON         0x0002a8e8        0x8 ild-player.o
+                0x0002a8e8                fplay_error_detail
+                0x0002a8ec                ilda_current_fps
+ COMMON         0x0002a8f0      0x234 fatfs.o
+                0x0002a8f0                fs
+ COMMON         0x0002ab24        0x5 playback_.o
+                0x0002ab24                playback_source_flags
+                0x0002ab28                playback_src
+ *fill*         0x0002ab29        0x3 00
+ COMMON         0x0002ab2c       0xb4 dac.o
+                0x0002ab2c                dac_current_pps
+                0x0002ab30                dac_control
+                0x0002abd8                dac_cycle_count
+                0x0002abdc                ticks_per_point
+ COMMON         0x0002abe0       0x20 transform.o
+                0x0002abe0                transform_matrix
+ COMMON         0x0002ac00     0xff10 bcm2835_irq.o
+                0x0002ac00                rxhead
+                0x0002ac04                rxihead
+                0x0002ac08                rxitail
+                0x0002ac0c                rxtail
+                0x0002ac10                aux_buffers
+ COMMON         0x0003ab10        0x4 lightengine.o
+                0x0003ab10                le_state
+                0x0003ab12                le_flags
+ COMMON         0x0003ab14       0x28 osc.o
+                0x0003ab14                osc_last_source
+                0x0003ab18                osc_last_port
+                0x0003ab1c                osc_pcb
+ COMMON         0x0003ab3c        0xa udp-stub.o
+                0x0003ab3c                ipaddr
+                0x0003ab40                ipcb
+                0x0003ab44                iport
+ *fill*         0x0003ab46        0x2 00
+ COMMON         0x0003ab48        0x4 /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a(lib_a-reent.o)
+                0x0003ab48                errno
+                0x0003ab4c                __bss_end = .
+
+/DISCARD/
+ *(*.ARM.attributes)
+ *(*.comment)
+ *(*.debug*)
+                0x0003ab4c                PROVIDE (end, .)
+                0x0003ab4c                _end = .
+                0x0003ab4c                . = ALIGN (0x4)
+                0x0003af4c                . = (. + __und_stack_size)
+                0x0003af4c                __und_stack_top = .
+                0x0003af4c                . = ALIGN (0x4)
+                0x0003b34c                . = (. + __abt_stack_size)
+                0x0003b34c                __abt_stack_top = .
+                0x0003b34c                . = ALIGN (0x4)
+                0x0003b74c                . = (. + __fiq_stack_size)
+                0x0003b74c                __fiq_stack_top = .
+                0x0003b74c                . = ALIGN (0x4)
+                0x0003bb4c                . = (. + __irq_stack_size)
+                0x0003bb4c                __irq_stack_top = .
+                0x0003bb4c                . = ALIGN (0x4)
+                0x0003bf4c                . = (. + __svc_stack_size)
+                0x0003bf4c                __svc_stack_top = .
+                0x0003bf4c                . = ALIGN (0x4)
+                0x0003c34c                . = (. + __sys_stack_size)
+                0x0003c34c                __sys_stack_top = .
+                0x0003c350                . = ALIGN (0x8)
+                0x0003c350                heap_low = .
+                0x08000000                heap_top = __ram_end
+LOAD ../emmc/Release/libemmc.a
+LOAD /opt/gnuarm-hardfp/arm-none-eabi/lib//libc.a
+LOAD /opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3/libgcc.a
+OUTPUT(main.elf elf32-littlearm)
