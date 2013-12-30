@@ -12,7 +12,7 @@ extern int printf(const char *format, ...);
 
 char i2c_ui_slave_address = BW_UI_DEFAULT_SLAVE_ADDRESS;
 
-void inline static ui_i2c_setup(void) {
+inline static void ui_i2c_setup(void) {
 	bcm2835_i2c_setSlaveAddress(i2c_ui_slave_address >> 1);
 	bcm2835_i2c_setClockDivider(BCM2835_I2C_CLOCK_DIVIDER_2500);
 }
@@ -123,6 +123,7 @@ void bw_i2c_ui_set_backlight_temp(uint8_t value) {
 	bcm2835_i2c_write(cmd, sizeof(cmd) / sizeof(char));
 }
 
+//TODO
 void bw_i2c_ui_set_startup_message_line_1(const char *text, uint8_t length) {
 	static char cmd[] = { BW_PORT_WRITE_STARTUPMESSAGE_LINE1, 0xFF };
 	if (length == 0) {
@@ -132,6 +133,15 @@ void bw_i2c_ui_set_startup_message_line_1(const char *text, uint8_t length) {
 	} else {
 
 	}
+}
+
+void bw_i2c_ui_set_startup_message_line_2(const char *text, uint8_t length) {
+}
+
+void bw_i2c_ui_set_startup_message_line_3(const char *text, uint8_t length) {
+}
+
+void bw_i2c_ui_set_startup_message_line_4(const char *text, uint8_t length) {
 }
 
 void bw_i2c_ui_get_backlight(uint8_t *value) {
