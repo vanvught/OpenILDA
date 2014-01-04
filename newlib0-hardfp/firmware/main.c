@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 #include <bcm2835.h>
+#include <sys_time.h>
 
 void c_irq_handler(void) {}
 void c_fiq_handler(void) {}
@@ -16,13 +19,22 @@ extern unsigned int heap_end;
 
 int notmain ( unsigned int earlypc )
 {
-    bcm2835_uart_begin();
+	sys_time_init();
+
+	bcm2835_uart_begin();
 
 #ifdef ENABLE_FRAMEBUFFER
 	bcm2835_console_begin();
 #endif
 
     printf("Hello World!\n");
+
+	time_t ltime = 0;
+	struct tm *local_time = NULL;
+
+	ltime = sys_time(NULL);
+    local_time = localtime(&ltime);
+    printf("%.2d:%.2d:%.2d\n", local_time->tm_hour, local_time->tm_min, local_time->tm_sec);
 
     uint64_t ts = bcm2835_st_read();
 
