@@ -40,34 +40,31 @@ int notmain (void)
 	f_mount(0, &Fatfs);		/* Register volume work area (never fails) */
 
 #if 1
-	printf("\nOpen an existing file (tux.ild).\n");
-	rc = f_open(&Fil, "tux.ild", FA_READ);
-	if (rc) die(rc);
-	int j;
-	for (j = 0; j < 2; j++) {
-		f_lseek(&Fil,0);
-		for (;;) {
+	int i;
+	printf("\nOpen an existing file (message.txt).\n");
+	rc = f_open(&Fil, "MESSAGE.TXT", FA_READ);
+	if (rc)
+		die(rc);
 
-			uint32_t i1 = GET32(0x20003004);
-			rc = f_read(&Fil, Buff, 20, &br); /* Read a chunk of file */
-			uint16_t i = (GET32(0x20003004) - i1);
-
-			if (rc || !br)
-				break; /* Error or end of file */
-
-			if (i > 10)
-				printf("%d i2-i1 [%d]\n", j,i);
-
-		}
-		if (rc) die(rc);
+	printf("\nType the file content.\n");
+	for (;;) {
+		rc = f_read(&Fil, Buff, sizeof Buff, &br); /* Read a chunk of file */
+		if (rc || !br)
+			break; /* Error or end of file */
+		for (i = 0; i < br; i++) /* Type the data */
+			putchar(Buff[i]);
 	}
+	if (rc)
+		die(rc);
+
 	printf("\nClose the file.\n");
 	rc = f_close(&Fil);
-	if (rc) die(rc);
+	if (rc)
+		die(rc);
 #endif
 #if 0
 	printf("\nCreate a new file (hello.txt).\n");
-	rc = f_open(&Fil, "HELLO.TXT", FA_WRITE | FA_CREATE_ALWAYS);
+	rc = f_open(&Fil, "hello.txt", FA_WRITE | FA_CREATE_ALWAYS);
 	if (rc) die(rc);
 
 	printf("\nWrite a text data. (Hello world!)\n");

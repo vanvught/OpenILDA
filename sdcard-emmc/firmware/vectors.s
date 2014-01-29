@@ -87,8 +87,7 @@ irq:
     b c_irq_handler			@ void __attribute__((interrupt("IRQ"))) c_irq_handler(void)
 
 fiq:
-@    b c_fiq_handler			@ void __attribute__((interrupt("FIQ"))) c_fiq_handler(void)
-   b asm_fiq_handler
+    b c_fiq_handler			@ void __attribute__((interrupt("FIQ"))) c_fiq_handler(void)
 
 FUNC hang
     b hang
@@ -121,14 +120,3 @@ FUNC memory_barrier
     mov r0, #0
     mcr p15, #0, r0, c7, c10, #5
     bx lr
-
-FUNC uwait
-	push {r4, r5, lr}
-	mov r5,r0
-	ldr r4,=0x20003000
-    ldrd r2,r3,[r4,#4]
-4:  ldrd r0,r1,[r4,#4]
-    sub r1,r0,r2
-    cmp r1,r5
-    bls 4b
-    pop {r4, r5, pc}

@@ -4,32 +4,32 @@
 #define HIGH 0x1
 #define LOW  0x0
 
-#define BCM2835_SPI0_CS_LEN_LONG             0x02000000 ///< Enable Long data word in Lossi mode if DMA_LEN is set
-#define BCM2835_SPI0_CS_DMA_LEN              0x01000000 ///< Enable DMA mode in Lossi mode
-#define BCM2835_SPI0_CS_CSPOL2               0x00800000 ///< Chip Select 2 Polarity
-#define BCM2835_SPI0_CS_CSPOL1               0x00400000 ///< Chip Select 1 Polarity
-#define BCM2835_SPI0_CS_CSPOL0               0x00200000 ///< Chip Select 0 Polarity
-#define BCM2835_SPI0_CS_RXF                  0x00100000 ///< RXF - RX FIFO Full
-#define BCM2835_SPI0_CS_RXR                  0x00080000 ///< RXR RX FIFO needs Reading ( full)
-#define BCM2835_SPI0_CS_TXD                  0x00040000 ///< TXD TX FIFO can accept Data
-#define BCM2835_SPI0_CS_RXD                  0x00020000 ///< RXD RX FIFO contains Data
-#define BCM2835_SPI0_CS_DONE                 0x00010000 ///< Done transfer Done
-#define BCM2835_SPI0_CS_TE_EN                0x00008000 ///< Unused
-#define BCM2835_SPI0_CS_LMONO                0x00004000 ///< Unused
-#define BCM2835_SPI0_CS_LEN                  0x00002000 ///< LEN LoSSI enable
-#define BCM2835_SPI0_CS_REN                  0x00001000 ///< REN Read Enable
-#define BCM2835_SPI0_CS_ADCS                 0x00000800 ///< ADCS Automatically Deassert Chip Select
-#define BCM2835_SPI0_CS_INTR                 0x00000400 ///< INTR Interrupt on RXR
-#define BCM2835_SPI0_CS_INTD                 0x00000200 ///< INTD Interrupt on Done
-#define BCM2835_SPI0_CS_DMAEN                0x00000100 ///< DMAEN DMA Enable
-#define BCM2835_SPI0_CS_TA                   0x00000080 ///< Transfer Active
-#define BCM2835_SPI0_CS_CSPOL                0x00000040 ///< Chip Select Polarity
-#define BCM2835_SPI0_CS_CLEAR                0x00000030 ///< Clear FIFO Clear RX and TX
-#define BCM2835_SPI0_CS_CLEAR_RX             0x00000020 ///< Clear FIFO Clear RX
-#define BCM2835_SPI0_CS_CLEAR_TX             0x00000010 ///< Clear FIFO Clear TX
-#define BCM2835_SPI0_CS_CPOL                 0x00000008 ///< Clock Polarity
-#define BCM2835_SPI0_CS_CPHA                 0x00000004 ///< Clock Phase
-#define BCM2835_SPI0_CS_CS                   0x00000003 ///< Chip Select
+#define BCM2835_SPI0_CS_LEN_LONG   0x02000000 ///< Enable Long data word in Lossi mode if DMA_LEN is set
+#define BCM2835_SPI0_CS_DMA_LEN    0x01000000 ///< Enable DMA mode in Lossi mode
+#define BCM2835_SPI0_CS_CSPOL2     0x00800000 ///< Chip Select 2 Polarity
+#define BCM2835_SPI0_CS_CSPOL1     0x00400000 ///< Chip Select 1 Polarity
+#define BCM2835_SPI0_CS_CSPOL0     0x00200000 ///< Chip Select 0 Polarity
+#define BCM2835_SPI0_CS_RXF        0x00100000 ///< RXF - RX FIFO Full
+#define BCM2835_SPI0_CS_RXR        0x00080000 ///< RXR RX FIFO needs Reading ( full)
+#define BCM2835_SPI0_CS_TXD        0x00040000 ///< TXD TX FIFO can accept Data
+#define BCM2835_SPI0_CS_RXD        0x00020000 ///< RXD RX FIFO contains Data
+#define BCM2835_SPI0_CS_DONE       0x00010000 ///< Done transfer Done
+#define BCM2835_SPI0_CS_TE_EN      0x00008000 ///< Unused
+#define BCM2835_SPI0_CS_LMONO      0x00004000 ///< Unused
+#define BCM2835_SPI0_CS_LEN        0x00002000 ///< LEN LoSSI enable
+#define BCM2835_SPI0_CS_REN        0x00001000 ///< REN Read Enable
+#define BCM2835_SPI0_CS_ADCS       0x00000800 ///< ADCS Automatically Deassert Chip Select
+#define BCM2835_SPI0_CS_INTR       0x00000400 ///< INTR Interrupt on RXR
+#define BCM2835_SPI0_CS_INTD       0x00000200 ///< INTD Interrupt on Done
+#define BCM2835_SPI0_CS_DMAEN      0x00000100 ///< DMAEN DMA Enable
+#define BCM2835_SPI0_CS_TA         0x00000080 ///< Transfer Active
+#define BCM2835_SPI0_CS_CSPOL      0x00000040 ///< Chip Select Polarity
+#define BCM2835_SPI0_CS_CLEAR      0x00000030 ///< Clear FIFO Clear RX and TX
+#define BCM2835_SPI0_CS_CLEAR_RX   0x00000020 ///< Clear FIFO Clear RX
+#define BCM2835_SPI0_CS_CLEAR_TX   0x00000010 ///< Clear FIFO Clear TX
+#define BCM2835_SPI0_CS_CPOL      	0x00000008 ///< Clock Polarity
+#define BCM2835_SPI0_CS_CPHA      	0x00000004 ///< Clock Phase
+#define BCM2835_SPI0_CS_CS        	0x00000003 ///< Chip Select
 
 #define BCM2835_BSC_C_I2CEN 		0x00008000 ///< I2C Enable, 0 = disabled, 1 = enabled
 #define BCM2835_BSC_C_INTR 			0x00000400 ///< Interrupt on RX
@@ -56,8 +56,8 @@
 #define RPI_GPIO_P1_03         0  ///< Version 1, Pin P1-03
 #define RPI_GPIO_P1_05         1  ///< Version 1, Pin P1-05
 #define RPI_GPIO_P1_07         4  ///< Version 1, Pin P1-07
-#define RPI_GPIO_P1_08        14  ///< Version 1, Pin P1-08, defaults to alt function 0 UART0_TXD
-#define RPI_GPIO_P1_10        15  ///< Version 1, Pin P1-10, defaults to alt function 0 UART0_RXD
+#define RPI_GPIO_P1_08        14  ///< Version 1, Pin P1-08, defaults to alt function 0 PL011_TXD
+#define RPI_GPIO_P1_10        15  ///< Version 1, Pin P1-10, defaults to alt function 0 PL011_RXD
 #define RPI_GPIO_P1_11        17  ///< Version 1, Pin P1-11
 #define RPI_GPIO_P1_12        18  ///< Version 1, Pin P1-12
 #define RPI_GPIO_P1_13        21  ///< Version 1, Pin P1-13
@@ -75,8 +75,8 @@
 #define RPI_V2_GPIO_P1_03      2  ///< Version 2, Pin P1-03
 #define RPI_V2_GPIO_P1_05      3  ///< Version 2, Pin P1-05
 #define RPI_V2_GPIO_P1_07      4  ///< Version 2, Pin P1-07
-#define RPI_V2_GPIO_P1_08     14  ///< Version 2, Pin P1-08, defaults to alt function 0 UART0_TXD
-#define RPI_V2_GPIO_P1_10     15  ///< Version 2, Pin P1-10, defaults to alt function 0 UART0_RXD
+#define RPI_V2_GPIO_P1_08     14  ///< Version 2, Pin P1-08, defaults to alt function 0 PL011_TXD
+#define RPI_V2_GPIO_P1_10     15  ///< Version 2, Pin P1-10, defaults to alt function 0 PL011_RXD
 #define RPI_V2_GPIO_P1_11     17  ///< Version 2, Pin P1-11
 #define RPI_V2_GPIO_P1_12     18  ///< Version 2, Pin P1-12
 #define RPI_V2_GPIO_P1_13     27  ///< Version 2, Pin P1-13
@@ -90,8 +90,52 @@
 #define RPI_V2_GPIO_P1_24      8  ///< Version 2, Pin P1-24, CE0 when SPI0 in use
 #define RPI_V2_GPIO_P1_26      7  ///< Version 2, Pin P1-26, CE1 when SPI0 in use
 
+// PL011 UART
+// https://github.com/xinu-os/xinu/blob/master/device/uart-pl011/pl011.h
+#define PL011_DR_OE 			((uint32_t)(1 << 11))	///< Set to 1 on overrun error
+#define PL011_DR_BE 			((uint32_t)(1 << 10))	///< Set to 1 on break condition
+#define PL011_DR_PE 			((uint32_t)(1 <<  9))	///< Set to 1 on parity error
+#define PL011_DR_FE 			((uint32_t)(1 <<  8))	///< Set to 1 on framing error
+
+#define PL011_RSRECR_OE 		((uint32_t)(1 << 3))		///< Set to 1 on overrun error
+#define PL011_RSRECR_BE 		((uint32_t)(1 << 2))		///< Set to 1 on break condition
+#define PL011_RSRECR_PE 		((uint32_t)(1 << 1))		///< Set to 1 on parity error
+#define PL011_RSRECR_FE 		((uint32_t)(1 << 0))		///< Set to 1 on framing error
+
+#define PL011_FR_BUSY 			((uint32_t)(1 << 3))	///< Set to 1 when UART is transmitting data
+#define PL011_FR_RXFE			((uint32_t)(1 << 4))	///< Set to 1 when RX FIFO/register is empty
+#define PL011_FR_TXFF 			((uint32_t)(1 << 5))	///< Set to 1 when TX FIFO/register is full
+#define PL011_FR_RXFF			((uint32_t)(1 << 6))	///< Set to 1 when RX FIFO/register is full
+#define PL011_FR_TXFE 			((uint32_t)( 1<< 7))	///< Set to 1 when TX FIFO/register is empty
+
+#define PL011_LCRH_BRK			((uint32_t)(1 << 0))	///< Send break
+#define PL011_LCRH_PEN			((uint32_t)(1 << 1))	///< Parity enable
+#define PL011_LCRH_EPS			((uint32_t)(1 << 2))	///< Even parity select
+#define PL011_LCRH_STP2			((uint32_t)(1 << 3))	///< Two stop bits select
+#define PL011_LCRH_FEN			((uint32_t)(1 << 4))	///< Enable FIFOs
+#define PL011_LCRH_WLEN8		((uint32_t)(0b11<<5))	///< Word length 8 bits
+#define PL011_LCRH_WLEN7 		((uint32_t)(0b10<<5))	///< Word length 7 bits
+#define PL011_LCRH_WLEN6 		((uint32_t)(0b01<<5))	///< Word length 6 bits
+#define PL011_LCRH_WLEN5 		((uint32_t)(0b00<<5))	///< Word length 5 bits
+#define PL011_LCRH_SPS			((uint32_t)(1 << 7))	///< Sticky parity select
+
+#define PL011_IMSC_RXIM			((uint32_t)(1 << 4))	///<
+#define PL011_IMSC_FEIM 		((uint32_t)(1 << 7))	///<
+#define PL011_IMSC_BEIM 		((uint32_t)(1 << 9)) 	///<
+
+#define PL011_MIS_RXMIS			((uint32_t)(1 << 4))	///<
+#define PL011_MIS_FEMIS			((uint32_t)(1 << 7))	///<
+
+#define PL011_ICRC_RXIC			((uint32_t)(1 << 4))	///<
+#define PL011_ICR_FEIC 			((uint32_t)(1 << 7))	///<
+
+#define PL011_BAUD_INT(x) 		(3000000 / (16 * (x)))
+#define PL011_BAUD_FRAC(x) 		(int)((((3000000.0 / (16.0 * (x))) - PL011_BAUD_INT(x)) * 64.0) + 0.5)
+
+
 #ifdef __ASSEMBLY__
 #define BCM2835_SPI0_FIFO              0x0004 ///< SPI Master TX and RX FIFOs
+
 #define BCM2835_GPSET0                 0x001c ///< GPIO Pin Output Set 0
 #define BCM2835_GPCLR0                 0x0028 ///< GPIO Pin Output Clear 0
 
@@ -154,6 +198,7 @@ typedef enum
     BCM2835_SPI_CLOCK_DIVIDER_16384 = 16384,   ///< 16384 = 65.536us = 15.25878906kHz
     BCM2835_SPI_CLOCK_DIVIDER_8192  = 8192,    ///< 8192 = 32.768us = 30/51757813kHz
     BCM2835_SPI_CLOCK_DIVIDER_4096  = 4096,    ///< 4096 = 16.384us = 61.03515625kHz
+    BCM2835_SPI_CLOCK_DIVIDER_2500  = 2500,    ///< 2500 = 10us = 100 kHz
     BCM2835_SPI_CLOCK_DIVIDER_2048  = 2048,    ///< 2048 = 8.192us = 122.0703125kHz
     BCM2835_SPI_CLOCK_DIVIDER_1024  = 1024,    ///< 1024 = 4.096us = 244.140625kHz
     BCM2835_SPI_CLOCK_DIVIDER_512   = 512,     ///< 512 = 2.048us = 488.28125kHz
@@ -185,12 +230,13 @@ typedef enum
 } bcm2835I2CReasonCodes;
 
 
-extern int bcm2835_init(void);
-extern int bcm2835_close(void);
+inline static int bcm2835_init(void) {return 1;}
+inline static int bcm2835_close(void) {return 1;}
 
 extern void inline bcm2835_delayMicroseconds(unsigned long long);
 
 //extern void bcm2835_peri_set_bits(uint32_t, uint32_t, uint32_t);
+extern void  bcm2835_gpio_set_pud(uint8_t, uint8_t);
 
 extern void bcm2835_gpio_fsel(uint8_t, uint8_t);
 extern void inline bcm2835_gpio_set(uint8_t);
@@ -201,14 +247,14 @@ extern uint8_t inline bcm2835_gpio_lev(uint8_t pin);
 extern void bcm2835_spi_begin(void);
 extern void bcm2835_spi_end(void);
 extern void bcm2835_spi_setBitOrder(uint8_t);
-extern void inline bcm2835_spi_setClockDivider(uint16_t);
+extern void bcm2835_spi_setClockDivider(uint16_t);
 extern void bcm2835_spi_setDataMode(uint8_t);
-extern void inline bcm2835_spi_chipSelect(uint8_t);
+extern void bcm2835_spi_chipSelect(uint8_t);
 extern void bcm2835_spi_setChipSelectPolarity(uint8_t, uint8_t);
 extern void bcm2835_spi_transfernb(char*, char*, uint32_t);
 extern void bcm2835_spi_transfern(char* buf, uint32_t len);
 extern void bcm2835_spi_writenb(char* tbuf, uint32_t len);
-extern void inline bcm2835_spi_write(uint16_t data);
+extern void bcm2835_spi_write(uint16_t data);
 
 extern void bcm2835_i2c_begin(void);
 extern void bcm2835_i2c_end(void);
@@ -222,9 +268,11 @@ void bcm2835_st_delay(uint64_t offset_micros, uint64_t micros);
 
 extern void bcm2835_uart_begin(void);
 extern void inline bcm2835_uart_send(uint32_t);
+extern void bcm2835_uart_end(void);
 
-extern void bcm2835_spi_write(uint16_t data);
-extern void dac_write_all(uint16_t x, uint16_t y, uint8_t intensity, uint8_t red, uint8_t green, uint8_t blue);
+extern void bcm2835_pl011_begin(void);
+extern void inline bcm2835_pl011_send(uint32_t);
+extern void bcm2835_pl011_end(void);
 
 // TODO
 // https://github.com/raspberrypi/linux/blob/rpi-3.6.y/arch/arm/mach-bcm2708/include/mach/platform.h
@@ -232,6 +280,9 @@ extern void dac_write_all(uint16_t x, uint16_t y, uint8_t intensity, uint8_t red
 #define INTERRUPT_TIMER1 	(ARM_IRQ1_BASE + 1)
 #define INTERRUPT_TIMER3 	(ARM_IRQ1_BASE + 3)
 #define INTERRUPT_AUX 		(ARM_IRQ1_BASE + 29)
+
+#define ARM_IRQ2_BASE      32
+#define INTERRUPT_VC_UART  (ARM_IRQ2_BASE + 25)
 
 typedef enum
 {
@@ -252,9 +303,9 @@ typedef struct {
 	__IO uint32_t CS;		// 0x00
 	__IO uint32_t CLO;		// 0x04
 	__IO uint32_t CHI;		// 0x08
-	__IO uint32_t C0;		// 0x0C used by GPU
+	__IO uint32_t C0;		// 0x0C used by GPU. DO NOT USE
 	__IO uint32_t C1;		// 0x10
-	__IO uint32_t C2;		// 0x14	used by GPU
+	__IO uint32_t C2;		// 0x14	used by GPU. DO NOT USE
 	__IO uint32_t C3;		// 0x18
 } BCM2835_ST_TypeDef;
 
@@ -274,6 +325,25 @@ typedef struct {
 	__I uint32_t STAT;     	// 0x64
 	__IO uint32_t BAUD;     // 0x68
 } BCM2835_UART_TypeDef;
+
+typedef struct {
+	__IO uint32_t DR;     	// 0x00
+	__IO uint32_t RSRECR;   // 0x04
+	__IO uint32_t PAD[4];	// 0x08
+	__IO uint32_t FR;       // 0x18
+	__IO uint32_t RES1;     // 0x1C
+	__IO uint32_t ILPR;     // 0x20
+	__IO uint32_t IBRD;     // 0x24
+	__IO uint32_t FBRD;     // 0x28
+	__IO uint32_t LCRH;     // 0x2C
+	__IO uint32_t CR; 	    // 0x30
+	__IO uint32_t IFLS;     // 0x34
+	__IO uint32_t IMSC;     // 0x38
+	__IO uint32_t RIS;     	// 0x3C
+	__I  uint32_t MIS;     	// 0x40
+	__IO uint32_t ICR;     	// 0x44
+	__IO uint32_t DMACR;   	// 0x48
+} BCM2835_PL011_TypeDef;
 
 typedef struct {
 	__IO uint32_t GPFSEL0; 	// 0x00
@@ -332,16 +402,16 @@ typedef struct {
 } BCM2835_BSC_TypeDef;
 
 typedef struct {
-  __I uint32_t IRQ_BASIC_PENDING;// 0x00
-  __I uint32_t IRQ_PENDING1;	// 0x04
-  __I uint32_t IRQ_PENDING2;	// 0x08
-  __IO uint32_t FIQ_CONTROL;	// 0x0C
-  __IO uint32_t IRQ_ENABLE1;	// 0x10
-  __IO uint32_t IRQ_ENABLE2;	// 0x14
-  __IO uint32_t IRQ_BASIC_ENABLE;// 0x18
-  __IO uint32_t IRQ_DISABLE1;	// 0x1C
-  __IO uint32_t IRQ_DISABLE2;	// 0x20
-  __IO uint32_t IRQ_BASIC_DISABLE;// 0x24
+  __I uint32_t IRQ_BASIC_PENDING;	// 0x00
+  __I uint32_t IRQ_PENDING1;		// 0x04
+  __I uint32_t IRQ_PENDING2;		// 0x08
+  __IO uint32_t FIQ_CONTROL;		// 0x0C
+  __IO uint32_t IRQ_ENABLE1;		// 0x10
+  __IO uint32_t IRQ_ENABLE2;		// 0x14
+  __IO uint32_t IRQ_BASIC_ENABLE;	// 0x18
+  __IO uint32_t IRQ_DISABLE1;		// 0x1C
+  __IO uint32_t IRQ_DISABLE2;		// 0x20
+  __IO uint32_t IRQ_BASIC_DISABLE;	// 0x24
 } BCM2835_IRQ_TypeDef;
 
 #endif
@@ -351,6 +421,7 @@ typedef struct {
 #define BCM2835_IRQ_BASE			(BCM2835_PERI_BASE + 0xB200)
 #define BCM2835_GPIO_BASE      		(BCM2835_PERI_BASE + 0x200000)
 #define BCM2835_SPI0_BASE          	(BCM2835_PERI_BASE + 0x204000)
+#define BCM2835_PL011_BASE			(BCM2835_PERI_BASE + 0x201000)
 #define BCM2835_UART1_BASE			(BCM2835_PERI_BASE + 0x215000)
 #define BCM2835_BSC1_BASE			(BCM2835_PERI_BASE + 0x804000)
 #define BCM2835_BSC2_BASE			(BCM2835_PERI_BASE + 0x805000)
@@ -359,6 +430,7 @@ typedef struct {
 #define BCM2835_IRQ					((BCM2835_IRQ_TypeDef *)  BCM2835_IRQ_BASE)
 #define BCM2835_GPIO 				((BCM2835_GPIO_TypeDef *) BCM2835_GPIO_BASE)
 #define BCM2835_SPI0 				((BCM2835_SPI_TypeDef *)  BCM2835_SPI0_BASE)
+#define BCM2835_PL011 				((BCM2835_PL011_TypeDef *) BCM2835_PL011_BASE)
 #define BCM2835_UART1 				((BCM2835_UART_TypeDef *) BCM2835_UART1_BASE)
 #define BCM2835_BSC1 				((BCM2835_BSC_TypeDef *)  BCM2835_BSC1_BASE)
 #define BCM2835_BSC2 				((BCM2835_BSC_TypeDef *)  BCM2835_BSC2_BASE)
