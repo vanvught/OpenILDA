@@ -3,18 +3,19 @@ ARMGNU ?= arm-none-eabi
 AOPS = --warn --fatal-warnings  -mcpu=arm1176jzf-s -march=armv6 -mfpu=vfp
 
 COPS = -Wall -O3 -nostartfiles -ffreestanding -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mhard-float
-COPS += -DINCLUDE_MEM_INFO
-COPS += -DINCLUDE_CPU_INFO
+COPS += -DBARE_METAL
 #COPS += -DENABLE_FRAMEBUFFER
 #COPS += -DBW_I2C_UI
-#COPS += -I"./"
 #COPS += -I"./include"
+#COPS += -I"./common/include"
 COPS += -I"./firmware/hal/include" -I"./firmware/include"
+#COPS += -I"../ff9b/src"
 #COPS += -I"../fb" -I"../fb/include"
 
 LIB = -L /opt/gnuarm-hardfp/arm-none-eabi/lib/ -L/opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3 
 LIB += -L"../fb/lib"
 LIB += -L"../emmc/lib"
+LIB += -L"../ff9b/lib"
 
 BUILD = build/
 SOURCE = ./
