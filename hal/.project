@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>newlib0-hardfp</name>
+	<name>hal</name>
 	<comment></comment>
 	<projects>
-		<project>fb</project>
-		<project>hal</project>
+		<project>firmware</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

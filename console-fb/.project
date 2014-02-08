@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>fb</project>
+		<project>hal</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
