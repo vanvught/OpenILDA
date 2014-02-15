@@ -3,13 +3,13 @@ ARMGNU ?= arm-none-eabi
 AOPS = --warn --fatal-warnings  -mcpu=arm1176jzf-s -march=armv6 -mfpu=vfp
 
 COPS = -Wall -O3 -nostartfiles -ffreestanding -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mhard-float
-COPS += -DINCLUDE_MEM_INFO
-COPS += -DINCLUDE_CPU_INFO
+COPS += -DBARE_METAL
 COPS += -DENABLE_FRAMEBUFFER
 #COPS += -DBW_I2C_UI
-#COPS += -I"./"
 #COPS += -I"./include"
+#COPS += -I"./common/include"
 COPS += -I"./firmware/include"
+#COPS += -I"../ff9b/src"
 COPS += -I"../fb" -I"../fb/include"
 COPS += -I"../hal/include"
 
@@ -22,7 +22,7 @@ LIB += -L"../hal/lib"
 BUILD = build/
 SOURCE = ./
 ASM_OBJECTS := $(patsubst $(SOURCE)firmware/%.s,$(BUILD)%.o,$(wildcard $(SOURCE)firmware/*.s)) $(patsubst $(SOURCE)firmware/lib/%.S,$(BUILD)%.o,$(wildcard $(SOURCE)firmware/lib/*.S))
-C_OBJECTS := $(patsubst $(SOURCE)%.c,$(BUILD)%.o,$(wildcard $(SOURCE)*.c)) $(patsubst $(SOURCE)lib/%.c,$(BUILD)%.o,$(wildcard $(SOURCE)lib/*.c)) $(patsubst $(SOURCE)firmware/%.c,$(BUILD)%.o,$(wildcard $(SOURCE)firmware/*.c)) $(patsubst $(SOURCE)firmware/lib/%.c,$(BUILD)%.o,$(wildcard $(SOURCE)firmware/lib/*.c)) $(patsubst $(SOURCE)firmware/hal/%.c,$(BUILD)%.o,$(wildcard $(SOURCE)firmware/hal/*.c))
+C_OBJECTS := $(patsubst $(SOURCE)common/lib/%.c,$(BUILD)%.o,$(wildcard $(SOURCE)common/lib/*.c)) $(patsubst $(SOURCE)lib/%.c,$(BUILD)%.o,$(wildcard $(SOURCE)lib/*.c)) $(patsubst $(SOURCE)firmware/%.c,$(BUILD)%.o,$(wildcard $(SOURCE)firmware/*.c)) $(patsubst $(SOURCE)firmware/lib/%.c,$(BUILD)%.o,$(wildcard $(SOURCE)firmware/lib/*.c)) $(patsubst $(SOURCE)firmware/hal/%.c,$(BUILD)%.o,$(wildcard $(SOURCE)firmware/hal/*.c)) $(patsubst $(SOURCE)devices/%.c,$(BUILD)devices/%.o,$(wildcard $(SOURCE)devices/*.c))
 OBJECTS := $(ASM_OBJECTS) $(C_OBJECTS)
 
 TARGET = kernel.img
