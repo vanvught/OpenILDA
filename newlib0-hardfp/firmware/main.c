@@ -33,9 +33,6 @@ void __attribute__((interrupt("FIQ"))) c_fiq_handler(void) {}
 extern void bcm2835_console_begin(void);
 #endif
 
-extern void cpu_info(void);
-extern void mem_info(void);
-
 extern unsigned int heap_end;
 
 int notmain ( unsigned int earlypc )
@@ -56,14 +53,6 @@ int notmain ( unsigned int earlypc )
 	ltime = sys_time(NULL);
     local_time = localtime(&ltime);
     printf("%.2d:%.2d:%.2d\n", local_time->tm_hour, local_time->tm_min, local_time->tm_sec);
-
-    uint64_t ts = bcm2835_st_read();
-
-    mem_info();
-
-    printf("\n%ld usec elapsed\n\n", (long int)(bcm2835_st_read() - ts));
-
-	cpu_info();
 
 	int alloc_size = 1;
 	void *ptr = NULL;
