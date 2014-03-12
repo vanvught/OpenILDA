@@ -53,7 +53,7 @@ static int loops [2][12] = {
 	{ 0,2,3,4,5,6,7,8,9,0,1, -1 }
 };
 
-void show_pattern(device_info_t device_info, int pattern) {
+void show_pattern(device_info_t *device_info, int pattern) {
 	int x;
 	char pin;
 
@@ -73,7 +73,7 @@ void show_pattern(device_info_t device_info, int pattern) {
 	return;
 }
 
-void show_loop(device_info_t device_info, int loop, int secs) {
+void show_loop(device_info_t *device_info, int loop, int secs) {
 	int pattern;
 	int loopIndex = 0;
 
@@ -93,7 +93,7 @@ unsigned int slave_address = MCP23S08_DEFAULT_SLAVE_ADDRESS;
 unsigned int chip_select = 0;
 
 int main(int argc, char **argv) {
-	device_info_t mcp23s08_info;
+	device_info_t device_info;
 
 	while ((argc > 1) && (argv[1][0] == '-')) {
 		switch (argv[1][1]) {
@@ -111,24 +111,24 @@ int main(int argc, char **argv) {
 		--argc;
 	}
 
-	mcp23s08_info.slave_address = slave_address;
-	mcp23s08_info.chip_select = chip_select;
+	device_info.slave_address = slave_address;
+	device_info.chip_select = chip_select;
 
-	if (mcp23s08_start(&mcp23s08_info) != MCP23S08_OK) {
-		printf("Cannot start MCP23S08\n");
+	if (mcp23s08_start(&device_info) != MCP23S08_OK) {
+		fprintf(stderr,"Cannot start mcp23s08_start\n");
 		exit(EXIT_FAILURE);
 	}
 
-	printf("slave address : 0x%x\n", mcp23s08_info.slave_address);
-	printf("chip select   : %.1d\n", mcp23s08_info.chip_select);
+	printf("slave address : 0x%x\n", device_info.slave_address);
+	printf("chip select   : %.1d\n", device_info.chip_select);
 
 	int x;
 	for (x = 0 ; x < sizeof(pins) ; x++ ){
-		mcp23s08_gpio_fsel(mcp23s08_info, pins[x], MCP23S08_FSEL_OUTP);
+		mcp23s08_gpio_fsel(&device_info, pins[x], MCP23S08_FSEL_OUTP);
 	}
 
 	for(;;)
-		show_loop(mcp23s08_info, 1, 1);
+		show_loop(&device_info, 1, 1);
 
 	mcp23s08_end();
 
