@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>mcp7941x</name>
+	<name>mcp7941x-tester</name>
 	<comment></comment>
 	<projects>
 		<project>bcm2835</project>
