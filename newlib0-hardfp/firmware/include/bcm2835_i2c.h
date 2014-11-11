@@ -1,3 +1,7 @@
+/**
+ * @file bcm2835_i2c.h
+ *
+ */
 /* Copyright (C) 2014 by Arjan van Vught <pm @ http://www.raspberrypi.org/forum/>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,15 +23,30 @@
  * THE SOFTWARE.
  */
 
-#include "bcm2835.h"
-#include "bcm2835_gpio.h"
+#ifndef BCM2835_I2C_H_
+#define BCM2835_I2C_H_
 
-#define PIN		16
+#include <stdint.h>
 
-void led_set(const int state) {
-	bcm2835_gpio_write(PIN, !state);
-}
+typedef enum {
+	BCM2835_I2C_CLOCK_DIVIDER_2500	= 2500,		///< 2500 = 10us = 100 kHz
+	BCM2835_I2C_CLOCK_DIVIDER_626	= 626,		///< 622 = 2.504us = 399.3610 kHz
+	BCM2835_I2C_CLOCK_DIVIDER_150	= 150,		///< 150 = 60ns = 1.666 MHz (default at reset)
+	BCM2835_I2C_CLOCK_DIVIDER_148	= 148,		///< 148 = 59ns = 1.689 MHz
+} bcm2835I2CClockDivider;
 
-void led_init(void) {
-	bcm2835_gpio_fsel(PIN, BCM2835_GPIO_FSEL_OUTP);
-}
+typedef enum {
+	BCM2835_I2C_REASON_OK			= 0x00,		///< Success
+	BCM2835_I2C_REASON_ERROR_NACK 	= 0x01,		///< Received a NACK
+	BCM2835_I2C_REASON_ERROR_CLKT 	= 0x02,		///< Received Clock Stretch Timeout
+	BCM2835_I2C_REASON_ERROR_DATA 	= 0x04		///< Not all data is sent / received
+} bcm2835I2CReasonCodes;
+
+extern void bcm2835_i2c_begin(void);
+extern void bcm2835_i2c_end(void);
+extern void bcm2835_i2c_setSlaveAddress(const uint8_t);
+extern void bcm2835_i2c_setClockDivider(const uint16_t);
+extern uint8_t bcm2835_i2c_write(const char *, const uint32_t);
+extern uint8_t bcm2835_i2c_read(char*, const uint32_t);
+
+#endif /* BCM2835_I2C_H_ */

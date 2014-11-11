@@ -1,3 +1,7 @@
+/**
+ * @file console.h
+ *
+ */
 /* Copyright (C) 2014 by Arjan van Vught <pm @ http://www.raspberrypi.org/forum/>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,15 +23,13 @@
  * THE SOFTWARE.
  */
 
-#include "bcm2835.h"
-#include "bcm2835_gpio.h"
+#ifndef CONSOLE_H
+#define CONSOLE_H
 
-#define PIN		16
+extern int console_putc(const int);
+extern void console_clear();
+extern void console_set_cursor(const int, const int);
+extern int console_draw_char(const char, const int, const int, const uint16_t, const uint16_t);
 
-void led_set(const int state) {
-	bcm2835_gpio_write(PIN, !state);
-}
+#endif
 
-void led_init(void) {
-	bcm2835_gpio_fsel(PIN, BCM2835_GPIO_FSEL_OUTP);
-}
