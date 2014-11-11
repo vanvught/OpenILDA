@@ -55,6 +55,16 @@
 #define BCM2835_SPI0_CS_CPHA      	0x00000004 ///< Clock Phase
 #define BCM2835_SPI0_CS_CS        	0x00000003 ///< Chip Select
 
+/**
+ * @ingroup SPI
+ *
+ * Start SPI operations.
+ * Forces RPi SPI0 pins P1-19 (MOSI), P1-21 (MISO), P1-23 (CLK), P1-24 (CE0) and P1-26 (CE1)
+ * alternate function ALT0, which enables those pins for SPI interface.
+ * Default the chip select polarity to \ref LOW
+ * Default to \ref BCM2835_SPI_MODE0 (CPOL = 0, CPHA = 0).
+ * Default the SPI speed to 100 kHz (\ref BCM2835_SPI_CLOCK_DIVIDER_2500).
+ */
 void bcm2835_spi_begin(void) {
 	// Set the SPI0 pins to the Alt 0 function to enable SPI0 access on them
 	bcm2835_gpio_fsel(RPI_V2_GPIO_P1_26, BCM2835_GPIO_FSEL_ALT0); // CE1
@@ -66,12 +76,19 @@ void bcm2835_spi_begin(void) {
 	BCM2835_SPI0 ->CS = 0;
 	BCM2835_SPI0 ->CS = BCM2835_SPI0_CS_CLEAR;
 
-	bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS0, LOW);
-	bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS1, LOW);
+	bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS0, LOW);		// Chip select 0 active LOW
+	bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS1, LOW);		// Chip select 1 active LOW
 	bcm2835_spi_setDataMode(BCM2835_SPI_MODE0);						// CPOL = 0, CPHA = 0
 	bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_2500);	// 100 kHz
 }
 
+/**
+ * @ingroup SPI
+ *
+ * End SPI operations.
+ * SPI0 pins P1-19 (MOSI), P1-21 (MISO), P1-23 (CLK), P1-24 (CE0) and P1-26 (CE1)
+ * are returned to their default INPUT behavior.
+ */
 void bcm2835_spi_end(void) {
 	// Set all the SPI0 pins back to input
 	bcm2835_gpio_fsel(RPI_V2_GPIO_P1_26, BCM2835_GPIO_FSEL_INPT); // CE1
@@ -81,10 +98,21 @@ void bcm2835_spi_end(void) {
 	bcm2835_gpio_fsel(RPI_V2_GPIO_P1_23, BCM2835_GPIO_FSEL_INPT); // CLK
 }
 
+/**
+ * @ingroup SPI
+ *
+ */
 inline void bcm2835_spi_setBitOrder(const uint8_t order) {
 	// BCM2835_SPI_BIT_ORDER_MSBFIRST is the only one supported by SPI0
 }
 
+/**
+ * @ingroup SPI
+ *
+ * Sets the SPI clock divider and therefore the SPI clock speed.
+ *
+ * @param divider The desired SPI clock divider, one of ::bcm2835SPIClockDivider
+ */
 inline void bcm2835_spi_setClockDivider(const uint16_t divider) {
 	BCM2835_SPI0 ->CLK = divider;
 }
@@ -94,16 +122,36 @@ inline void bcm2835_spi_setDataMode(const uint8_t mode) {
 	BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, mode << 2, BCM2835_SPI0_CS_CPOL | BCM2835_SPI0_CS_CPHA);
 }
 
+/**
+ * @ingroup SPI
+ *
+ * @param cs Specifies the CS pins(s) that are used to activate the desired slave.
+ */
 inline void bcm2835_spi_chipSelect(const uint8_t cs) {
 	BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, cs, BCM2835_SPI0_CS_CS);
 }
 
+/**
+ * @ingroup SPI
+ *
+ * Sets the chip select pin polarity for a given pin.
+ *
+ * @param cs The chip select pin to affect
+ * @param active Whether the chip select pin is to be active HIGH or LOW
+ */
 inline void bcm2835_spi_setChipSelectPolarity(const uint8_t cs, const uint8_t active) {
 	uint8_t shift = 21 + cs;
 	// Mask in the appropriate CSPOLn bit
 	BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, active << shift, 1 << shift);
 }
 
+/**
+ * @ingroup SPI
+ *
+ * @param tbuf
+ * @param rbuf
+ * @param len
+ */
 inline void bcm2835_spi_transfernb(char* tbuf, char* rbuf, const uint32_t len) {
 	// Clear TX and RX fifos
 	BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, BCM2835_SPI0_CS_CLEAR, BCM2835_SPI0_CS_CLEAR);
@@ -135,10 +183,22 @@ inline void bcm2835_spi_transfernb(char* tbuf, char* rbuf, const uint32_t len) {
     BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, 0, BCM2835_SPI0_CS_TA);
 }
 
+/**
+ * @ingroup SPI
+ *
+ * @param buf
+ * @param len
+ */
 void bcm2835_spi_transfern(char* buf, const uint32_t len) {
 	bcm2835_spi_transfernb(buf, buf, len);
 }
 
+/**
+ * @ingroup SPI
+ *
+ * @param tbuf
+ * @param len
+ */
 void bcm2835_spi_writenb(char* tbuf, const uint32_t len) {
     // Clear TX and RX fifos
 	BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, BCM2835_SPI0_CS_CLEAR, BCM2835_SPI0_CS_CLEAR);

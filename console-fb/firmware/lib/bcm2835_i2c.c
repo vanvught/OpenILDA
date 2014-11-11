@@ -48,26 +48,85 @@
 #define BCM2835_BSC_S_DONE 			0x00000002 ///< Transfer DONE
 #define BCM2835_BSC_S_TA 			0x00000001 ///< Transfer Active
 
-#define BCM2835_BSC_FIFO_SIZE   				16 ///< BSC FIFO size
+#define BCM2835_BSC_FIFO_SIZE   			16 ///< BSC FIFO size
 
+/**
+ * @ingroup I2C
+ *
+ * Start I2C operations.
+ * Forces BSC1 pins P1-3 (SDA), P1-5 (SCL)
+ * alternate function ALT0, which enables those pins for I2C interface.
+ * Default the I2C speed to 100 kHz.
+ */
 void bcm2835_i2c_begin(void) {
-	bcm2835_gpio_fsel(RPI_V2_GPIO_P1_03, BCM2835_GPIO_FSEL_ALT0); // SDA
-	bcm2835_gpio_fsel(RPI_V2_GPIO_P1_05, BCM2835_GPIO_FSEL_ALT0); // SCL
+	uint32_t value;
+	/* BSC1 is on GPIO 2 & 3 */
+
+	value = BCM2835_GPIO->GPFSEL0;
+	value &= ~(7 << 6);
+	value |= BCM2835_GPIO_FSEL_INPT << 6;	// Pin 2, GPIO Input
+	value &= ~(7 << 9);
+	value |= BCM2835_GPIO_FSEL_INPT << 9;	// Pin 3, GPIO Input
+	BCM2835_GPIO->GPFSEL0 = value;
+
+	value = BCM2835_GPIO->GPFSEL0;
+	value &= ~(7 << 6);
+	value |= BCM2835_GPIO_FSEL_ALT0 << 6;	// Pin 2, Set SDA pin to alternate function 0 for I2C
+	value &= ~(7 << 9);
+	value |= BCM2835_GPIO_FSEL_ALT0 << 9;	// Pin 3, Set SCL pin to alternate function 0 for I2C
+	BCM2835_GPIO->GPFSEL0 = value;
+
+	BCM2835_BSC1->DIV = BCM2835_I2C_CLOCK_DIVIDER_2500; // Default the I2C speed to 100 kHz
 }
 
+/**
+ * @ingroup I2C
+ *
+ * End I2C operations.
+ * BSC1 pins pins P1-3 (SDA), P1-5 (SCL)
+ * are returned to their default INPUT behavior.
+ */
+ */
 void bcm2835_i2c_end(void) {
-	bcm2835_gpio_fsel(RPI_V2_GPIO_P1_03, BCM2835_GPIO_FSEL_INPT); // SDA
-	bcm2835_gpio_fsel(RPI_V2_GPIO_P1_05, BCM2835_GPIO_FSEL_INPT); // SCL
+	uint32_t value;
+	/* BSC1 is on GPIO 2 & 3 */
+
+	value = BCM2835_GPIO->GPFSEL0;
+	value &= ~(7 << 6);
+	value |= BCM2835_GPIO_FSEL_INPT << 6;	// Pin 2, GPIO Input
+	value &= ~(7 << 9);
+	value |= BCM2835_GPIO_FSEL_INPT << 9;	// Pin 3, GPIO Input
+	BCM2835_GPIO->GPFSEL0 = value;
 }
 
+/**
+ * @ingroup I2C
+ *
+ * Sets the I2C slave address
+ * @param addr buffer for read.
+ */
 void bcm2835_i2c_setSlaveAddress(const uint8_t addr) {
 	BCM2835_BSC1 ->A = addr;
 }
 
+/**
+ * @ingroup I2C
+ *
+ * Sets the I2C clock divider and therefore the I2C clock speed.
+ * @param divider The desired I2C clock divider, one of \ref bcm2835I2CClockDivider
+ */
 void bcm2835_i2c_setClockDivider(const uint16_t divider) {
 	BCM2835_BSC1 ->DIV = divider;
 }
 
+/**
+ * @ingroup I2C
+ *
+ * Write a data to I2C device.
+ * @param buf buffer to write
+ * @param len size of the buffer
+ * @return ::BCM2835_I2C_REASON_OK if successful; ::BCM2835_I2C_REASON_ERROR_* otherwise. Reference \ref bcm2835I2CReasonCodes
+ */
 uint8_t bcm2835_i2c_write(const char * buf, const uint32_t len) {
 	uint32_t remaining = len;
 	uint32_t i = 0;
@@ -120,6 +179,14 @@ uint8_t bcm2835_i2c_write(const char * buf, const uint32_t len) {
     return reason;
 }
 
+/**
+ * @ingroup I2C
+ *
+ * Read data from I2C device.
+ * @param buf buffer for read
+ * @param len size of the buffer
+ * @return ::BCM2835_I2C_REASON_OK if successful; ::BCM2835_I2C_REASON_ERROR_* otherwise. Reference \ref bcm2835I2CReasonCodes
+ */
 uint8_t bcm2835_i2c_read(char* buf, const uint32_t len) {
 	uint32_t remaining = len;
 	uint32_t i = 0;
