@@ -1,3 +1,7 @@
+/**
+ * @file bcm2835_uart.h
+ *
+ */
 /* Copyright (C) 2014 by Arjan van Vught <pm @ http://www.raspberrypi.org/forum/>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,58 +23,12 @@
  * THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#ifndef BCM2835_UART_H_
+#define BCM2835_UART_H_
 
-#include <bcm2835.h>
-#include <sys_time.h>
+#include <stdint.h>
 
-void __attribute__((interrupt("IRQ"))) c_irq_handler(void) {}
-void __attribute__((interrupt("FIQ"))) c_fiq_handler(void) {}
+extern void bcm2835_uart_begin(void);
+extern void bcm2835_uart_send(const uint32_t c);
 
-#ifdef ENABLE_FRAMEBUFFER
-extern void bcm2835_console_begin(void);
-#else
-#include <bcm2835_uart.h>
-#endif
-
-extern unsigned int heap_end;
-
-int notmain ( unsigned int earlypc )
-{
-	sys_time_init();
-
-	bcm2835_uart_begin();
-
-#ifdef ENABLE_FRAMEBUFFER
-	bcm2835_console_begin();
-#endif
-
-    printf("Hello World!\n");
-
-	time_t ltime = 0;
-	struct tm *local_time = NULL;
-
-	ltime = sys_time(NULL);
-    local_time = localtime(&ltime);
-    printf("%.2d:%.2d:%.2d\n", local_time->tm_hour, local_time->tm_min, local_time->tm_sec);
-
-	int alloc_size = 1;
-	void *ptr = NULL;
-
-    do {
-		ptr = realloc(ptr, alloc_size);
-		if (ptr == NULL ) {
-			puts("Out of memory!\nProgram halting.");
-			for (;;)
-				;
-		} else {
-			printf("new alloc of %d bytes at address 0x%X\n", alloc_size, (unsigned int) ptr);
-			alloc_size <<= 1;
-			printf("Heap end = 0x%X\n", (unsigned int) heap_end);
-		}
-	} while (1);
-
-    return 0;
-}
+#endif /* BCM2835_UART_H_ */

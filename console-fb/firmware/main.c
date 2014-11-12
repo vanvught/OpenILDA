@@ -30,6 +30,8 @@ void __attribute__((interrupt("FIQ"))) c_fiq_handler(void) {}
 
 #ifdef ENABLE_FRAMEBUFFER
 extern void fb_init(void);
+#else
+#include <bcm2835_uart.h>
 #endif
 
 extern void cpu_info(void);

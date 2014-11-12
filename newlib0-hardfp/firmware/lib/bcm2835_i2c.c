@@ -28,28 +28,6 @@
 #include "bcm2835_gpio.h"
 #include "bcm2835_i2c.h"
 
-#define BCM2835_BSC_C_I2CEN 		0x00008000 ///< I2C Enable, 0 = disabled, 1 = enabled
-#define BCM2835_BSC_C_INTR 			0x00000400 ///< Interrupt on RX
-#define BCM2835_BSC_C_INTT 			0x00000200 ///< Interrupt on TX
-#define BCM2835_BSC_C_INTD 			0x00000100 ///< Interrupt on DONE
-#define BCM2835_BSC_C_ST 			0x00000080 ///< Start transfer, 1 = Start a new transfer
-#define BCM2835_BSC_C_CLEAR_1 		0x00000020 ///< Clear FIFO Clear
-#define BCM2835_BSC_C_CLEAR_2 		0x00000010 ///< Clear FIFO Clear
-#define BCM2835_BSC_C_READ 			0x00000001 ///<	Read transfer
-
-#define BCM2835_BSC_S_CLKT 			0x00000200 ///< Clock stretch timeout
-#define BCM2835_BSC_S_ERR 			0x00000100 ///< ACK error
-#define BCM2835_BSC_S_RXF 			0x00000080 ///< RXF FIFO full, 0 = FIFO is not full, 1 = FIFO is full
-#define BCM2835_BSC_S_TXE 			0x00000040 ///< TXE FIFO full, 0 = FIFO is not full, 1 = FIFO is full
-#define BCM2835_BSC_S_RXD 			0x00000020 ///< RXD FIFO contains data
-#define BCM2835_BSC_S_TXD 			0x00000010 ///< TXD FIFO can accept data
-#define BCM2835_BSC_S_RXR 			0x00000008 ///< RXR FIFO needs reading (full)
-#define BCM2835_BSC_S_TXW 			0x00000004 ///< TXW FIFO needs writing (full)
-#define BCM2835_BSC_S_DONE 			0x00000002 ///< Transfer DONE
-#define BCM2835_BSC_S_TA 			0x00000001 ///< Transfer Active
-
-#define BCM2835_BSC_FIFO_SIZE   			16 ///< BSC FIFO size
-
 /**
  * @ingroup I2C
  *
@@ -85,7 +63,6 @@ void bcm2835_i2c_begin(void) {
  * End I2C operations.
  * BSC1 pins pins P1-3 (SDA), P1-5 (SCL)
  * are returned to their default INPUT behavior.
- */
  */
 void bcm2835_i2c_end(void) {
 	uint32_t value;
