@@ -1,3 +1,7 @@
+/**
+ * @file bcm2835_gpio.c
+ *
+ */
 /* Copyright (C) 2014 by Arjan van Vught <pm @ http://www.raspberrypi.org/forum/>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,47 +23,46 @@
  * THE SOFTWARE.
  */
 
-#include <stdint.h>
-#include <time.h>
+#include "bcm2835.h"
+#include "bcm2835_gpio.h"
 
-#include <bcm2835.h>
-#include <mcp7941x.h>
-
-volatile uint64_t st_startup_micros = 0;
-volatile uint32_t rtc_startup_seconds = 0;
-
-// Read time from RTC MCP7941x and set EPOCH time in seconds
-void sys_time_init(void) {
-	st_startup_micros = bcm2835_st_read();
-	struct rtc_time tm_rtc;
-	struct tm tmbuf;
-
-	mcp7941x_start(0x00);
-	mcp7941x_get_date_time(&tm_rtc);
-
-	tmbuf.tm_hour = tm_rtc.tm_hour;
-	tmbuf.tm_min = tm_rtc.tm_min;
-	tmbuf.tm_sec = tm_rtc.tm_sec;
-
-	tmbuf.tm_mday = tm_rtc.tm_mday;
-	tmbuf.tm_wday = tm_rtc.tm_wday;
-	tmbuf.tm_mon = tm_rtc.tm_mon;
-	tmbuf.tm_year = tm_rtc.tm_year;
-
-	tmbuf.tm_isdst = 0; // 0 (DST not in effect, just take RTC time)
-
-	rtc_startup_seconds = mktime(&tmbuf);
+/**
+ *
+ * @param pin
+ * @return
+ */
+uint8_t bcm2835_gpio_lev(const uint8_t pin) {
+	uint32_t value = BCM2835_GPIO ->GPLEV0;
+	return (value & (1 << pin)) ? HIGH : LOW;
 }
 
-time_t sys_time(time_t *__timer) {
-	// http://www.hackersdelight.org/magic.htm
-	// http://stackoverflow.com/questions/1269994/nanoseconds-to-milliseconds-fast-division-by-1000000
-	time_t elapsed = (unsigned long long)((bcm2835_st_read() - st_startup_micros) * 0x431bde83) >> (0x12 + 32);
+/**
+ *
+ * @param pud
+ */
+void bcm2835_gpio_pud(const uint8_t pud) {
+	BCM2835_GPIO ->GPPUD = pud;
+}
 
-	elapsed = elapsed + rtc_startup_seconds;
+/**
+ *
+ * @param pin
+ * @param on
+ */
+void bcm2835_gpio_pudclk(const uint8_t pin, const uint8_t on) {
+	BCM2835_GPIO ->GPPUDCLK0 = (on ? 1 : 0) << pin;
+}
 
-	if (__timer != NULL )
-		*__timer = elapsed;
-
-	return elapsed;
+/**
+ *
+ * @param pin
+ * @param pud
+ */
+void bcm2835_gpio_set_pud(const uint8_t pin, const uint8_t pud) {
+	bcm2835_gpio_pud(pud);
+	udelay(10);
+	bcm2835_gpio_pudclk(pin, 1);
+	udelay(10);
+	bcm2835_gpio_pud(BCM2835_GPIO_PUD_OFF);
+	bcm2835_gpio_pudclk(pin, 0);
 }

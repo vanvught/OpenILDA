@@ -1,5 +1,5 @@
 /**
- * @file bcm2835.c
+ * @file bcm2835_gpio_fsel.S
  *
  */
 /* Copyright (C) 2014 by Arjan van Vught <pm @ http://www.raspberrypi.org/forum/>
@@ -24,26 +24,34 @@
  */
 
 #include "bcm2835.h"
-#include "bcm2835_gpio.h"
 
-uint8_t inline bcm2835_gpio_lev(const uint8_t pin) {
-	uint32_t value = BCM2835_GPIO ->GPLEV0;
-	return (value & (1 << pin)) ? HIGH : LOW;
-}
+.macro FUNC name
+.text
+.code 32
+.global \name
+\name:
+.endm
 
-inline void bcm2835_gpio_pud(const uint8_t pud) {
-	BCM2835_GPIO ->GPPUD = pud;
-}
+.cpu arm1176jzf-s
+.fpu vfp
 
-inline void bcm2835_gpio_pudclk(const uint8_t pin, const uint8_t on) {
-	BCM2835_GPIO ->GPPUDCLK0 = (on ? 1 : 0) << pin;
-}
-
-inline void bcm2835_gpio_set_pud(const uint8_t pin, const uint8_t pud) {
-	bcm2835_gpio_pud(pud);
-	udelay(10);
-	bcm2835_gpio_pudclk(pin, 1);
-	udelay(10);
-	bcm2835_gpio_pud(BCM2835_GPIO_PUD_OFF);
-	bcm2835_gpio_pudclk(pin, 0);
-}
+FUNC bcm2835_gpio_fsel
+@ void bcm2835_gpio_fsel(uint8_t pin, uint8_t mode)
+push {lr}
+mov r3, r0
+ldr r0, =BCM2835_GPIO_BASE
+1:							@ Baking Pi Lesson 3 OK03
+	cmp r3,#9				@ http://www.cl.cam.ac.uk/freshers/raspberrypi/tutorials/os/ok03.html
+	subhi r3,#10
+	addhi r0,#4
+	bhi 1b					
+add r3, r3, lsl #1			
+mov r2, #7
+lsl r2, r3
+lsl r1, r3
+ldr	r3, [r0]				
+and	r1, r2, r1
+bic	r3, r3, r2
+orr	r3, r3, r1
+str	r3, [r0]
+pop {pc}

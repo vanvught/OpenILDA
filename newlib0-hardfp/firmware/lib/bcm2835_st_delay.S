@@ -1,3 +1,7 @@
+/**
+ * @file bcm2835_st_delay.S
+ *
+ */
 /* Copyright (C) 2014 by Arjan van Vught <pm @ http://www.raspberrypi.org/forum/>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,14 +24,26 @@
  */
 
 #include "bcm2835.h"
-#include "bcm2835_gpio.h"
 
-#define PIN		16
+.macro FUNC name
+.text
+.code 32
+.global \name
+\name:
+.endm
 
-void led_set(const int state) {
-	bcm2835_gpio_write(PIN, !state);
-}
+.cpu arm1176jzf-s
+.fpu vfp
 
-void led_init(void) {
-	bcm2835_gpio_fsel(PIN, BCM2835_GPIO_FSEL_OUTP);
-}
+FUNC bcm2835_st_delay
+@ void bcm2835_st_delay(uint64_t offset_micros, uint64_t micros)
+push {r3, r4, r5, lr}
+adds r4, r2, r0
+adc	r5, r3, r1
+ldr r2, =BCM2835_ST_BASE
+2:
+	ldrd r0,r1,[r2,#4]
+	cmp	r1, r5
+	cmpeq r0, r4
+	bcc	2b
+pop	{r3, r4, r5, pc}
