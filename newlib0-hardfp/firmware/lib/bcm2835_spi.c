@@ -169,21 +169,26 @@ inline void bcm2835_spi_transfernb(char* tbuf, char* rbuf, const uint32_t len) {
     // Set TA = 1
 	BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, BCM2835_SPI0_CS_TA, BCM2835_SPI0_CS_TA);
 
-    uint32_t i;
+    uint32_t i; //TODO use FIFO
     for (i = 0; i < len; i++)
     {
 		// Maybe wait for TXD
 		while (!(BCM2835_SPI0->CS & BCM2835_SPI0_CS_TXD))
 			;
 
-		BCM2835_SPI0->FIFO = tbuf[i];
+		// Write a byte
+		if (tbuf)
+			BCM2835_SPI0->FIFO = tbuf[i];
+		else
+			BCM2835_SPI0->FIFO = 0;
 
 		// Wait for RXD
 		while (!(BCM2835_SPI0->CS & BCM2835_SPI0_CS_RXD))
 			;
 
 		// then read the data byte
-		rbuf[i] = BCM2835_SPI0->FIFO;
+		if (rbuf)
+			rbuf[i] = BCM2835_SPI0->FIFO;
     }
     // Wait for DONE to be set
     while (!(BCM2835_SPI0->CS & BCM2835_SPI0_CS_DONE))
@@ -209,7 +214,7 @@ void bcm2835_spi_transfern(char* buf, const uint32_t len) {
  * @param tbuf
  * @param len
  */
-void bcm2835_spi_writenb(char* tbuf, const uint32_t len) {
+void bcm2835_spi_writenb(const char* tbuf, const uint32_t len) {
     // Clear TX and RX fifos
 	BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, BCM2835_SPI0_CS_CLEAR, BCM2835_SPI0_CS_CLEAR);
 
@@ -223,8 +228,9 @@ void bcm2835_spi_writenb(char* tbuf, const uint32_t len) {
 		while (!(BCM2835_SPI0->CS & BCM2835_SPI0_CS_TXD))
 			;
 
-		// Write to FIFO, no barrier
-		BCM2835_SPI0->FIFO =  tbuf[i];
+		// Write to FIFO
+		BCM2835_SPI0->FIFO = tbuf[i];
+
 	}
 
     // Wait for DONE to be set
@@ -234,28 +240,3 @@ void bcm2835_spi_writenb(char* tbuf, const uint32_t len) {
     // Set TA = 0, and also set the barrier
 	BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, 0, BCM2835_SPI0_CS_TA);
 }
-
-#if 0// moved to bcm2835_asm.S
-inline void bcm2835_spi_write(const uint16_t data) {
-    // Clear TX and RX fifos
-	BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, BCM2835_SPI0_CS_CLEAR, BCM2835_SPI0_CS_CLEAR);
-
-    // Set TA = 1
-	BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, BCM2835_SPI0_CS_TA, BCM2835_SPI0_CS_TA);
-
-	// Maybe wait for TXD
-    while (!(BCM2835_SPI0->CS & BCM2835_SPI0_CS_TXD))
-		;
-
-	// Write to FIFO
-    BCM2835_SPI0->FIFO = data >> 8;
-    BCM2835_SPI0->FIFO = data & 0x0FF;
-
-    // Wait for DONE to be set
-	while (!(BCM2835_SPI0->CS & BCM2835_SPI0_CS_DONE))
-    	;
-
-    // Set TA = 0, and also set the barrier
-	BCM2835_PERI_SET_BITS(BCM2835_SPI0->CS, 0, BCM2835_SPI0_CS_TA);
-}
-#endif
