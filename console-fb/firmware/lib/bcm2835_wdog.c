@@ -28,6 +28,8 @@
 #include "bcm2835_wdog.h"
 
 /**
+ * @ingroup watchdog
+ *
  * @param timeout
  */
 inline static void bcm2835_wdog_start(const uint32_t timeout) {
@@ -44,9 +46,6 @@ void watchdog_stop(void) {
 	BCM2835_PM_WDOG->RSTC = BCM2835_PM_WDOG_PASSWORD | BCM2835_PM_WDOG_RSTC_RESET;
 }
 
-/**
- *
- */
 #define WDOG_TIMEOUT 0x0FFFF
 
 /**
