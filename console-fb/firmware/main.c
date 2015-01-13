@@ -25,17 +25,18 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <bcm2835.h>
-#include <bcm2835_vc.h>
-#include <bcm2835_wdog.h>
+#include "bcm2835.h"
+#include "bcm2835_vc.h"
+#include "bcm2835_wdog.h"
 
 void __attribute__((interrupt("IRQ"))) c_irq_handler(void) {}
 void __attribute__((interrupt("FIQ"))) c_fiq_handler(void) {}
 
 #ifdef ENABLE_FRAMEBUFFER
-extern void fb_init(void);
+#include "fb.h"
+#include "console.h"
 #else
-#include <bcm2835_uart.h>
+#include "bcm2835_uart.h"
 #endif
 
 extern void cpu_info(void);
@@ -56,49 +57,38 @@ int notmain(uint32_t boot_dev, uint32_t arm_m_type, uint32_t atags)
 #else
 	bcm2835_uart_begin();
 #endif
-    printf("Compiled on %s at %s\n\n", __DATE__, __TIME__);
 
     uint64_t ts = bcm2835_st_read();
 
+    printf("Compiled on %s at %s\n\n", __DATE__, __TIME__);
     mem_info();
-
     printf("\n%ld usec elapsed\n\n", (long int)(bcm2835_st_read() - ts));
-
 	cpu_info();
-
 	printf("\n");
-
 	printf("EMMC Clock rate (Hz): %ld\n", bcm2835_vc_get_clock_rate(BCM2835_VC_CLOCK_ID_EMMC));
 	printf("UART Clock rate (Hz): %ld\n", bcm2835_vc_get_clock_rate(BCM2835_VC_CLOCK_ID_UART));
 	printf("ARM  Clock rate (Hz): %ld\n", bcm2835_vc_get_clock_rate(BCM2835_VC_CLOCK_ID_ARM));
 	printf("CORE Clock rate (Hz): %ld\n", bcm2835_vc_get_clock_rate(BCM2835_VC_CLOCK_ID_CORE));
-
 	printf("\n");
-
 	printf("SD Card power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_SDCARD));
 	printf("UART0   power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_UART0));
 	printf("UART1   power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_UART1));
 	printf("USB HCD power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_USBHCD));
-
 	printf("\n");
-
 	printf("Set SD Card power state OFF: %ld\n", bcm2835_vc_set_power_state(BCM2835_VC_POWER_ID_SDCARD, BCM2835_VC_SET_POWER_STATE_OFF_NO_WAIT));
 	printf("Set UART Clock rate 4000000 Hz: %ld\n", bcm2835_vc_set_clock_rate(BCM2835_VC_CLOCK_ID_UART, 4000000));
-
 	printf("\n");
-
 	printf("SD Card power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_SDCARD));
 	printf("UART Clock rate (Hz): %ld\n", bcm2835_vc_get_clock_rate(BCM2835_VC_CLOCK_ID_UART));
-
 	printf("\n");
-
 	printf("Set SD Card power state ON: %ld\n", bcm2835_vc_set_power_state(BCM2835_VC_POWER_ID_SDCARD, BCM2835_VC_SET_POWER_STATE_ON_WAIT));
-
 	printf("\n");
-
 	printf("SD Card power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_SDCARD));
+	printf("\n");
+	printf("\nProgram ending...\n");
 
-    printf("\nProgram end\n");
+    int i = 5;
+    while(i--) udelay(1000000);
 
     watchdog_init();
 
