@@ -1,8 +1,10 @@
 /**
- * @file hardware.h
+ * @file sdhci.h
  *
  */
-/* Copyright (C) 2014 by Arjan van Vught <pm @ http://www.raspberrypi.org/forum/>
+/* Copyright (C) 2015 by Arjan van Vught <pm @ http://www.raspberrypi.org/forum/>
+ * Based on
+ * https://github.com/jncronin/rpi-boot/blob/master/emmc.c
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,15 +25,16 @@
  * THE SOFTWARE.
  */
 
-#ifndef HARDWARE_H_
-#define HARDWARE_H_
+#ifndef SDHCI_H_
+#define SDHCI_H_
 
-#include <stdint.h>
+#define SDHCI_DIVIDER_SHIFT		8
+#define SDHCI_DIVIDER_HI_SHIFT	6
+#define SDHCI_DIV_MASK			0xFF
+#define SDHCI_DIV_MASK_LEN		8
+#define SDHCI_DIV_HI_MASK		0x300
 
-void __disable_fiq(void);
-void __enable_fiq(void);
+#define SDHCI_MAX_DIV_SPEC_200	256
+#define SDHCI_MAX_DIV_SPEC_300	2046
 
-void __disable_irq(void);
-void __enable_irq(void);
-
-#endif /* HARDWARE_H_ */
+#endif /* SDHCI_H_ */

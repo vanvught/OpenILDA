@@ -4,17 +4,23 @@ AOPS = --warn --fatal-warnings  -mcpu=arm1176jzf-s -march=armv6 -mfpu=vfp
 
 COPS = -Wall -O3 -nostartfiles -ffreestanding -mcpu=arm1176jzf-s -mtune=arm1176jzf-s -mhard-float 
 COPS += -DBARE_METAL
-#COPS += -DENABLE_FRAMEBUFFER
+COPS += -DENABLE_FRAMEBUFFER
 #COPS += -DBW_I2C_UI
+#COPS += -DDEBUG
+#COPS += -DDEBUG_ANALYZER
+#COPS += -I"./common/include"
 COPS += -I"./include"
-COPS += -I"./firmware/include"
 COPS += -I"../ff9b/src"
-COPS += -I"../fb" -I"../fb/include"
+COPS += -I"../fb/include"
 COPS += -I"../bob-baremetal/include"
+COPS += -I"../bcm2835-baremetal/include"
+COPS += -I"../hal-baremetal/include"
 
-LIB = -L /opt/gnuarm-hardfp/arm-none-eabi/lib/ -L/opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.7.3
+LIB = -L /opt/gnuarm-hardfp/arm-none-eabi/lib/ -L/opt/gnuarm-hardfp/lib/gcc/arm-none-eabi/4.9.2
 LIB += -L"../fb/lib"
 LIB += -L"../bob-baremetal/lib"
+LIB += -L"../bcm2835-baremetal/lib"
+LIB += -L"../hal-baremetal/lib"
 LIB += -L"../emmc/lib" 
 LIB += -L"../ff9b/lib"
 
@@ -62,8 +68,8 @@ $(BUILD)%.o: $(SOURCE)firmware/lib/%.c
 $(BUILD)%.o: $(SOURCE)lib/%.c
 	$(ARMGNU)-gcc $(COPS) $< -c -o $@
 
-$(BUILD)main.elf : Makefile $(LINKER) $(OBJECTS)  ../bob-baremetal/lib/libbob.a ../fb/lib/libfb.a ../emmc/lib/libemmc.a ../ff9b/lib/libff9b.a
-	$(ARMGNU)-ld $(OBJECTS) -Map $(MAP) -T $(LINKER) -o $(BUILD)main.elf $(LIB) -lfb -lff9b -lemmc -lbob -lc -lgcc
+$(BUILD)main.elf : Makefile $(LINKER) $(OBJECTS) ../bcm2835-baremetal/lib/libbcm2835.a ../hal-baremetal/lib/libhal.a ../bob-baremetal/lib/libbob.a ../fb/lib/libfb.a ../emmc/lib/libemmc.a ../ff9b/lib/libff9b.a
+	$(ARMGNU)-ld $(OBJECTS) -Map $(MAP) -T $(LINKER) -o $(BUILD)main.elf $(LIB) -lfb -lhal -lff9b -lemmc -lbob -lbcm2835 -lc -lgcc
 	$(ARMGNU)-objdump -D $(BUILD)main.elf > $(LIST)
 
 $(TARGET) : $(BUILD)main.elf

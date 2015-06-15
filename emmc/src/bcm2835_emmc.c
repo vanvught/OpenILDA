@@ -27,15 +27,12 @@
 
 #include <string.h>
 
-extern int printf(const char *format, ...);
-
 #include "timer.h"
-
 #include "bcm2835.h"
 #include "bcm2835_vc.h"
 #include "bcm2835_emmc.h"
-
 #include "sd.h"
+#include "sdhci.h"
 
 extern uint32_t sd_commands[];
 
@@ -43,11 +40,12 @@ extern uint32_t sd_commands[];
 #define SDMA_BUFFER     0x6000
 #define SDMA_BUFFER_PA  (SDMA_BUFFER + 0xC0000000)
 
-#define EMMC_DEBUG
+//#define EMMC_DEBUG
 
 /* Tracing macros */
 #ifdef EMMC_DEBUG
 #define EMMC_TRACE(...)     {										\
+		extern int printf(const char *format, ...);
         printf("EMMC %s:%4d[%s] : ", __FILE__, __LINE__, __func__);	\
         printf(__VA_ARGS__);										\
         printf("\n"); }
@@ -81,11 +79,13 @@ static uint32_t bcm2835_emmc_sdcard_inserted(void)
 #if 0
 	TIMEOUT_WAIT(BCM2835_EMMC->STATUS & BCM2835_EMMC_STATUS_CARD_PRESENT, 500000);
 #endif
+#ifdef EMMC_DEBUG
 	uint32_t status_reg = BCM2835_EMMC->STATUS;
+#endif
 #if 0
 	if((status_reg & BCM2835_EMMC_STATUS_CARD_PRESENT) == 0)
 	{
-		printf("EMMC: no card inserted\n");
+		EMMC_TRACE("EMMC: no card inserted\n");
 		return -1;
 	}
 #endif
@@ -101,9 +101,13 @@ static uint32_t bcm2835_emmc_sdcard_inserted(void)
 static uint32_t bcm2835_emmc_get_version(void)
 {
 	uint32_t ver = BCM2835_EMMC->SLOTISR_VER;
+#ifdef EMMC_DEBUG
 	uint32_t vendor = ver >> 24;
+#endif
 	uint32_t sdversion = (ver >> 16) & 0xff;
+#ifdef EMMC_DEBUG
 	uint32_t slot_status = ver & 0xff;
+#endif
 	EMMC_TRACE("vendor %x, sdversion %x, slot_status %x", vendor, sdversion, slot_status);
 
 	return sdversion;
@@ -125,7 +129,7 @@ static uint32_t bcm2835_emmc_do_reset(void)
 
 	if((BCM2835_EMMC->CONTROL1 & (0x7 << 24)) != 0)
 	{
-		printf("EMMC: controller did not reset properly\n");
+		EMMC_TRACE("EMMC: controller did not reset properly\n");
 		return -1;
 	}
 
@@ -149,7 +153,7 @@ int bcm2835_emmc_reset_cmd(void)
 	TIMEOUT_WAIT((BCM2835_EMMC->CONTROL1 & BCM2835_EMMC_CONTROL1_RESET_CMD) == 0, 1000000);
 
 	if ((BCM2835_EMMC ->CONTROL1 & BCM2835_EMMC_CONTROL1_RESET_CMD )!= 0){
-		printf("EMMC: CMD line did not reset properly\n");
+		EMMC_TRACE("EMMC: CMD line did not reset properly\n");
 		return -1;
 	}
 
@@ -173,7 +177,7 @@ int bcm2835_emmc_reset_dat(void)
 	TIMEOUT_WAIT((BCM2835_EMMC->CONTROL1 & BCM2835_EMMC_CONTROL1_RESET_DATA) == 0, 1000000);
 
 	if ((BCM2835_EMMC ->CONTROL1 & BCM2835_EMMC_CONTROL1_RESET_DATA )!= 0){
-		printf("EMMC: DAT line did not reset properly\n");
+		EMMC_TRACE("EMMC: DAT line did not reset properly\n");
 		return -1;
 	}
 
@@ -191,7 +195,9 @@ int bcm2835_emmc_reset_dat(void)
 static uint32_t bcm2835_emmc_get_clock_divider(uint32_t base_clock, uint32_t target_clock)
 {
 	int divisor = 0;
+#ifdef EMMC_DEBUG
 	int real_div = divisor;
+#endif
 	uint32_t ret = 0;
 
 	if (base_clock <= target_clock)
@@ -205,13 +211,18 @@ static uint32_t bcm2835_emmc_get_clock_divider(uint32_t base_clock, uint32_t tar
 		}
 	}
 
+#ifdef EMMC_DEBUG
 	real_div = divisor;
+#endif
+
 	divisor >>= 1;
 
+#ifdef EMMC_DEBUG
 	int actual_clock;
 
 	if (real_div)
 		actual_clock = base_clock / real_div;
+#endif
 
 	ret |= (divisor & SDHCI_DIV_MASK) << SDHCI_DIVIDER_SHIFT;
 	ret |= ((divisor & SDHCI_DIV_HI_MASK) >> SDHCI_DIV_MASK_LEN) << SDHCI_DIVIDER_HI_SHIFT;
@@ -279,7 +290,7 @@ static uint32_t bcm2825_emmc_set_id_clock(void)
 
 	if(f_id == SD_GET_CLOCK_DIVIDER_FAIL)
 	{
-		printf("EMMC: unable to get a valid clock divider for ID frequency\n");
+		EMMC_TRACE("EMMC: unable to get a valid clock divider for ID frequency\n");
 		return -1;
 	}
 
@@ -291,7 +302,7 @@ static uint32_t bcm2825_emmc_set_id_clock(void)
 
 	if ((BCM2835_EMMC->CONTROL1 & BCM2835_EMMC_CONTROL1_CLOCK_INT_STABLE ) == 0)
 	{
-		printf("EMMC: controller's clock did not stabilize within 1 second\n");
+		EMMC_TRACE("EMMC: controller's clock did not stabilize within 1 second\n");
 		return -1;
 	}
 
@@ -322,7 +333,7 @@ static int emmc_power_cycle()
 		int32_t ret = bcm2835_vc_set_power_state(BCM2835_VC_POWER_ID_SDCARD, BCM2835_VC_SET_POWER_STATE_OFF_WAIT);
 
 		if (ret < 0) {
-			printf("EMMC: %s : bcm2835_vc_set_power_state() did not return a valid response.\n", __func__);
+			EMMC_TRACE("EMMC: %s : bcm2835_vc_set_power_state() did not return a valid response.\n", __func__);
 			return -1;
 		}
 
@@ -337,7 +348,7 @@ static int emmc_power_cycle()
 	int32_t ret = bcm2835_vc_set_power_state(BCM2835_VC_POWER_ID_SDCARD, BCM2835_VC_SET_POWER_STATE_ON_WAIT);
 
 	if (ret < 0) {
-		printf("EMMC: %s : bcm2835_vc_set_power_state() did not return a valid response.\n", __func__);
+		EMMC_TRACE("EMMC: %s : bcm2835_vc_set_power_state() did not return a valid response.\n", __func__);
 		return -1;
 	}
 
@@ -359,7 +370,7 @@ uint32_t bcm2825_emmc_init(void)
 {
 	if(emmc_power_cycle() != 0)
 	{
-		printf("EMMC: BCM2835 controller did not power cycle successfully\n");
+		EMMC_TRACE("EMMC: BCM2835 controller did not power cycle successfully\n");
 		return -1;
 	}
 
@@ -367,13 +378,13 @@ uint32_t bcm2825_emmc_init(void)
 
 	if(bcm2835_emmc_get_version() < 2)
 	{
-		printf("EMMC: only SDHCI versions >= 3.0 are supported\n");
+		EMMC_TRACE("EMMC: only SDHCI versions >= 3.0 are supported\n");
 		return -1;
 	}
 
 	if(bcm2835_emmc_do_reset() != 0)
 	{
-		printf("EMMC: controller did not reset properly\n");
+		EMMC_TRACE("EMMC: controller did not reset properly\n");
 		return -1;
 	}
 
@@ -381,13 +392,13 @@ uint32_t bcm2825_emmc_init(void)
 
 	if(bcm2835_emmc_sdcard_inserted() != 0)
 	{
-		printf("EMMC: no card inserted\n");
+		EMMC_TRACE("EMMC: no card inserted\n");
 		return -1;
 	}
 
 	if (bcm2825_emmc_set_id_clock() != 0)
 	{
-		printf("EMMC: controller did not set low clock rate\n");
+		EMMC_TRACE("EMMC: controller did not set low clock rate\n");
 		return -1;
 	}
 
@@ -447,7 +458,7 @@ void bcm2835_emmc_issue_command(struct emmc_block_dev *dev, uint32_t cmd_reg, ui
     //  host SDMA buffer boundary = 4 kiB
     if(dev->blocks_to_transfer > 0xffff)
     {
-        printf("SD: blocks_to_transfer too great (%i)\n", dev->blocks_to_transfer);
+    	EMMC_TRACE("SD: blocks_to_transfer too great (%i)\n", dev->blocks_to_transfer);
         dev->last_cmd_success = 0;
         return;
     }

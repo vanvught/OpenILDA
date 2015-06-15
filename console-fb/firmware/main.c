@@ -58,11 +58,8 @@ int notmain(uint32_t boot_dev, uint32_t arm_m_type, uint32_t atags)
 	bcm2835_uart_begin();
 #endif
 
-    uint64_t ts = bcm2835_st_read();
-
     printf("Compiled on %s at %s\n\n", __DATE__, __TIME__);
     mem_info();
-    printf("\n%ld usec elapsed\n\n", (long int)(bcm2835_st_read() - ts));
 	cpu_info();
 	printf("\n");
 	printf("EMMC Clock rate (Hz): %ld\n", bcm2835_vc_get_clock_rate(BCM2835_VC_CLOCK_ID_EMMC));
@@ -70,27 +67,15 @@ int notmain(uint32_t boot_dev, uint32_t arm_m_type, uint32_t atags)
 	printf("ARM  Clock rate (Hz): %ld\n", bcm2835_vc_get_clock_rate(BCM2835_VC_CLOCK_ID_ARM));
 	printf("CORE Clock rate (Hz): %ld\n", bcm2835_vc_get_clock_rate(BCM2835_VC_CLOCK_ID_CORE));
 	printf("\n");
-	printf("SD Card power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_SDCARD));
-	printf("UART0   power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_UART0));
-	printf("UART1   power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_UART1));
-	printf("USB HCD power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_USBHCD));
-	printf("\n");
-	printf("Set SD Card power state OFF: %ld\n", bcm2835_vc_set_power_state(BCM2835_VC_POWER_ID_SDCARD, BCM2835_VC_SET_POWER_STATE_OFF_NO_WAIT));
 	printf("Set UART Clock rate 4000000 Hz: %ld\n", bcm2835_vc_set_clock_rate(BCM2835_VC_CLOCK_ID_UART, 4000000));
-	printf("\n");
-	printf("SD Card power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_SDCARD));
 	printf("UART Clock rate (Hz): %ld\n", bcm2835_vc_get_clock_rate(BCM2835_VC_CLOCK_ID_UART));
 	printf("\n");
-	printf("Set SD Card power state ON: %ld\n", bcm2835_vc_set_power_state(BCM2835_VC_POWER_ID_SDCARD, BCM2835_VC_SET_POWER_STATE_ON_WAIT));
-	printf("\n");
-	printf("SD Card power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_SDCARD));
-	printf("\n");
+
+	uint8_t mac_address[6];
+	bcm2835_vc_get_board_mac_address(mac_address);
+	printf("MAC address : %.2X:%.2X:%.2X:%.2X:%.2X:%.2X\n", mac_address[0],mac_address[1],mac_address[2],mac_address[3],mac_address[4],mac_address[5]);
+
 	printf("\nProgram ending...\n");
-
-    int i = 5;
-    while(i--) udelay(1000000);
-
-    watchdog_init();
 
     return 0;
 }
