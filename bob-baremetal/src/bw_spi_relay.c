@@ -63,8 +63,9 @@ uint8_t bw_spi_relay_start(device_info_t *device_info) {
 #endif
 	FUNC_PREFIX(spi_begin());
 
-	if (device_info->slave_address <= 0)
+	if (device_info->slave_address == (uint8_t) 0) {
 		device_info->slave_address = BW_RELAY_DEFAULT_SLAVE_ADDRESS;
+	}
 
 	bw_spi_relay_fsel_mask(device_info, 0x7F);
 
@@ -85,11 +86,12 @@ void bw_spi_relay_end(void) {
  * @param device_info
  * @param mask
  */
-inline static void bw_spi_relay_fsel_mask(const device_info_t *device_info, const uint8_t mask) {
+inline static void bw_spi_relay_fsel_mask(const device_info_t *device_info,	const uint8_t mask) {
 	char cmd[3];
-	cmd[0] = device_info->slave_address;
-	cmd[1] = BW_PORT_WRITE_IO_DIRECTION;
-	cmd[2] = mask;
+	cmd[0] = (char) device_info->slave_address;
+	cmd[1] = (char) BW_PORT_WRITE_IO_DIRECTION;
+	cmd[2] = (char) mask;
+
 	relay_spi_setup(device_info);
 	FUNC_PREFIX(spi_writenb(cmd, sizeof(cmd) / sizeof(char)));
 	udelay(BW_RELAY_SPI_BYTE_WAIT_US);
@@ -103,9 +105,10 @@ inline static void bw_spi_relay_fsel_mask(const device_info_t *device_info, cons
  */
 void bw_spi_relay_output(const device_info_t *device_info, const uint8_t pins) {
 	char cmd[3];
-	cmd[0] = device_info->slave_address;
-	cmd[1] = BW_PORT_WRITE_SET_ALL_OUTPUTS;
-	cmd[2] = pins;
+	cmd[0] = (char) device_info->slave_address;
+	cmd[1] = (char) BW_PORT_WRITE_SET_ALL_OUTPUTS;
+	cmd[2] = (char) pins;
+
 	relay_spi_setup(device_info);
 	FUNC_PREFIX(spi_writenb(cmd, sizeof(cmd) / sizeof(char)));
 	udelay(BW_RELAY_SPI_BYTE_WAIT_US);
