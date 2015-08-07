@@ -28,14 +28,15 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdlib.h>
-#include "block.h"
 #include "bcm2835_emmc.h"
+
+#include "block.h"
 #include "sd.h"
 
 extern void udelay(uint32_t);
 extern int printf(const char *format, ...);
 
-uint32_t sd_commands[] = {
+const uint32_t sd_commands[] __attribute__((aligned(4))) = {
     SD_CMD_INDEX(0),
     SD_CMD_RESERVED(1),
     SD_CMD_INDEX(2) | SD_RESP_R2,
@@ -102,7 +103,7 @@ uint32_t sd_commands[] = {
     SD_CMD_RESERVED(63)
 };
 
-static uint32_t sd_acommands[] = {
+static const uint32_t sd_acommands[] __attribute__((aligned(4))) = {
     SD_CMD_RESERVED(0),
     SD_CMD_RESERVED(1),
     SD_CMD_RESERVED(2),
@@ -187,7 +188,7 @@ static uint32_t sd_acommands[] = {
 // Enable SDXC maximum performance mode
 #define SDXC_MAXIMUM_PERFORMANCE
 // Enable EXPERIMENTAL (and possibly DANGEROUS) SD write support
-#define SD_WRITE_SUPPORT
+//#define SD_WRITE_SUPPORT
 
 struct sd_scr
 {
@@ -205,7 +206,9 @@ static char *err_irpts[] = { "CMD_TIMEOUT", "CMD_CRC", "CMD_END_BIT", "CMD_INDEX
 #endif
 
 int sd_read(struct block_device *, uint8_t *, size_t buf_size, uint32_t);
+#ifdef SD_WRITE_SUPPORT
 int sd_write(struct block_device *, uint8_t *, size_t buf_size, uint32_t);
+#endif
 
 /**
  * @ingroup SD
@@ -561,24 +564,24 @@ int sd_card_init(struct block_device **dev)
 	SD_TRACE("Send CMD2 to get the cards CID");
 	sd_issue_command(ret, ALL_SEND_CID, 0, 500000);
 
-	if(FAIL(ret))
-	{
-	    printf("SD: error sending ALL_SEND_CID\n");
-	    return -1;
+	if (FAIL(ret)) {
+		printf("SD: error sending ALL_SEND_CID\n");
+		return -1;
 	}
 
+#ifdef SD_DEBUG
 	uint32_t card_cid_0 = ret->last_r0;
 	uint32_t card_cid_1 = ret->last_r1;
 	uint32_t card_cid_2 = ret->last_r2;
 	uint32_t card_cid_3 = ret->last_r3;
-
+#endif
 	SD_TRACE("Card CID: %08x%08x%08x%08x", card_cid_3, card_cid_2, card_cid_1, card_cid_0);
 
-	uint32_t *dev_id = (uint32_t *)malloc(4 * sizeof(uint32_t));
-	dev_id[0] = card_cid_0;
-	dev_id[1] = card_cid_1;
-	dev_id[2] = card_cid_2;
-	dev_id[3] = card_cid_3;
+	//uint32_t *dev_id = (uint32_t *)malloc(4 * sizeof(uint32_t));
+	//dev_id[0] = card_cid_0;
+	//dev_id[1] = card_cid_1;
+	//dev_id[2] = card_cid_2;
+	//dev_id[3] = card_cid_3;
 
 	SD_TRACE("Send CMD3 to enter the data state");
 	sd_issue_command(ret, SEND_RELATIVE_ADDR, 0, 500000);
@@ -600,35 +603,31 @@ int sd_card_init(struct block_device **dev)
 	uint32_t status = (cmd3_resp >> 9) & 0xf;
 	uint32_t ready = (cmd3_resp >> 8) & 0x1;
 
-	if(crc_error)
-	{
+	if (crc_error) {
 		printf("SD: CRC error\n");
 		free(ret);
-		free(dev_id);
+		//free(dev_id);
 		return -1;
 	}
 
-	if(illegal_cmd)
-	{
+	if (illegal_cmd) {
 		printf("SD: illegal command\n");
 		free(ret);
-		free(dev_id);
+		//free(dev_id);
 		return -1;
 	}
 
-	if(error)
-	{
+	if (error) {
 		printf("SD: generic error\n");
 		free(ret);
-		free(dev_id);
+		//free(dev_id);
 		return -1;
 	}
 
-	if(!ready)
-	{
+	if (!ready) {
 		printf("SD: not ready for data\n");
 		free(ret);
-		free(dev_id);
+		//free(dev_id);
 		return -1;
 	}
 
@@ -637,34 +636,30 @@ int sd_card_init(struct block_device **dev)
 	// Now select the card (toggles it to transfer state)
 	sd_issue_command(ret, SELECT_CARD, ret->card_rca << 16, 500000);
 
-	if(FAIL(ret))
-	{
-	    printf("SD: error sending CMD7\n");
-	    free(ret);
-	    return -1;
+	if (FAIL(ret)) {
+		printf("SD: error sending CMD7\n");
+		free(ret);
+		return -1;
 	}
 
 	uint32_t cmd7_resp = ret->last_r0;
 	status = (cmd7_resp >> 9) & 0xf;
 
-	if((status != 3) && (status != 4))
-	{
+	if ((status != 3) && (status != 4)) {
 		printf("SD: invalid status (%i)\n", status);
 		free(ret);
-		free(dev_id);
+		//free(dev_id);
 		return -1;
 	}
 
 	// If not an SDHC card, ensure BLOCKLEN is 512 bytes
-	if(!ret->card_supports_sdhc)
-	{
-	    sd_issue_command(ret, SET_BLOCKLEN, 512, 500000);
-	    if(FAIL(ret))
-	    {
-	        printf("SD: error sending SET_BLOCKLEN\n");
-	        free(ret);
-	        return -1;
-	    }
+	if (!ret->card_supports_sdhc) {
+		sd_issue_command(ret, SET_BLOCKLEN, 512, 500000);
+		if (FAIL(ret)) {
+			printf("SD: error sending SET_BLOCKLEN\n");
+			free(ret);
+			return -1;
+		}
 	}
 
 	ret->block_size = 512;
@@ -927,17 +922,18 @@ static int sd_ensure_data_mode(struct emmc_block_dev *edev)
  * @param block_no
  * @return
  */
-int sd_read(struct block_device *dev, uint8_t *buf, size_t buf_size, uint32_t block_no)
-{
+int sd_read(struct block_device *dev, uint8_t *buf, size_t buf_size, uint32_t block_no) {
 	struct emmc_block_dev *edev = (struct emmc_block_dev *) dev;
 
-	if (sd_ensure_data_mode(edev) != 0)
+	if (sd_ensure_data_mode(edev) != 0) {
 		return -1;
+	}
 
 	SD_TRACE("Card ready, reading from block %u", block_no);
 
-	if (sd_do_data_command(edev, 0, buf, buf_size, block_no) < 0)
+	if (sd_do_data_command(edev, 0, buf, buf_size, block_no) < 0) {
 		return -1;
+	}
 
 	SD_TRACE("Data read successful");
 
@@ -953,17 +949,18 @@ int sd_read(struct block_device *dev, uint8_t *buf, size_t buf_size, uint32_t bl
  * @param block_no
  * @return
  */
-int sd_write(struct block_device *dev, uint8_t *buf, size_t buf_size, uint32_t block_no)
-{
+int sd_write(struct block_device *dev, uint8_t *buf, size_t buf_size, uint32_t block_no) {
 	struct emmc_block_dev *edev = (struct emmc_block_dev *) dev;
 
-	if (sd_ensure_data_mode(edev) != 0)
+	if (sd_ensure_data_mode(edev) != 0) {
 		return -1;
+	}
 
 	SD_TRACE("Card ready, writing to block %u", block_no);
 
-	if (sd_do_data_command(edev, 1, buf, buf_size, block_no) < 0)
+	if (sd_do_data_command(edev, 1, buf, buf_size, block_no) < 0) {
 		return -1;
+	}
 
 	SD_TRACE("Write read successful");
 

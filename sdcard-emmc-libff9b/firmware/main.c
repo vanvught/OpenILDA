@@ -1,33 +1,7 @@
-/* Copyright (C) 2014 by Arjan van Vught <pm @ http://www.raspberrypi.org/forum/>
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
-
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
-
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-/*----------------------------------------------------------------------*/
-/* FatFs sample project for generic microcontrollers (C)ChaN, 2012      */
-/*----------------------------------------------------------------------*/
 #include <stdio.h>
 #include <stdlib.h>
-#include <bcm2835.h>
-#include <bcm2835_vc.h>
-#include <bcm2835_wdog.h>
-#include <bcm2835_uart.h>
+
+#include "hardware.h"
 #include "ff.h"
 
 FATFS Fatfs;		/* File system object */
@@ -37,13 +11,9 @@ BYTE Buff[128];		/* File read buffer */
 void __attribute__((interrupt("IRQ"))) c_irq_handler(void) {}
 void __attribute__((interrupt("FIQ"))) c_fiq_handler(void) {}
 
-#ifdef ENABLE_FRAMEBUFFER
-extern void bcm2835_console_begin(void);
-#endif
 
 void die(FRESULT rc) {
-	printf("Failed with rc=%u.\n", rc);
-	//watchdog_init();
+	printf("Failed with rc=%d.\n", (int)rc);
 	while (1)
 		;
 }
@@ -55,17 +25,35 @@ int notmain (void)
 	// FILINFO fno;			/* File information object */
 	// UINT br;
 
-	bcm2835_uart_begin();
-
-#ifdef ENABLE_FRAMEBUFFER
-	bcm2835_console_begin();
-#endif
+	hardware_init();
 
     printf("Compiled on %s at %s\n", __DATE__, __TIME__);
-
 	printf("SD Card power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_SDCARD));
 
 	f_mount(0, &Fatfs);		/* Register volume work area (never fails) */
+
+#if 1
+	printf("\nOpen an existing file (params.txt).\n");
+	rc = f_open(&Fil, "params.txt", FA_READ);
+	if (rc)
+		die(rc);
+
+	printf("\nType the file content.\n");
+	int i = 1;
+	for (;;) {
+		if (f_gets((TCHAR *)Buff, sizeof Buff, &Fil) == NULL)
+			break; /* Error or end of file */
+		printf("%d\t:%s\n", i, Buff);
+		i++;
+	}
+	if (rc)
+		die(rc);
+
+	printf("\nClose the file.\n");
+	rc = f_close(&Fil);
+	if (rc)
+		die(rc);
+#endif
 
 #if 0
 	int i;
@@ -91,29 +79,6 @@ int notmain (void)
 		die(rc);
 #endif
 
-#if 1
-	printf("\nOpen an existing file (params.txt).\n");
-	rc = f_open(&Fil, "params.txt", FA_READ);
-	if (rc)
-		die(rc);
-
-	printf("\nType the file content.\n");
-	int i = 1;
-	for (;;) {
-		if (f_gets(Buff, sizeof Buff, &Fil) == NULL)
-			break; /* Error or end of file */
-		printf("%d\t:%s\n", i, Buff);
-		i++;
-	}
-	if (rc)
-		die(rc);
-
-	printf("\nClose the file.\n");
-	rc = f_close(&Fil);
-	if (rc)
-		die(rc);
-#endif
-
 #if 0
 	UINT bw;
 	printf("\nCreate a new file (hello.txt).\n");
@@ -123,7 +88,7 @@ int notmain (void)
 	printf("\nWrite a text data. (Hello world!)\n");
 	rc = f_write(&Fil, "Hello world!\n", 14, &bw);
 	if (rc) die(rc);
-	printf("%u bytes written.\n", bw);
+	printf("%d bytes written.\n", bw);
 
 	printf("\nClose the file.\n");
 	rc = f_close(&Fil);
@@ -154,10 +119,7 @@ int notmain (void)
 #endif
 
 	printf("SD Card power state: %ld\n", bcm2835_vc_get_power_state(BCM2835_VC_POWER_ID_SDCARD));
-
 	printf("\nTest completed.\n");
-
-	//watchdog_init();
 
 	return 0;
 }
