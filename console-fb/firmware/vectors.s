@@ -62,20 +62,30 @@ reset:
     ldr r0, =__svc_stack_top
     mov sp, r0
 
-	@ start L1 chache
-	mrc p15, 0, r0, c1, c0, 0
-	orr r0,r0,#0x0004					@ Data Cache (Bit 2)
-	orr r0,r0,#0x0800					@ Branch Prediction (Bit 11)
-	orr r0,r0,#0x1000					@ Instruction Caches (Bit 12)
-	mcr p15, 0, r0, c1, c0, 0
+    @ start L1 chache
+    mrc p15, 0, r0, c1, c0, 0
+    orr r0,r0,#0x0004					@ Data Cache (Bit 2)
+    orr r0,r0,#0x0800					@ Branch Prediction (Bit 11)
+    orr r0,r0,#0x1000					@ Instruction Caches (Bit 12)
+    mcr p15, 0, r0, c1, c0, 0
 
     @ Enable fpu
-    mrc p15, 0, r0, c1, c0, 2
-    orr r0,r0,#0x300000 				@ single precision
-    orr r0,r0,#0xC00000 				@ double precision
-    mcr p15, 0, r0, c1, c0, 2
+    mrc p15, 0, r0, c1, c0, 2			@ Read Coprocessor Access Control Register
+    orr r0,r0,#0x300000 				@ bit 20/21, Full Access, CP10
+    orr r0,r0,#0xC00000 				@ bit 22/23, Full Access, CP11
+    mcr p15, 0, r0, c1, c0, 2			@ Write Coprocessor Access Control Register
+#if defined ( RPI2 )
+    isb
+#else
+    mov r0,#0
+    mcr p15, #0, r0, c7, c5,  #4
+#endif
     mov r0,#0x40000000
-    fmxr fpexc,r0
+#if defined ( RPI2 )
+    vmsr fpexc, r0
+#else
+    fmxr fpexc, r0
+#endif
 
     @ clear bss section
     mov   r0, #0
@@ -123,11 +133,3 @@ FUNC __disable_fiq
     msr cpsr_c, r1
     bx lr
 
-FUNC memory_barrier
-#if defined ( RPI2 )
-	dmb
-#else
-    mov r0, #0
-    mcr p15, #0, r0, c7, c10, #5
-#endif
-    bx lr
