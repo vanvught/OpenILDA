@@ -2,7 +2,7 @@
  * @file console.c
  *
  */
-/* Copyright (C) 2015 by Arjan van Vught <pm @ http://www.raspberrypi.org/forum/>
+/* Copyright (C) 2015, 2016 by Arjan van Vught mailto:info@raspberrypi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,8 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "arm/synchronize.h"
+#include "bcm2835.h"
 #include "bcm2835_mailbox.h"
 #include "bcm2835_vc.h"
 #include "console.h"
@@ -50,6 +52,10 @@ static uint32_t fb_pitch;					///< Number of bytes between each row of the frame
 static uint32_t fb_addr;					///< Address of buffer allocated by VC
 static uint32_t fb_size;					///< Size of buffer allocated by VC
 static uint32_t fb_depth;					///< Depth (bits per pixel)
+
+#if defined (RPI2)
+static volatile int lock = 0;
+#endif
 
 const uint32_t console_get_address() {
 	return fb_addr;
@@ -172,6 +178,9 @@ int console_draw_char(const int ch, const int x, const int y, const uint16_t for
  * @return
  */
 int console_putc(const int ch) {
+#if defined (RPI2)
+	while (__sync_lock_test_and_set(&lock, 1) == 1);
+#endif
 
 	if (ch == (int)'\n') {
 		newline();
@@ -186,6 +195,10 @@ int console_putc(const int ch) {
 			newline();
 		}
 	}
+
+#if defined (RPI2)
+	__sync_lock_release(&lock);
+#endif
 
 	return ch;
 }
@@ -270,6 +283,10 @@ void console_clear() {
  * @param y The new row for the cursor.
  */
 void console_set_cursor(const int x, const int y) {
+#if defined (RPI2)
+	while (__sync_lock_test_and_set(&lock, 1) == 1);
+#endif
+
 	if (x > WIDTH / CHAR_W)
 		cur_x = 0;
 	else
@@ -279,6 +296,10 @@ void console_set_cursor(const int x, const int y) {
 		cur_y = 0;
 	else
 		cur_y = y;
+
+#if defined (RPI2)
+	__sync_lock_release(&lock);
+#endif
 }
 
 /**
@@ -308,7 +329,7 @@ void console_clear_line(const int line) {
 	uint32_t i;
 
 	if (line > HEIGHT / CHAR_H) {
-		cur_y = 0;
+		return;
 	} else {
 		cur_y = line;
 	}
@@ -338,8 +359,19 @@ int console_init() {
 	mailbuffer[6] = 0;
 	mailbuffer[7] = 0;
 
-	bcm2835_mailbox_write(BCM2835_MAILBOX_PROP_CHANNEL, (uint32_t)&mailbuffer);
+#if defined (RPI2)
+	clean_data_cache();
+#endif
+	dsb();
+
+	bcm2835_mailbox_flush();
+	bcm2835_mailbox_write(BCM2835_MAILBOX_PROP_CHANNEL, GPU_MEM_BASE + (uint32_t)&mailbuffer);
 	(void)bcm2835_mailbox_read(BCM2835_MAILBOX_PROP_CHANNEL);
+
+#if defined (RPI2)
+	invalidate_data_cache();
+#endif
+	dsb();
 
 	fb_width  = mailbuffer[5];
 	fb_height = mailbuffer[6];
@@ -381,10 +413,21 @@ int console_init() {
 
 	mailbuffer[21] = 0;
 
-	bcm2835_mailbox_write(BCM2835_MAILBOX_PROP_CHANNEL, (uint32_t)&mailbuffer);
+#if defined (RPI2)
+	clean_data_cache();
+#endif
+	dsb();
+
+	bcm2835_mailbox_flush();
+	bcm2835_mailbox_write(BCM2835_MAILBOX_PROP_CHANNEL, GPU_MEM_BASE + (uint32_t)&mailbuffer);
 	(void)bcm2835_mailbox_read(BCM2835_MAILBOX_PROP_CHANNEL);
 
-	fb_addr = mailbuffer[19];
+#if defined (RPI2)
+	invalidate_data_cache();
+#endif
+	dsb();
+
+	fb_addr = mailbuffer[19] & 0x3FFFFFFF;;
 	fb_size = mailbuffer[20];
 
 	if ((fb_addr == 0) || (fb_size == 0)) {
@@ -403,8 +446,19 @@ int console_init() {
 
 	mailbuffer[6] = 0;
 
-	bcm2835_mailbox_write(BCM2835_MAILBOX_PROP_CHANNEL, (uint32_t) &mailbuffer);
+#if defined (RPI2)
+	clean_data_cache();
+#endif
+	dsb();
+
+	bcm2835_mailbox_flush();
+	bcm2835_mailbox_write(BCM2835_MAILBOX_PROP_CHANNEL, GPU_MEM_BASE + (uint32_t) &mailbuffer);
 	(void) bcm2835_mailbox_read(BCM2835_MAILBOX_PROP_CHANNEL);
+
+#if defined (RPI2)
+	invalidate_data_cache();
+#endif
+	dsb();
 
 	fb_pitch = mailbuffer[5];
 
@@ -412,5 +466,8 @@ int console_init() {
 		return CONSOLE_FAIL_INVALID_PITCH_DATA;
 	}
 
+#if defined (RPI2)
+	lock = 0;
+#endif
 	return CONSOLE_OK;
 }

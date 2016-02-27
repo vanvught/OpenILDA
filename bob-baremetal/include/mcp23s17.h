@@ -2,7 +2,7 @@
  * @file mcp23s17.h
  *
  */
-/* Copyright (C) 2015 by Arjan van Vught <pm @ http://www.raspberrypi.org/forum/>
+/* Copyright (C) 2015, 2016 by Arjan van Vught mailto:info@raspberrypi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,9 @@
 #define MCP23S17_ERROR					1
 
 #define MCP23S17_DEFAULT_SLAVE_ADDRESS	0x00
+
+#define MCP23S17_SPI_SPEED_MAX_HZ		10000000	///< 10 MHz
+#define MCP23S17_SPI_SPEED_DEFAULT_HZ	 2000000	///< 2 MHz
 
 #define MCP23S17_IODIRA			0x00	///< I/O DIRECTION (IODIRA) REGISTER, 1 = Input (default), 0 = Output
 #define MCP23S17_IODIRB			0x01	///< I/O DIRECTION (IODIRB) REGISTER, 1 = Input (default), 0 = Output
