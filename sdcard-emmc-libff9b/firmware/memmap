@@ -37,8 +37,8 @@ SECTIONS
 		*(.shstrtab)
 		*(.strtab)
     } > ram
-    
-   	__data_start = . ;
+
+    __data_start = . ;
     .data : 
     {
     . = ALIGN(4);
@@ -48,10 +48,10 @@ SECTIONS
     } > ram
     __data_end = . ; 
 
-	__bss_start = . ;       
-    .bss : 
+    __bss_start = . ;
+    .bss :    
     {
-    . = ALIGN(4);
+    . = ALIGN(4); 
      *(.bss*) 
     } > ram
 	__bss_end = . ;    
@@ -103,6 +103,6 @@ __svc_stack_top_core2 = .;
 . = . + __svc_stack_size; 
 __svc_stack_top_core3 = .;
 
- . = ALIGN(0x400000);
+ . = ALIGN(0x500000);
  heap_low = .; 					/* for _sbrk */
  heap_top = __ram_end; 			/* for _sbrk */

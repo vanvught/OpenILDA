@@ -31,32 +31,35 @@ SECTIONS
     .rodata : 
     {
     . = ALIGN(4);
-		*(.rodata)
-		*(.rodata.*)
-		*(.rodata.str1.4)
-		*(.shstrtab)
-		*(.strtab)
+	*(.rodata)
+	*(.rodata.*)
+	*(.rodata.str1.4)
+	*(.shstrtab)
+	*(.strtab)
     } > ram
-    
-   	__data_start = . ;
-    .data : 
-    {
-    . = ALIGN(4);
-     *(SORT(.table*));
-     *(.ahb_sram_0)
-     *(.data)
-    } > ram
-    __data_end = . ; 
 
-	__bss_start = . ;       
-    .bss : 
+    .data : 
+    {  
+    . = ALIGN(4);
+__data_start = . ;    
+	*(SORT(.table*));
+	*(.ahb_sram_0)
+    *(.data)
+	. = ALIGN(4);
+__data_end = . ;      
+    } > ram
+ 
+    .bss :
     {
     . = ALIGN(4);
-     *(.bss*) 
+__bss_start = . ;        
+     *(.bss*)
+     *(COMMON)
+    . = ALIGN(4);     
+__bss_end = . ; 
     } > ram
-	__bss_end = . ;    
 	
-	/DISCARD/ : 
+	/DISCARD/ :
 	{
 	*(*.ARM.attributes)
 	*(*.comment)
@@ -103,6 +106,6 @@ __svc_stack_top_core2 = .;
 . = . + __svc_stack_size; 
 __svc_stack_top_core3 = .;
 
- . = ALIGN(0x400000);
+ . = ALIGN(0x500000);
  heap_low = .; 					/* for _sbrk */
  heap_top = __ram_end; 			/* for _sbrk */

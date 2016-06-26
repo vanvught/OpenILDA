@@ -1,3 +1,34 @@
+/**
+ * @file vector.S
+ *
+ */
+/*
+ * This file contains code taken from Linux:
+ *	safe_svcmode_maskall macro
+ *	defined in arch/arm/include/asm/assembler.h
+ *	Copyright (C) 1996-2000 Russell King
+ */
+ /* Copyright (C) 2015, 2016 by Arjan van Vught mailto:info@raspberrypi-dmx.nl
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
 .macro FUNC name
 .text
 .code 32
@@ -41,7 +72,7 @@ irq_handler:		.word irq
 fiq_handler:		.word fiq
 
 reset:
-#if defined ( RPI2 )
+#if defined ( RPI2 ) || defined ( RPI3 )
 	@ Return current CPU ID (0..3)
 	mrc p15, 0, r0, c0, c0, 5 			@ r0 = Multiprocessor Affinity Register (MPIDR)
 	ands r0, #3							@ r0 = CPU ID (Bits 0..1)
@@ -91,7 +122,7 @@ reset:
     strlo r0, [r1], #4
     blo   4b
 
-#if defined ( RPI2 )
+#if defined ( RPI2 ) || defined ( RPI3 )
 	bl mmu_enable
 #else
     @ start L1 chache
@@ -107,14 +138,14 @@ reset:
     orr r0,r0,#0x300000 				@ bit 20/21, Full Access, CP10
     orr r0,r0,#0xC00000 				@ bit 22/23, Full Access, CP11
     mcr p15, 0, r0, c1, c0, 2			@ Write Coprocessor Access Control Register
-#if defined ( RPI2 )
+#if defined ( RPI2 )  || defined ( RPI3 )
     isb
 #else
     mov r0,#0
     mcr p15, #0, r0, c7, c5,  #4
 #endif
     mov r0,#0x40000000
-#if defined ( RPI2 )
+#if defined ( RPI2 )  || defined ( RPI3 )
     vmsr fpexc, r0
 #else
     fmxr fpexc, r0
@@ -158,8 +189,9 @@ FUNC __disable_fiq
     msr cpsr_c, r1
     bx lr
 
-#if defined ( RPI2 )
+#if defined ( RPI2 ) || defined ( RPI3 )
 FUNC _init_core
+#ifdef ARM_ALLOW_MULTI_CORE
     @ Check for HYP mode
 	mrs	r0 , cpsr
 	eor	r0, r0, #0x1A
@@ -189,7 +221,16 @@ FUNC _init_core
     ldr r0, =__svc_stack_top_core3		@ CPU ID == 3
 4:	mov sp, r0
 
+#if defined ( RPI2 )|| defined ( RPI3 )
 	bl mmu_enable
+#else
+    @ start L1 chache
+    mrc p15, 0, r0, c1, c0, 0
+    orr r0,r0,#0x0004					@ Data Cache (Bit 2)
+    orr r0,r0,#0x0800					@ Branch Prediction (Bit 11)
+    orr r0,r0,#0x1000					@ Instruction Caches (Bit 12)
+    mcr p15, 0, r0, c1, c0, 0
+#endif
 
     @ Enable fpu
     mrc p15, 0, r0, c1, c0, 2			@ Read Coprocessor Access Control Register
@@ -202,7 +243,10 @@ FUNC _init_core
 
 	ldr r3, =smp_core_main
     blx r3
-halt_core:
-	wfe
-	b halt_core
+#else
+	dsb
+1:	wfi
+	b	1b
+#endif
+
 #endif

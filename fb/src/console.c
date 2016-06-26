@@ -42,43 +42,93 @@ extern unsigned char FONT[];
 #define BPP					(BYTES_PER_PIXEL << 3)		///< Requested depth (bits per pixel)
 #define PITCH				(WIDTH * BYTES_PER_PIXEL)	///<
 
-static int cur_x = 0;						///<
-static int cur_y = 0;						///<
+static int current_x = 0;					///<
+static int current_y = 0;					///<
+static int saved_x = 0;						///<
+static int saved_y = 0;						///<
 static uint16_t cur_fore = CONSOLE_WHITE;	///<
 static uint16_t cur_back = CONSOLE_BLACK;	///<
-static uint32_t fb_width;					///< Width of physical display
-static uint32_t fb_height;					///< Height of physical display
-static uint32_t fb_pitch;					///< Number of bytes between each row of the frame buffer
+static uint16_t saved_fore = CONSOLE_WHITE;	///<
+static uint16_t saved_back = CONSOLE_BLACK;	///<
 static uint32_t fb_addr;					///< Address of buffer allocated by VC
 static uint32_t fb_size;					///< Size of buffer allocated by VC
 static uint32_t fb_depth;					///< Depth (bits per pixel)
 
-#if defined (RPI2)
+static uint16_t top_row = (uint16_t) 0;		///<
+
+#if defined (ARM_ALLOW_MULTI_CORE)
 static volatile int lock = 0;
 #endif
 
-const uint32_t console_get_address() {
+/**
+ *
+ * @return
+ */
+const uint32_t console_get_address(void) {
 	return fb_addr;
 }
 
-const uint32_t console_get_pitch() {
-	return fb_pitch;
+/**
+ *
+ * @return
+ */
+const uint32_t console_get_width(void) {
+	return WIDTH;
 }
 
-const uint32_t console_get_width() {
-	return fb_width;
+/**
+ *
+ * @return
+ */
+const uint32_t console_get_height(void) {
+	return HEIGHT;
 }
 
-const uint32_t console_get_height() {
-	return fb_height;
-}
-
-const uint32_t console_get_size() {
+/**
+ *
+ * @return
+ */
+const uint32_t console_get_size(void) {
 	return fb_size;
 }
 
-const uint32_t console_get_depth() {
+/**
+ *
+ * @return
+ */
+const uint32_t console_get_depth(void) {
 	return fb_depth;
+}
+
+/**
+ *
+ * @return
+ */
+const int console_get_line_width(void) {
+	return WIDTH / CHAR_W;
+}
+
+/**
+ *
+ * @return
+ */
+uint16_t console_get_top_row(void) {
+	return top_row;
+}
+
+/**
+ *
+ * @param row
+ */
+void console_set_top_row(uint16_t row) {
+	if (row > HEIGHT / CHAR_H) {
+		top_row = 0;
+	} else {
+		top_row = row;
+	}
+
+	current_x = (int) 0;
+	current_y = (int) row;
 }
 
 /**
@@ -87,27 +137,37 @@ const uint32_t console_get_depth() {
 inline static void newline() {
 	uint32_t i;
 	uint16_t *address;
+	uint16_t *to;
+	uint16_t *from;
 
-	cur_y++;
-	cur_x = 0;
+	current_y++;
+	current_x = 0;
 
-	if (cur_y == HEIGHT / CHAR_H) {
-		/* Pointer to row = 0 */
-		uint16_t *to = (uint16_t *) (fb_addr);
-		/* Pointer to row = 1 */
-		uint16_t *from = to + (CHAR_H * WIDTH);
-		/* Copy block from {row = 1, rows} to {row = 0, rows - 1} */
-		i = (HEIGHT - CHAR_H) * WIDTH;
+	if (current_y == HEIGHT / CHAR_H) {
+		if (top_row == 0) {
+			/* Pointer to row = 0 */
+			to = (uint16_t *) (fb_addr);
+			/* Pointer to row = 1 */
+			from = to + (CHAR_H * WIDTH);
+			/* Copy block from {row = 1, rows} to {row = 0, rows - 1} */
+			i = (HEIGHT - CHAR_H) * WIDTH;
+		} else {
+			to = (uint16_t *) (fb_addr) + ((CHAR_H * WIDTH) * top_row);
+			from = to + (CHAR_H * WIDTH);
+			i = (HEIGHT - CHAR_H) * WIDTH - ((CHAR_H * WIDTH) * top_row);
+		}
+
 		while (i-- != 0 ) {
 			*to++ = *from++;
 		}
+
 		/* Clear last row */
 		address = (uint16_t *)(fb_addr) + ((HEIGHT - CHAR_H) * WIDTH);
 		for (i = 0 ; i < (CHAR_H * WIDTH) ; i++) {
 			*address++ =  cur_back;
 		}
 
-		cur_y--;
+		current_y--;
 	}
 }
 
@@ -136,7 +196,7 @@ inline static void draw_char(const int c, const int x, int y, const uint16_t for
 	unsigned char *p = FONT + (c * (int) CHAR_H);
 
 	for (i = 0; i < CHAR_H; i++) {
-		line = *p++;
+		line = (uint8_t) *p++;
 		for (j = x; j < (CHAR_W + x); j++) {
 			if ((line & 0x1) != 0) {
 				draw_pixel(j, y, fore);
@@ -178,25 +238,25 @@ int console_draw_char(const int ch, const int x, const int y, const uint16_t for
  * @return
  */
 int console_putc(const int ch) {
-#if defined (RPI2)
+#if defined (ARM_ALLOW_MULTI_CORE)
 	while (__sync_lock_test_and_set(&lock, 1) == 1);
 #endif
 
 	if (ch == (int)'\n') {
 		newline();
 	} else if (ch == (int)'\r') {
-		cur_x = 0;
+		current_x = 0;
 	} else if (ch == (int)'\t') {
-		cur_x += 4;
+		current_x += 4;
 	} else {
-		draw_char(ch, cur_x * CHAR_W, cur_y * CHAR_H, cur_fore, cur_back);
-		cur_x++;
-		if (cur_x == WIDTH / CHAR_W) {
+		draw_char(ch, current_x * CHAR_W, current_y * CHAR_H, cur_fore, cur_back);
+		current_x++;
+		if (current_x == WIDTH / CHAR_W) {
 			newline();
 		}
 	}
 
-#if defined (RPI2)
+#if defined (ARM_ALLOW_MULTI_CORE)
 	__sync_lock_release(&lock);
 #endif
 
@@ -208,12 +268,16 @@ int console_putc(const int ch) {
  * @param s
  * @return
  */
-void console_puts(const char *s) {
+int console_puts(const char *s) {
 	char c;
+	int i = 0;;
 
 	while ((c = *s++) != (char) 0) {
+		i++;
 		(void) console_putc((int) c);
 	}
+
+	return i;
 }
 
 /**
@@ -221,7 +285,7 @@ void console_puts(const char *s) {
  * @param s
  * @param n
  */
-void console_putsn(const char *s, int n) {
+void console_write(const char *s, int n) {
 	char c;
 
 	while (((c = *s++) != (char) 0) && (n-- != 0)) {
@@ -236,8 +300,8 @@ void console_putsn(const char *s, int n) {
  * @param data
  */
 void console_puthex(const uint8_t data) {
-	(void) console_putc(TO_HEX(((data & 0xF0) >> 4)));
-	(void) console_putc(TO_HEX(data & 0x0F));
+	(void) console_putc((int) (TO_HEX(((data & 0xF0) >> 4))));
+	(void) console_putc((int) (TO_HEX(data & 0x0F)));
 }
 
 void console_puthex_fg_bg(const uint8_t data, const uint16_t fore, const uint16_t back) {
@@ -247,8 +311,8 @@ void console_puthex_fg_bg(const uint8_t data, const uint16_t fore, const uint16_
 	cur_fore = fore;
 	cur_back = back;
 
-	(void) console_putc(TO_HEX(((data & 0xF0) >> 4)));
-	(void) console_putc(TO_HEX(data & 0x0F));
+	(void) console_putc((int) (TO_HEX(((data & 0xF0) >> 4))));
+	(void) console_putc((int) (TO_HEX(data & 0x0F)));
 
 	cur_fore = fore_current;
 	cur_back = back_current;
@@ -272,8 +336,8 @@ void console_clear() {
 		*address++ = cur_back;
 	}
 
-	cur_x = 0;
-	cur_y = 0;
+	current_x = 0;
+	current_y = 0;
 }
 
 /**
@@ -283,25 +347,38 @@ void console_clear() {
  * @param y The new row for the cursor.
  */
 void console_set_cursor(const int x, const int y) {
-#if defined (RPI2)
+#if defined (ARM_ALLOW_MULTI_CORE)
 	while (__sync_lock_test_and_set(&lock, 1) == 1);
 #endif
 
 	if (x > WIDTH / CHAR_W)
-		cur_x = 0;
+		current_x = 0;
 	else
-		cur_x = x;
+		current_x = x;
 
 	if (y > HEIGHT / CHAR_H)
-		cur_y = 0;
+		current_y = 0;
 	else
-		cur_y = y;
+		current_y = y;
 
-#if defined (RPI2)
+#if defined (ARM_ALLOW_MULTI_CORE)
 	__sync_lock_release(&lock);
 #endif
 }
 
+void console_save_cursor(void) {
+	saved_y = current_y;
+	saved_x = current_x;
+	saved_back = cur_back;
+	saved_fore = cur_fore;
+}
+
+void console_restore_cursor(void) {
+	current_y = saved_y;
+	current_x = saved_x;
+	cur_back = saved_back;
+	cur_fore = saved_fore;
+}
 /**
  * Changes the foreground color of future characters printed on the console.
  *
@@ -331,10 +408,10 @@ void console_clear_line(const int line) {
 	if (line > HEIGHT / CHAR_H) {
 		return;
 	} else {
-		cur_y = line;
+		current_y = line;
 	}
 
-	cur_x = 0;
+	current_x = 0;
 
 	address = (uint16_t *)(fb_addr) + (line * CHAR_H * WIDTH);
 
@@ -348,42 +425,7 @@ void console_clear_line(const int line) {
  * @return
  */
 int console_init() {
-	uint32_t mailbuffer[64] __attribute__((aligned(16)));
-
-	mailbuffer[0] = 8 * 4;
-	mailbuffer[1] = 0;
-	mailbuffer[2] = BCM2835_VC_TAG_GET_PHYS_WH;
-	mailbuffer[3] = 8;
-	mailbuffer[4] = 0;
-	mailbuffer[5] = 0;
-	mailbuffer[6] = 0;
-	mailbuffer[7] = 0;
-
-#if defined (RPI2)
-	clean_data_cache();
-#endif
-	dsb();
-
-	bcm2835_mailbox_flush();
-	bcm2835_mailbox_write(BCM2835_MAILBOX_PROP_CHANNEL, GPU_MEM_BASE + (uint32_t)&mailbuffer);
-	(void)bcm2835_mailbox_read(BCM2835_MAILBOX_PROP_CHANNEL);
-
-#if defined (RPI2)
-	invalidate_data_cache();
-#endif
-	dsb();
-
-	fb_width  = mailbuffer[5];
-	fb_height = mailbuffer[6];
-
-	if ((fb_width == 0) && (fb_height == 0)) {
-		fb_width = WIDTH;
-		fb_height = HEIGHT;
-	}
-
-	if ((fb_width == 0) || (fb_height == 0)) {
-		return CONSOLE_FAIL_INVALID_RESOLUTION;
-	}
+	uint32_t mailbuffer[32] __attribute__((aligned(16)));
 
 	mailbuffer[0] = 22 * 4;
 	mailbuffer[1] = 0;
@@ -391,19 +433,19 @@ int console_init() {
 	mailbuffer[2] = BCM2835_VC_TAG_SET_PHYS_WH;
 	mailbuffer[3] = 8;
 	mailbuffer[4] = 8;
-	mailbuffer[5] = fb_width;
-	mailbuffer[6] = fb_height;
+	mailbuffer[5] = WIDTH;
+	mailbuffer[6] = HEIGHT;
 
 	mailbuffer[7] = BCM2835_VC_TAG_SET_VIRT_WH;
 	mailbuffer[8] = 8;
 	mailbuffer[9] = 8;
-	mailbuffer[10] = fb_width;
-	mailbuffer[11] = fb_height;
+	mailbuffer[10] = WIDTH;
+	mailbuffer[11] = HEIGHT;
 
 	mailbuffer[12] = BCM2835_VC_TAG_SET_DEPTH;
 	mailbuffer[13] = 4;
 	mailbuffer[14] = 4;
-	mailbuffer[15] = BPP;
+	mailbuffer[15] = (uint32_t) BPP;
 
 	mailbuffer[16] = BCM2835_VC_TAG_ALLOCATE_BUFFER;
 	mailbuffer[17] = 8;
@@ -413,21 +455,27 @@ int console_init() {
 
 	mailbuffer[21] = 0;
 
-#if defined (RPI2)
+#if defined (RPI2) || defined (RPI3)
 	clean_data_cache();
-#endif
 	dsb();
+#endif
 
 	bcm2835_mailbox_flush();
 	bcm2835_mailbox_write(BCM2835_MAILBOX_PROP_CHANNEL, GPU_MEM_BASE + (uint32_t)&mailbuffer);
 	(void)bcm2835_mailbox_read(BCM2835_MAILBOX_PROP_CHANNEL);
 
-#if defined (RPI2)
+#if defined (RPI2) || defined (RPI3)
 	invalidate_data_cache();
-#endif
 	dsb();
+#else
+	dmb();
+#endif
 
-	fb_addr = mailbuffer[19] & 0x3FFFFFFF;;
+	if (mailbuffer[1] != BCM2835_MAILBOX_SUCCESS) {
+		return CONSOLE_FAIL_SETUP_FB;
+	}
+
+	fb_addr = mailbuffer[19] & 0x3FFFFFFF;
 	fb_size = mailbuffer[20];
 
 	if ((fb_addr == 0) || (fb_size == 0)) {
@@ -436,37 +484,7 @@ int console_init() {
 
 	fb_depth = mailbuffer[15];
 
-	mailbuffer[0] = 7 * 4;
-	mailbuffer[1] = 0;
-
-	mailbuffer[2] = BCM2835_VC_TAG_GET_PITCH;
-	mailbuffer[3] = 4;
-	mailbuffer[4] = 0;
-	mailbuffer[5] = 0;
-
-	mailbuffer[6] = 0;
-
-#if defined (RPI2)
-	clean_data_cache();
-#endif
-	dsb();
-
-	bcm2835_mailbox_flush();
-	bcm2835_mailbox_write(BCM2835_MAILBOX_PROP_CHANNEL, GPU_MEM_BASE + (uint32_t) &mailbuffer);
-	(void) bcm2835_mailbox_read(BCM2835_MAILBOX_PROP_CHANNEL);
-
-#if defined (RPI2)
-	invalidate_data_cache();
-#endif
-	dsb();
-
-	fb_pitch = mailbuffer[5];
-
-	if (fb_pitch == 0) {
-		return CONSOLE_FAIL_INVALID_PITCH_DATA;
-	}
-
-#if defined (RPI2)
+#if defined (ARM_ALLOW_MULTI_CORE)
 	lock = 0;
 #endif
 	return CONSOLE_OK;
